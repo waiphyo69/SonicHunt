@@ -89,6 +89,7 @@ search bar, which on search completion ("keypress enter") will trigger a new res
 [Details][phase-five]
 
 ### Bonus Features (TBD)
+- [ ] Email account activation
 - [ ] User avatars
 - [ ] Complete styling with Bootstrap
 - [ ] Thumbnails on item views
@@ -97,6 +98,7 @@ search bar, which on search completion ("keypress enter") will trigger a new res
 - [ ] Pagination/infinite scroll
 - [ ] Activity history
 - [ ] Multiple sessions/session management
+
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
