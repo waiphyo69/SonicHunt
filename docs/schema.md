@@ -64,7 +64,7 @@ id          | integer   | not null, primary key
 review_id   | integer   | not null
 upvoter_id  | integer   | not null
 
-## users to users
+## users to users ( many to many )
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
