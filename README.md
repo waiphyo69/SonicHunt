@@ -1,8 +1,6 @@
-# Flux-capacitr
+# SonicHunt
 
-[Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
 
 ## Minimum Viable Product
 
