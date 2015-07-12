@@ -22,8 +22,7 @@ image_url   | string    | not null
 popularity  | integer   | default zero
 
 
-## gearstoproducts  
-(many to many)
+## gearstoproducts (many to many)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
