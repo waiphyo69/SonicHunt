@@ -48,6 +48,7 @@ avg_score   | integer   | default zero ( will be updated whenever a user enters 
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
+owner_id    | integer   | not null, foregin_key(references to users)
 image_url   | string    | default will point to a plain image
 title       | string    | not null
 
@@ -56,6 +57,7 @@ title       | string    | not null
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
+author_id   | integer   | not null, foregin_key( points to parent user )
 body        | string    | not null
 gear_id     | integer   | foreign_key ( points to a parent gear)
 product_id  | integer   | foreign_key ( points to a parent product)

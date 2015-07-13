@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713182240) do
+ActiveRecord::Schema.define(version: 20150713183453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collections", force: :cascade do |t|
+    t.integer  "owner_id",                                                                                                                       null: false
+    t.string   "image_url",  default: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTZ5aDVyllZi1iiTJ0dr7fY2ig6xVGswpkTv7MEy8WTqwpkNHA"
+    t.string   "title",                                                                                                                          null: false
+    t.datetime "created_at",                                                                                                                     null: false
+    t.datetime "updated_at",                                                                                                                     null: false
+  end
+
+  add_index "collections", ["owner_id"], name: "index_collections_on_owner_id", using: :btree
+  add_index "collections", ["title"], name: "index_collections_on_title", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -38,6 +49,18 @@ ActiveRecord::Schema.define(version: 20150713182240) do
   end
 
   add_index "gears", ["owner_id"], name: "index_gears_on_owner_id", using: :btree
+
+  create_table "geartocols", force: :cascade do |t|
+    t.integer  "gear_id"
+    t.string   "collection_id"
+    t.string   "integer"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "geartocols", ["collection_id"], name: "index_geartocols_on_collection_id", using: :btree
+  add_index "geartocols", ["gear_id", "collection_id"], name: "index_geartocols_on_gear_id_and_collection_id", unique: true, using: :btree
+  add_index "geartocols", ["gear_id"], name: "index_geartocols_on_gear_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "image_url",              null: false

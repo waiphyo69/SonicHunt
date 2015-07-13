@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
   has_many :followees, through: :followee_follows, source: :followee
 
+  has_many :collections, foregin_key: :owner_id, class_name: "Collection"
+
+  has_many :gears, foregin_key: :owner_id, class_name: "Collection"
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.valid_password?(password)
