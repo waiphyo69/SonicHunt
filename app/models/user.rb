@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
   has_many :followees, through: :followee_follows, source: :followee
 
+  has_many :gear_ids, foreign_key: :subscriber_id, class_name: "Geartouser"
+  has_many :gears, through: :gear_ids, source: :gear
+
   has_many :collections, foregin_key: :owner_id, class_name: "Collection"
 
   has_many :gears, foregin_key: :owner_id, class_name: "Collection"
