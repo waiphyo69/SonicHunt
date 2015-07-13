@@ -43,6 +43,40 @@ info        | text      | not null
 avg_score   | integer   | default zero ( will be updated whenever a user enters a review for this product)
 
 
+## collections
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+image_url   | string    | default will point to a plain image
+title       | string    | not null
+
+
+## comments
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+body        | string    | not null
+gear_id     | integer   | foreign_key ( points to a parent gear)
+product_id  | integer   | foreign_key ( points to a parent product)
+review_id   | integer   | foreign_key ( points to a parent review)
+
+
+## gears to collections ( many to many )
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+gear_id      | integer   | not null
+collection_id| integer   | not null
+
+
+
+## products to collections ( many to many )
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+product_id   | integer   | not null
+collection_id| integer   | not null
+
 
 ## gears to products (many to many)
 column name | data type | details
