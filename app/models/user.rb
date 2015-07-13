@@ -1,14 +1,16 @@
 class User < ActiveRecord::Base
+
   EMAIL_FORMAT = /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
-  attr_reader :password
+
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :username, :email, :password_digest, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :username, length: { maximum: 15 }
   validates_format_of :email, with: EMAIL_FORMAT, multiline: true
 
-  after_initialize :ensure_session_token
+  attr_reader :password
 
+  after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

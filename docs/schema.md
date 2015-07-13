@@ -37,9 +37,11 @@ popularity  | integer   | default zero
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
+image_url   | string    | not null
 name        | string    | not null, unique
 info        | text      | not null
-image_url   | string    | not null
+avg_score   | integer   | default zero ( will be updated whenever a user enters a review for this product)
+
 
 
 ## gears to products (many to many)
