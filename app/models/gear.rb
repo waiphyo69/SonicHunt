@@ -11,5 +11,5 @@ class Gear < ActiveRecord::Base
     has_many :subscriber_ids, foreign_key: :gear_id, class_name: "Geartouser"
     has_many :subscribers, through: :subscriber_ids, source: :subscriber
 
-    belongs_to :user, foreign_key: :owner_id, class_name: "Users"
+    belongs_to :owner, foreign_key: :owner_id, class_name: "Users"
 end

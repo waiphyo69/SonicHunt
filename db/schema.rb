@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713185951) do
+ActiveRecord::Schema.define(version: 20150713192015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,28 @@ ActiveRecord::Schema.define(version: 20150713185951) do
   add_index "geartocols", ["collection_id"], name: "index_geartocols_on_collection_id", using: :btree
   add_index "geartocols", ["gear_id", "collection_id"], name: "index_geartocols_on_gear_id_and_collection_id", unique: true, using: :btree
   add_index "geartocols", ["gear_id"], name: "index_geartocols_on_gear_id", using: :btree
+
+  create_table "geartopros", force: :cascade do |t|
+    t.integer  "gear_id",    null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "geartopros", ["gear_id", "product_id"], name: "index_geartopros_on_gear_id_and_product_id", unique: true, using: :btree
+  add_index "geartopros", ["gear_id"], name: "index_geartopros_on_gear_id", using: :btree
+  add_index "geartopros", ["product_id"], name: "index_geartopros_on_product_id", using: :btree
+
+  create_table "geartousers", force: :cascade do |t|
+    t.integer  "gear_id",       null: false
+    t.integer  "subscriber_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "geartousers", ["gear_id", "subscriber_id"], name: "index_geartousers_on_gear_id_and_subscriber_id", unique: true, using: :btree
+  add_index "geartousers", ["gear_id"], name: "index_geartousers_on_gear_id", using: :btree
+  add_index "geartousers", ["subscriber_id"], name: "index_geartousers_on_subscriber_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "image_url",              null: false

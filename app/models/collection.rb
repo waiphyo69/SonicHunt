@@ -8,6 +8,6 @@ class Collection < ActiveRecord::Base
   has_many :product_ids, foreign_key: :collection_id, class_name: "Producttocol"
   has_many :products, through: :product_ids, source: :product
 
-  belongs_to :user, foreign_key: :owner_id, class_name: "Users"
+  belongs_to :owner, foreign_key: :owner_id, class_name: "User"
 
 end
