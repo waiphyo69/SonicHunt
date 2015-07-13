@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713183453) do
+ActiveRecord::Schema.define(version: 20150713185951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 20150713183453) do
   end
 
   add_index "products", ["name"], name: "index_products_on_name", unique: true, using: :btree
+
+  create_table "producttocols", force: :cascade do |t|
+    t.integer  "product_id",    null: false
+    t.integer  "collection_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "producttocols", ["collection_id"], name: "index_producttocols_on_collection_id", using: :btree
+  add_index "producttocols", ["product_id", "collection_id"], name: "index_producttocols_on_product_id_and_collection_id", unique: true, using: :btree
+  add_index "producttocols", ["product_id"], name: "index_producttocols_on_product_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
