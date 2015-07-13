@@ -19,11 +19,15 @@ class User < ActiveRecord::Base
   has_many :followees, through: :followee_follows, source: :followee
 
   has_many :gear_ids, foreign_key: :subscriber_id, class_name: "Geartouser"
-  has_many :gears, through: :gear_ids, source: :gear
+  has_many :favorite_gears, through: :gear_ids, source: :gear
 
-  has_many :collections, foregin_key: :owner_id, class_name: "Collection"
+  has_many :review_ids, foreign_key: :upvoter_id, class_name: "Reviewtouser"
+  has_many :upvoted_reviews, through: :review_ids, source: :review
 
-  has_many :gears, foregin_key: :owner_id, class_name: "Collection"
+  has_many :collections, foreign_key: :owner_id, class_name: "Collection"
+
+  has_many :gears, foreign_key: :owner_id, class_name: "Gear"
+  has_many :reviews, foreign_key: :owner_id, class_name: "Review"
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

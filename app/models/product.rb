@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  validates: :image_url, :name, :category, :info, :avg_score, presence: true
+  validates :image_url, :name, :category, :info, :avg_score, presence: true
 
   has_many :collection_ids, foreign_key: :product_id, class_name: "Producttocol"
   has_many :collections, through: :collection_ids, source: :collection
