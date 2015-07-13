@@ -92,12 +92,15 @@ search bar, which on search completion ("keypress enter") will trigger a new res
 - [ ] Email account activation
 - [ ] User avatars
 - [ ] Complete styling with Bootstrap
-- [ ] Thumbnails on item views
-- [ ] Product Trades/ Sales
 - [ ] Typeahead search bar
+- [ ] Thumbnails on item views
 - [ ] Pagination/infinite scroll
 - [ ] Activity history
 - [ ] Multiple sessions/session management
+- [ ] Product Trades/ Sales
+- [ ] Add links to sites that sell the products
+- [ ] Add price comparison
+
 
 
 [phase-one]: ./docs/phases/phase1.md
