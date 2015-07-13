@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image_url: MyString
+  name: MyString
+  info: MyText
+  avg_score: 1
+
+two:
+  image_url: MyString
+  name: MyString
+  info: MyText
+  avg_score: 1
