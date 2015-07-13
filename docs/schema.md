@@ -39,6 +39,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 image_url   | string    | not null
 name        | string    | not null, unique
+category    | string    | not null
 info        | text      | not null
 avg_score   | integer   | default zero ( will be updated whenever a user enters a review for this product)
 

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150713021720) do
   create_table "products", force: :cascade do |t|
     t.string   "image_url",              null: false
     t.string   "name",                   null: false
+    t.string   "category",               null: false
     t.text     "info",                   null: false
     t.integer  "avg_score",  default: 0
     t.datetime "created_at",             null: false
