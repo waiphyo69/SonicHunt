@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  
+  has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
+  has_many :followers, through: :follower_follows, source: :follower
+
+  has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
+  has_many :followees, through: :followee_follows, source: :followee
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.valid_password?(password)
@@ -33,6 +38,7 @@ class User < ActiveRecord::Base
     self.save!
     self.session_token
   end
+
 
   private
   def ensure_session_token

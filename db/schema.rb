@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713021720) do
+ActiveRecord::Schema.define(version: 20150713182240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "follower_id", null: false
+    t.integer  "followee_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "follows", ["followee_id"], name: "index_follows_on_followee_id", using: :btree
+  add_index "follows", ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true, using: :btree
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
+
+  create_table "gears", force: :cascade do |t|
+    t.integer  "owner_id",               null: false
+    t.string   "title",                  null: false
+    t.text     "impression",             null: false
+    t.string   "image_url",              null: false
+    t.integer  "popularity", default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "gears", ["owner_id"], name: "index_gears_on_owner_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "image_url",              null: false

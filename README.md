@@ -34,7 +34,7 @@ Users can:
 - [ ] View products, reviews, gears, collection and other users' pages
 - [ ] Favorite gears
 - [ ] Vote up/down for a review
-- [ ] Search for products, reviews and gears by product name
+- [ ] Search for products and gears by product name
 - [ ] View a feed of products sorted by average score
 - [ ] View a feed of gears that contain a product sorted by popularity
 - [ ] View a feed of product reviews for a product sorted by helpfulness of review

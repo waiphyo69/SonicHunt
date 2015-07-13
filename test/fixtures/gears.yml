@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  title: MyString
+  impression: MyText
+  image_url: MyString
+  popularity: 1
+
+two:
+  owner_id: 1
+  title: MyString
+  impression: MyText
+  image_url: MyString
+  popularity: 1
