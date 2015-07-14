@@ -58,6 +58,10 @@ producttocollections = Producttocol.create!([{
   product_id: 3, collection_id: 2
   }])
 
+geartocollections = Geartocol.create!([{
+  gear_id: 1, collection_id: 1
+  }])
+
 reviews = Review.create!([{
    owner_id: 1, product_id: 1,title: "The King Of SoundStage", description: "Amazing headphones. Makes you feel like you are in a concert hall. You definitely need a beefy amplifier for these precious cans.", score: 10
    },{
