@@ -1,7 +1,11 @@
 Sonichunt.Collections.Gears = Backbone.Collection.extend({
-  url: "api/gears",
+  url: "/api/gears",
 
   model: Sonichunt.Models.Gear,
+
+  comparator: function(gear) {
+    return gear.get('popularity');
+  },
 
   getorFetch: function(id){
     var gears = this;

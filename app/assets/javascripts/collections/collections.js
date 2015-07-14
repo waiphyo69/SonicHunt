@@ -1,7 +1,8 @@
 Sonichunt.Collections.Collection = Backbone.Collection.extend({
-  url: "api/collections",
+  url: "/api/collections",
 
   model: Sonichunt.Models.Collection,
+
 
   getorFetch: function(id){
     var collections = this;

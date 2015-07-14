@@ -1,5 +1,5 @@
 module Api
-  class ProductsController < ApiController
+  class CollectionsController < ApiController
     def index
       @collections = Collection.all
       render json: @collections

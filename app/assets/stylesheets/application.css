@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+.group:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.index div{
+  position: relative;
+  display: block;
+  float: left;
+  top: 500px;
+  padding: 20px;
+  margin: 15px;
+  text-align: center;
+}
+
+div.welcome{
+  position: fixed;
+  display: block;
+  font-weight: bold;
+  color: blue;
+  width: 100%
+}
+
+div.welcome img{
+  z-index: 0;
+  height: 400px;
+  width: 100%;
+}
+
+div.welcome h1{
+ position: relative;
+ display: block;
+ top: 100px;
+}

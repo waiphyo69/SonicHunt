@@ -1,7 +1,11 @@
 Sonichunt.Collections.Products = Backbone.Collection.extend({
-  url: "api/products",
+  url: "/api/products",
 
   model: Sonichunt.Models.Product,
+
+  comparator: function(product) {
+    return product.get('avg_score');
+  },
 
   getorFetch: function(id){
     var products = this;
