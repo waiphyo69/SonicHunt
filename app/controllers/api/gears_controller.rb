@@ -4,5 +4,10 @@ module Api
       @gears= Gear.all
       render json: @gears
     end
+
+    def show
+      @gear = Gear.find(params[:id])
+      render :show
+    end
   end
 end

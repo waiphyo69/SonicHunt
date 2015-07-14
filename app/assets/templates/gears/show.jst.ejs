@@ -1,0 +1,14 @@
+<div class="gear-show group">
+  <div class="gear-info">
+    <h1> <%= gear.escape('title') %> </h1>
+    <img src=<%= gear.escape('image_url')%>>
+    <h2> Impressions: </h2>
+    <p> <%= gear.escape('impression')%></p>
+  </div>
+  <div class="gear-section">
+  <h1> Products in this gear </h1>
+  <ul class="products">
+  </ul>
+  </div>
+</div>
+<a href="#">Back To Main</a>

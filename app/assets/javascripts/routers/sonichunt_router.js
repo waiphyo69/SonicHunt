@@ -10,7 +10,8 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "products/:id": "productShow",
-    "reviews/:id": "reviewShow"
+    "reviews/:id": "reviewShow",
+    "gears/:id": "gearShow"
   },
 
   index: function(){
@@ -21,7 +22,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       products: this.products,
       gears: this.gears,
       collections: this.collections
-    })
+    });
     this.swapView(rootView);
   },
 
@@ -29,7 +30,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     var product = this.products.getorFetch(id);
     var productShowView = new Sonichunt.Views.ProductShow({
       model: product
-    })
+    });
     this.swapView(productShowView);
   },
 
@@ -37,8 +38,16 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     var review = this.reviews.getorFetch(id);
     var reviewShowView = new Sonichunt.Views.ReviewShow({
       model: review
-    })
+    });
     this.swapView(reviewShowView);
+  },
+
+  gearShow: function(id){
+    var gear = this.gears.getorFetch(id);
+    var gearShowView = new Sonichunt.Views.GearShow({
+      model: gear
+    });
+    this.swapView(gearShowView);
   },
 
   swapView: function(view){

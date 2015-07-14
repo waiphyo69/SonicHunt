@@ -45,3 +45,9 @@ div.welcome h1{
  display: block;
  top: 100px;
 }
+
+div.gear-show div{
+  display: block;
+  float: left;
+  text-align: center;
+}

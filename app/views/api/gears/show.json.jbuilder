@@ -1,0 +1,4 @@
+json.extract! @gear, :id, :owner_id, :title, :impression, :image_url, :popularity
+json.reviews @gear.products do |product|
+  json.extract! product, :id, :image_url, :name, :category, :info, :avg_score
+end
