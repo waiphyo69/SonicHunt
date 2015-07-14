@@ -28,7 +28,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     var productShowView = new Sonichunt.Views.ProductShow({
       model: product
     })
-    this._swapView(productShowView);
+    this.swapView(productShowView);
   },
 
   swapView: function(view){

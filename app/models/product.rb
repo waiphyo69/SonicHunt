@@ -6,4 +6,6 @@ class Product < ActiveRecord::Base
 
   has_many :gear_ids, foreign_key: :product_id, class_name: "Geartopro"
   has_many :gears, through: :gear_ids, source: :gear
+
+  has_many :reviews, foreign_key: :product_id, class_name: "Review"
 end
