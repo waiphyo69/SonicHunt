@@ -2,12 +2,12 @@ Sonichunt.Collections.Products = Backbone.Collection.extend({
   url: "api/products",
 
   model: Sonichunt.Models.Product,
-  
+
   getorFetch: function(id){
     var products = this;
     var product = this.get(id);
     if (product){
-      products.fetch(id);
+      product.fetch();
     } else {
       var product = new Sonichunt.Models.Product({id: id});
       product.fetch({
@@ -19,3 +19,4 @@ Sonichunt.Collections.Products = Backbone.Collection.extend({
     return product;
   }
 })
+Sonichunt.products = new Sonichunt.Collections.Products();
