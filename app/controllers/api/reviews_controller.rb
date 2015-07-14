@@ -6,7 +6,7 @@ module Api
     end
 
     def show
-      @review = Review.find(id)
+      @review = Review.find(params[:id])
       render :show
     end
   end
