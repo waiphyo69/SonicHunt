@@ -16,6 +16,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 owner_id    | integer   | not null, foreign key (references users)
 product_id  | integer   | not null, foreign key (references products)
+title       | integer   | not null
 description | text      | not null
 score       | integer   | not null
 helpfulness | integer   | default zero

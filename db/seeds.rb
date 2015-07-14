@@ -57,3 +57,9 @@ producttocollections = Producttocol.create!([{
   },{
   product_id: 3, collection_id: 2
   }])
+
+reviews = Review.create!([{
+   owner_id: 1, product_id: 1,title: "The King Of SoundStage", description: "Amazing headphones. Makes you feel like you are in a concert hall. You definitely need a beefy amplifier for these precious cans.", score: 10
+   },{
+   owner_id: 2, product_id: 1, title: "Best In The World", description: "I have never listended to a better pair of cans. They are just smooth and rich and pitch-perfect and involving. Pairs well with Woo Audio 7 Tube Amp", score: 10
+   }])
