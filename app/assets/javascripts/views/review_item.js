@@ -1,5 +1,7 @@
 Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
 
+  tagName: "li",
+
   template: JST["reviews/item"],
 
   initialize: function(){

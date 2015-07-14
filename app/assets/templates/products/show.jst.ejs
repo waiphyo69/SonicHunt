@@ -1,0 +1,16 @@
+<div class="Product-show">
+  <div class="Product-info">
+    <h1> <%= product.escape('name') %> </h1>
+    <img src=<%= product.escape('image_url')%>>
+    <h2> Category: <%= product.escape('category')%> </h2>
+    <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
+    <br>
+    <h2> Info: </h2>
+    <textarea> <%= product.escape('info')%></textarea>
+  </div>
+  <div class="review-section">
+  <h1> Reviews
+  <ul class="reviews">
+  </ul>
+  </div>
+</div>
