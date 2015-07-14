@@ -20,10 +20,8 @@
 }
 
 .index div{
-  position: relative;
   display: block;
   float: left;
-  top: 500px;
   padding: 20px;
   margin: 15px;
   text-align: center;
