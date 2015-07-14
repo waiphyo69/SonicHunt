@@ -1,8 +1,7 @@
 # SonicHunt
 
-[sonichunt.com][link]
 
-[link]["http://www.sonichunt.com"]
+"http://www.sonichunt.com"
 
 ## Minimum Viable Product
 
