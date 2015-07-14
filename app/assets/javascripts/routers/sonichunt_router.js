@@ -9,6 +9,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "products/:id": "productShow",
+    "reviews/:id": "reviewShow"
   },
 
   index: function(){
@@ -29,6 +30,14 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       model: product
     })
     this.swapView(productShowView);
+  },
+
+  reviewShow: function(id){
+    var review = new Sonichunt.Collections.Reviews.getorFetch(id);
+    var reviewShowView = new Sonichunt.Views.ReviewShow({
+      model: review
+    })
+    this._swapView(reviewShowView);
   },
 
   swapView: function(view){

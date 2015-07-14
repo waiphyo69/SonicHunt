@@ -1,0 +1,8 @@
+<div class="Review-show">
+  <h1> <%= review.escape('title') %> </h1>
+  <h2> Score: <%= review.escape('score')%> Out Of 10</h2>
+  <br>
+  <h2> Description: </h2>
+  <p> <%= review.escape('description')%></p>
+</div>
+<a href=<%="#/products/" + product.escape('id') %>> Back To Product Page </a>
