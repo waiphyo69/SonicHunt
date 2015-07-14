@@ -30,7 +30,6 @@
 }
 
 div.welcome{
-  position: fixed;
   display: block;
   font-weight: bold;
   color: blue;
