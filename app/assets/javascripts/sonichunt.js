@@ -4,10 +4,7 @@ window.Sonichunt = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new Sonichunt.Routers.Router();
+    Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Sonichunt.initialize();
-});
