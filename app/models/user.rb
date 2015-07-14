@@ -12,22 +12,56 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
-  has_many :followers, through: :follower_follows, source: :follower
+  has_many :follower_follows,
+  foreign_key: :followee_id,
+  class_name: "Follow",
+  inverse_of: :followee
 
-  has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
-  has_many :followees, through: :followee_follows, source: :followee
+  has_many :followers,
+  through: :follower_follows,
+  source: :follower
 
-  has_many :gear_ids, foreign_key: :subscriber_id, class_name: "Geartouser"
-  has_many :favorite_gears, through: :gear_ids, source: :gear
+  has_many :followee_follows,
+  foreign_key: :follower_id,
+  class_name: "Follow",
+  inverse_of: :follower
 
-  has_many :review_ids, foreign_key: :upvoter_id, class_name: "Reviewtouser"
-  has_many :upvoted_reviews, through: :review_ids, source: :review
+  has_many :followees,
+  through: :followee_follows,
+  source: :followee
 
-  has_many :collections, foreign_key: :owner_id, class_name: "Collection"
+  has_many :gear_ids,
+  foreign_key: :subscriber_id,
+  class_name: "Geartouser",
+  inverse_of: :subscriber
 
-  has_many :gears, foreign_key: :owner_id, class_name: "Gear"
-  has_many :reviews, foreign_key: :owner_id, class_name: "Review"
+  has_many :favorite_gears,
+  through: :gear_ids,
+  source: :gear
+
+  has_many :review_ids,
+  foreign_key: :upvoter_id,
+  class_name: "Reviewtouser",
+  inverse_of: :upvoter
+
+  has_many :upvoted_reviews,
+  through: :review_ids,
+  source: :review
+
+  has_many :collections,
+  foreign_key: :owner_id,
+  class_name: "Collection",
+  inverse_of: :owner
+
+  has_many :gears,
+  foreign_key: :owner_id,
+  class_name: "Gear",
+  inverse_of: :owner
+
+  has_many :reviews,
+  foreign_key: :owner_id,
+  class_name: "Review",
+  inverse_of: :owner 
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

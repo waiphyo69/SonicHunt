@@ -19,5 +19,5 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   }
-
+  
 })
