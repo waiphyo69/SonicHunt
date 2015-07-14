@@ -1,6 +1,13 @@
 Sonichunt.Collections.Reviews = Backbone.Collection.extend({
+
+  // initialize: function(models,options){
+  //   this.product = options.product;
+  // },
+
   url: "/api/reviews",
+
   model: Sonichunt.Models.Review,
+
   getorFetch: function(id){
     var reviews = this;
     var review = this.get(id);

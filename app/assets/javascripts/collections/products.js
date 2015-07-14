@@ -7,6 +7,10 @@ Sonichunt.Collections.Products = Backbone.Collection.extend({
     return product.get('avg_score');
   },
 
+  // initialize: function(models,options){
+  //   this.gear = options.gear;
+  // },
+
   getorFetch: function(id){
     var products = this;
     var product = this.get(id);

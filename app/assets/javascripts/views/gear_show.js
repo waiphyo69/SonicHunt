@@ -4,7 +4,7 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.products(), "add", this.addReview);
+    this.listenTo(this.model.products(), "add", this.addProduct);
     this.model.products().each(this.addProduct.bind(this));
   },
 
