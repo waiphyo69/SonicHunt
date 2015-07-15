@@ -9,11 +9,11 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "index",
+    "reviews/new": "newReview",
     "products/:id": "productShow",
     "reviews/:id": "reviewShow",
     "gears/:id": "gearShow",
     "collections/:id": "collectionShow"
-    "reviews/new": "newReview"
   },
 
   index: function(){

@@ -14,6 +14,11 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.addSubview(".reviews", reviewItemView);
   },
 
+
+  addReviewform: function(){
+    
+  },
+
   render: function(){
     var content = this.template({product: this.model});
     this.$el.html(content);

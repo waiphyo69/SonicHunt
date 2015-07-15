@@ -5,16 +5,17 @@
 <% } %>
 
 <label>Title:
-<input type='text' name='title' value='<%=review.escape('title')'%>'>
+<input type='text' name='title' value='<%=review.escape('title')%>'>
 </label>
 <br>
 <label>Description:
-<input type='textarea' name='description' value='<%=review.escape('description')'%>'>
+<input type='textarea' name='description' value='<%=review.escape('description')%>'>
 </label>
 <br>
 <label>Score:
-<input type='number' name='score' value='<%=review.escape('score')'%>'>
+<input type='number' name='score' value='<%=review.escape('score')%>'>
 </label>
 <br>
-<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>' >
-<input type='hidden' name='product_id' value='<%= productid %>' >
+<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>'>
+<input type='hidden' name='product_id' value='<%= productid %>'>
+<button>Submit</button>

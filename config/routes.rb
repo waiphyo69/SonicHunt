@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :gears, only: [:index, :show]
     resources :collections, only: [:index, :show]
-    resources :reviews, only: [:index, :show]
+    resources :reviews, only: [:index, :show, :create]
   end
 end

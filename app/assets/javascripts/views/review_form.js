@@ -1,4 +1,5 @@
 Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
+
   template: JST["reviews/form"],
 
   tagName: "form",
@@ -15,6 +16,9 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
     event.preventDefault();
     var that = this;
     var attrs = this.$el.serializeJSON();
+    attrs["owner_id"] = parseInt(attrs["owner_id"]);
+    attrs["product_id"] = parseInt(attrs["product_id"]);
+    attrs["score"] = parseInt(attrs["score"]);
     this.model.set(attrs);
     this.model.save({},{
       success: function(){
@@ -25,7 +29,15 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    var content = this.template({review: this.model});
+    var currUrl = document.URL;
+// split string to obtain substring
+    var index; var str;
+    if((index = currUrl.indexOf("?")) > 0) str = currUrl.substring(index + 1);
+    var array = str.split("=");
+    var productid = parseInt(array[1]);
+    var content = this.template({
+      review: this.model,
+      productid: productid});
     this.$el.html(content);
     return this;
   }
