@@ -1,3 +1,3 @@
-Sonichunt.Collections.GearToPros = Sonichunt.Collection.extend({
+Sonichunt.Collections.GearToPros = Backbone.Collection.extend({
   url: "api/geartopros"
 })

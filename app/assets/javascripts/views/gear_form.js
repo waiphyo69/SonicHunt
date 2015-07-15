@@ -1,4 +1,4 @@
-Sonichunt.Views.gearForm = Backbone.CompositeView.extend({
+Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
 
   template: JST["gears/form"],
 
@@ -8,14 +8,9 @@ Sonichunt.Views.gearForm = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
-    var that = this;
-    Sonichunt.products.fetch({
-      success: function(){
-        that.headphones = Sonichunt.products.where({category: "Headphones"})
-        that.dacs = Sonichunt.products.where({category: "DAC"})
-        that.amplifiers = Sonichunt.products.where({category: "Amplifier"})
-      }
-    })
+    this.headphones = this.collection.where({category: "Headphones"})
+    this.dacs = this.collection.where({category: "DAC"})
+    this.amplifiers = this.collection.where({category: "Amplifier"})
   },
 
 
@@ -51,9 +46,9 @@ Sonichunt.Views.gearForm = Backbone.CompositeView.extend({
     var content = this.template({
       gear: this.model,
       headphones: this.headphones,
-      dacs: this.products,
+      dacs: this.dacs,
       amplifiers: this.amplifiers
-    )};
+    });
     this.$el.html(content);
     return this;
   }

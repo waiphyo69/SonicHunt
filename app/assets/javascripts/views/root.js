@@ -29,12 +29,15 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addGearNewForm: function(){
+    var that = this;
     var gear = new Sonichunt.Models.Gear();
-    var gearNewView = new Sonichunt.Views.GearForm({
-      collection: this.gears,
-      model: gear
-    });
-    this.addSubview(".new-gear", gearNewView);
+    this.products.fetch({success: function(){
+      var gearNewView = new Sonichunt.Views.GearForm({
+        collection: that.products,
+        model: gear
+      });
+    that.addSubview(".new-gear", gearNewView);
+    }})
   },
 
 

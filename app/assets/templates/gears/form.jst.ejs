@@ -7,7 +7,7 @@
 <h3>Please select your headphones</h3>
 
 <select id="headphones">
-  <% headphones.each(function(headphone){ %>
+  <% headphones.forEach(function(headphone){ %>
     <option data-id='<%=headphone.escape('id')%>'> <%=headphone.escape('name') %> </option>
   <% }) %>
 </select>
@@ -15,7 +15,7 @@
 <h3>Please select your DAC</h3>
 
 <select id="dacs">
-  <% dacs.each(function(dac){ %>
+  <% dacs.forEach(function(dac){ %>
     <option data-id='<%=dac.escape('id')%>'> <%=dac.escape('name') %> </option>
   <% }) %>
 </select>
@@ -23,7 +23,7 @@
 <h3>Please select your amplifier</h3>
 
 <select id="amplifiers">
-  <% amplifiers.each(function(amplifier){ %>
+  <% amplifiers.forEach(function(amplifier){ %>
     <option data-id='<%=amplifier.escape('id')%>'> <%=amplifier.escape('name') %> </option>
   <% }) %>
 </select>
