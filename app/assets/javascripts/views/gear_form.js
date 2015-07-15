@@ -33,9 +33,9 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
       success: function(){
         that.collection.add(that.model, {merge: true});
         debugger
-        var headphone = new Backbone.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#headphones option:selected").data("id") });
-        var dac = new Backbone.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#dacs option:selected").data("id") });
-        var amplifier = new Backbone.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#amplifiers option:selected").data("id") });
+        var headphone = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#headphones option:selected").data("id") });
+        var dac = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#dacs option:selected").data("id") });
+        var amplifier = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#amplifiers option:selected").data("id") });
         headphone.save();
         dac.save();
         amplifier.save();
