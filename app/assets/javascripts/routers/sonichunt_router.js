@@ -11,7 +11,8 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     "": "index",
     "products/:id": "productShow",
     "reviews/:id": "reviewShow",
-    "gears/:id": "gearShow"
+    "gears/:id": "gearShow",
+    "collections/:id": "collectionShow"
   },
 
   index: function(){
@@ -49,6 +50,14 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     });
     this.swapView(gearShowView);
   },
+
+  collectionShow: function(id){
+    var collection = this.collections.getorFetch(id);
+    var collectionShowView = new Sonichunt.Views.CollectionShow({
+      model: collection
+    });
+    this.swapView(collectionShowView);
+  }
 
   swapView: function(view){
     this._currentView && this._currentView.remove();
