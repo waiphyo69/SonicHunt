@@ -7,6 +7,15 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.reviews(), "add sync", this.render);
     this.listenTo(this.model.reviews(), "add", this.addReview);
     this.model.reviews().each(this.addReview.bind(this));
+    this.addReviewNewForm();
+  },
+
+  events: {
+    "click .new-review-button": "renderNewForm",
+  },
+
+  renderNewForm: function(){
+    $(".review-form").css("display","inline");
   },
 
   addReview: function(review){
@@ -15,8 +24,14 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
   },
 
 
-  addReviewform: function(){
-    
+  addReviewNewForm: function(){
+    var review = new Sonichunt.Models.Review();
+    var reviewNewView = new Sonichunt.Views.ReviewForm({
+      collection: this.model.reviews(),
+      model: review,
+      productid: this.model.id
+    });
+    this.addSubview(".new-review", reviewNewView);
   },
 
   render: function(){

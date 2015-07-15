@@ -60,15 +60,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.swapView(collectionShowView);
   },
 
-  newReview: function(){
-    var review = new Sonichunt.Models.Review();
-    var reviewNewView = new Sonichunt.Views.ReviewForm({
-      collection: this.reviews,
-      model: review
-    });
-    this.swapView(reviewNewView);
-  },
-
+  
   swapView: function(view){
     this._currentView && this._currentView.remove();
     this._currentView = view;

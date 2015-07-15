@@ -52,3 +52,12 @@ div.gear-show div{
   float: left;
   text-align: center;
 }
+
+div.product-show > div{
+  display: block;
+  float: left;
+}
+
+.review-form {
+  display: none;
+}

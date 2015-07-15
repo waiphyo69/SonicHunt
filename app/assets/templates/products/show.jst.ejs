@@ -1,21 +1,23 @@
-<div class="product-show">
-  <div class="product-info">
-    <h1> <%= product.escape('name') %> </h1>
-    <img src=<%= product.escape('image_url')%>>
-    <h2> Category: <%= product.escape('category')%> </h2>
-    <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
-    <br>
-    <h2> Info: </h2>
-    <p> <%= product.escape('info')%></p>
+<div class="productshow group">
+  <div>
+    <div class="product-info">
+      <h1> <%= product.escape('name') %> </h1>
+      <img src=<%= product.escape('image_url')%>>
+      <h2> Category: <%= product.escape('category')%> </h2>
+      <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
+      <br>
+      <h2> Info: </h2>
+      <p> <%= product.escape('info')%></p>
+    </div>
+    <div class="review-section">
+      <h1> Reviews </h1>
+      <ul class="reviews">
+      </ul>
+    </div>
   </div>
-  <div class="review-section">
-  <h1> Reviews </h1>
-  <ul class="reviews">
-  </ul>
+  <div class="new-review">
   </div>
 </div>
-<a href=<%="#/reviews/new?productid="+product.escape('id')%>>
-  Write a review for <%=product.escape('name')%>
-</a>
+<button class="new-review-button">Add your review</button>
 <br>
 <a href="#">Back To Main</a>
