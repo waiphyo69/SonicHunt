@@ -30,8 +30,9 @@
 div.welcome{
   display: block;
   font-weight: bold;
-  color: blue;
-  width: 100%
+  color: white;
+  width: 100%;
+  text-align: center;
 }
 
 div.welcome img{
@@ -43,7 +44,7 @@ div.welcome img{
 div.welcome h1{
  position: relative;
  display: block;
- top: 100px;
+ top: 200px;
 }
 
 div.gear-show div{
