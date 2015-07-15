@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :gears, only: [:index, :show]
     resources :collections, only: [:index, :show]
     resources :reviews, only: [:index, :show, :create]
+    resources :geartopros, only: [:create]
   end
 end

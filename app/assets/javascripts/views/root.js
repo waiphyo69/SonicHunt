@@ -16,20 +16,45 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.collections.each(this.addCollection.bind(this));
   },
 
+  events: {
+    "click a.products": "displayProducts",
+    "click a.collections": "displayCollections",
+    "click a.gears": "displayGears"
+  },
+
+
+  displayProducts: function(){
+    $("div.collection-container").css("display", "none");
+    $("div.gear-container").css("display", "none");
+    $("div.product-container").css("display", "block");
+  },
+
+  displayGears: function(){
+    $("div.product-container").css("display", "none");
+    $("div.collection-container").css("display", "none");
+    $("div.gear-container").css("display", "block");
+  },
+
+  displayCollections: function(){
+    $("div.gear-container").css("display", "none");
+    $("div.product-container").css("display", "none");
+    $("div.collection-container").css("display", "block");
+  },
+
 
   addProduct: function(product){
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
-    this.addSubview(".products", productItemView);
+    this.addSubview("ul.products", productItemView);
   },
 
   addGear: function(gear){
     var gearItemView = new Sonichunt.Views.GearItem({model: gear});
-    this.addSubview(".gears", gearItemView);
+    this.addSubview("ul.gears", gearItemView);
   },
 
   addCollection: function(collection){
     var collectionItemView = new Sonichunt.Views.CollectionItem({model: collection});
-    this.addSubview(".collections", collectionItemView);
+    this.addSubview("ul.collections", collectionItemView);
   },
 
   render: function(){

@@ -19,13 +19,24 @@
   clear: both;
 }
 
-.index div{
+.index div.product-container{
   display: block;
+}
+
+.header-container{
+  background-color: black;
+  height: 50px;
+}
+
+.index div{
+  display: none;
   float: left;
   padding: 20px;
   margin: 15px;
   text-align: center;
 }
+
+
 
 div.welcome{
   display: block;
@@ -60,4 +71,16 @@ div.product-show > div{
 
 div.new-review {
   display: none;
+}
+
+.header-container a{
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 180px;
+  left: 150px;
+  top: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }
