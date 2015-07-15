@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714185447) do
+ActiveRecord::Schema.define(version: 20150715201243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150714185447) do
   create_table "geartocols", force: :cascade do |t|
     t.integer  "gear_id"
     t.integer  "collection_id"
-    t.string   "integer"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
