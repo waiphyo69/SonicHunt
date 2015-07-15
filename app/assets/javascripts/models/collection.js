@@ -13,13 +13,10 @@ Sonichunt.Models.Collection = Backbone.Model.extend({
     },
 
   parse: function (response) {
-    if (response.products) {
+    if (response.products && response.gears) {
       this.products().set(response.products);
+      this.gears().set(response.gears)
       delete response.products;
-    }
-    else if (response.gears) {
-      this.gears().set(response.gears);
-      delete response.gears;
     }
     return response;
   }

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150714185447) do
 
   create_table "geartocols", force: :cascade do |t|
     t.integer  "gear_id"
-    t.string   "collection_id"
+    t.integer  "collection_id"
     t.string   "integer"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

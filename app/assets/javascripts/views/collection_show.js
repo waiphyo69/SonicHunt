@@ -16,7 +16,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
 
   addGear: function(gear){
     var gearItemView = new Sonichunt.Views.GearItem({model: gear});
-    this.addSubview(".gears", productItemView);
+    this.addSubview(".gears", gearItemView);
   },
 
   render: function(){
