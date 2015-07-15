@@ -57,7 +57,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       model: collection
     });
     this.swapView(collectionShowView);
-  }
+  },
 
   swapView: function(view){
     this._currentView && this._currentView.remove();
