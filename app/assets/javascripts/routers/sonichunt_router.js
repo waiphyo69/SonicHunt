@@ -5,7 +5,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.gears = Sonichunt.gears;
     this.collections = Sonichunt.collections;
     this.reviews = new Sonichunt.Collections.Reviews();
-  },
+    },
 
   routes: {
     "": "index",
@@ -13,6 +13,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     "reviews/:id": "reviewShow",
     "gears/:id": "gearShow",
     "collections/:id": "collectionShow"
+    "reviews/new": "newReview"
   },
 
   index: function(){
@@ -57,6 +58,15 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       model: collection
     });
     this.swapView(collectionShowView);
+  },
+
+  newReview: function(){
+    var review = new Sonichunt.Models.Review();
+    var reviewNewView = new Sonichunt.Views.ReviewForm({
+      collection: this.reviews,
+      model: review
+    });
+    this.swapView(reviewNewView);
   },
 
   swapView: function(view){

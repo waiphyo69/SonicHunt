@@ -1,0 +1,20 @@
+<% if (review.isNew()) { %>
+  <h1>New Review</h1>
+<% } else { %>
+  <h1>Edit Review</h1>
+<% } %>
+
+<label>Title:
+<input type='text' name='title' value='<%=review.escape('title')'%>'>
+</label>
+<br>
+<label>Description:
+<input type='textarea' name='description' value='<%=review.escape('description')'%>'>
+</label>
+<br>
+<label>Score:
+<input type='number' name='score' value='<%=review.escape('score')'%>'>
+</label>
+<br>
+<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>' >
+<input type='hidden' name='product_id' value='<%= productid %>' >

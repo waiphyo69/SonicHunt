@@ -4,6 +4,7 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.reviews(), "add sync", this.render);
     this.listenTo(this.model.reviews(), "add", this.addReview);
     this.model.reviews().each(this.addReview.bind(this));
   },
@@ -19,5 +20,5 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   }
-  
+
 })
