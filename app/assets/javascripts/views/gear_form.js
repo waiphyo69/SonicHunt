@@ -18,6 +18,7 @@ Sonichunt.Views.gearForm = Backbone.CompositeView.extend({
     })
   },
 
+
   events: {
   "click .submit": "submit",
   "click .cancel": "cancel"
@@ -40,7 +41,10 @@ Sonichunt.Views.gearForm = Backbone.CompositeView.extend({
     });
     var headphone = new Backbone.Model.GearToPro({ gear_id: this.model.escape('id'), product_id: $("#headphones option:selected").data("id") });
     var dac = new Backbone.Model.GearToPro({ gear_id: this.model.escape('id'), product_id: $("#dacs option:selected").data("id") })
-    var amplifier = new Backbone.Model.GearToPro({ gear_id: this.model.escape('id'), product_id: $("#amplifiers option:selected").data("id") })
+    var amplifier = new Backbone.Model.GearToPro({ gear_id: this.model.escape('id'), product_id: $("#amplifiers option:selected").data("id") });
+    headphone.save();
+    dac.save();
+    amplifier.save();
   },
 
   render: function(){

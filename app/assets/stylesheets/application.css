@@ -73,6 +73,10 @@ div.new-review {
   display: none;
 }
 
+div.new-gear {
+  display: none;
+}
+
 .header-container a{
   position: relative;
   display: block;

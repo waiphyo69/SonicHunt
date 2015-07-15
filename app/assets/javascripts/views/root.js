@@ -14,12 +14,27 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.products.each(this.addProduct.bind(this));
     this.gears.each(this.addGear.bind(this));
     this.collections.each(this.addCollection.bind(this));
+    this.addGearNewForm();
   },
 
   events: {
     "click a.products": "displayProducts",
     "click a.collections": "displayCollections",
-    "click a.gears": "displayGears"
+    "click a.gears": "displayGears",
+    "click .new-gear-button": "displayNewGearForm"
+  },
+
+  displayNewGearForm: function(){
+    $(".new-gear").css("display","block");
+  },
+
+  addGearNewForm: function(){
+    var gear = new Sonichunt.Models.Gear();
+    var gearNewView = new Sonichunt.Views.GearForm({
+      collection: this.gears,
+      model: gear
+    });
+    this.addSubview(".new-gear", gearNewView);
   },
 
 
