@@ -1,0 +1,51 @@
+<% if (gear.isNew()) { %>
+  <h1>New Gear</h1>
+<% } else { %>
+  <h1>Edit Gear</h1>
+<% } %>
+
+<h3>Please select your headphones</h3>
+
+<select id="headphones">
+  <% headphones.each(function(headphone){ %>
+    <option data-id='<%=headphone.escape('id')%>'> <%=headphone.escape('name') %> </option>
+  <% }) %>
+</select>
+
+<h3>Please select your DAC</h3>
+
+<select id="dacs">
+  <% dacs.each(function(dac){ %>
+    <option data-id='<%=dac.escape('id')%>'> <%=dac.escape('name') %> </option>
+  <% }) %>
+</select>
+
+<h3>Please select your amplifier</h3>
+
+<select id="amplifiers">
+  <% amplifiers.each(function(amplifier){ %>
+    <option data-id='<%=amplifier.escape('id')%>'> <%=amplifier.escape('name') %> </option>
+  <% }) %>
+</select>
+
+<label>Title:
+  <input type='text' name='title' value='<%=gear.escape('title')%>'>
+</label>
+
+<br>
+
+<label>Image Url:
+  <input type='text' name='image_url' value='<%=gear.escape('image_url')%>'>
+</label>
+
+<br>
+
+<label>Impression:
+  <input type='textarea' name='description' value='<%=gear.escape('description')%>'>
+</label>
+
+<br>
+
+<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>'>
+<button class='submit'>Submit</button>
+<button class='cancel'>Cancel</button>
