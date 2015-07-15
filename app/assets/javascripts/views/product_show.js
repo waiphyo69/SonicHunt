@@ -11,11 +11,11 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click .new-review-button": "renderNewForm",
+    "click .new-review-button": "displayNewForm",
   },
 
-  renderNewForm: function(){
-    $(".review-form").css("display","inline");
+  displayNewForm: function(){
+    $(".new-review").css("display","block");
   },
 
   addReview: function(review){

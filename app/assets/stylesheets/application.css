@@ -58,6 +58,6 @@ div.product-show > div{
   float: left;
 }
 
-.review-form {
+div.new-review {
   display: none;
 }

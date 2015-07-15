@@ -12,7 +12,12 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
   },
 
   events: {
-  "click .submit": "submit"
+  "click .submit": "submit",
+  "click .cancel": "cancel"
+  },
+
+  cancel: function(){
+    $(".new-review").css("display","none");
   },
 
   submit: function(){
