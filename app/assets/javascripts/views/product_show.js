@@ -4,8 +4,9 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.reviews(), "add sync", this.render);
+    this.listenTo(this.model.reviews(), "add sync remove", this.render);
     this.listenTo(this.model.reviews(), "add", this.addReview);
+    this.listenTo(this.model.reviews(), "remove", this.removeReview);
     this.model.reviews().each(this.addReview.bind(this));
     this.addReviewNewForm();
   },
@@ -33,6 +34,10 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
       productid: this.model.id
     });
     this.addSubview(".new-review", reviewNewView);
+  },
+
+  removeReview: function (review) {
+    this.removeModelSubview(".reviews", review)
   },
 
 

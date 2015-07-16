@@ -5,7 +5,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	template: JST['gears/item'],
 
 	initialize: function(){
-		this.listenTo(this.model,"sync",this.render);
+		this.listenTo(this.model,"sync change",this.render);
 		this.addEditForm();
 	},
 
@@ -20,7 +20,9 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	destroyGear: function(){
+		event.preventDefault();
 		this.model.destroy();
+		alert("Gear successfully deleted!");
 	},
 
 	addEditForm: function(){

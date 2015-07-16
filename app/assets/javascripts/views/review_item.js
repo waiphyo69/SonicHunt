@@ -5,7 +5,7 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   template: JST["reviews/item"],
 
   initialize: function(){
-    this.listenTo( this.model, "sync", this.render);
+    this.listenTo( this.model, "sync change", this.render);
     this.addEditForm();
   },
 
@@ -15,7 +15,9 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   destroyReview: function(){
+    event.preventDefault();
     this.model.destroy();
+    alert("Review successfully deleted!")
   },
 
   displayEditForm: function(){

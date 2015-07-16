@@ -6,8 +6,9 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.gears = options.gears;
     this.collections = options.collections;
     this.listenTo(this.products, "sync", this.render);
-    this.listenTo(this.gears, "sync", this.render);
+    this.listenTo(this.gears, "sync remove", this.render);
     this.listenTo(this.collections, "sync", this.render);
+    this.listenTo(this.gears, "remove", this.removeGear);;
     this.listenTo(this.products, "add", this.addProduct);
     this.listenTo(this.gears, "add", this.addGear);
     this.listenTo(this.collections, "add", this.addCollection);
@@ -75,6 +76,11 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     var collectionItemView = new Sonichunt.Views.CollectionItem({model: collection});
     this.addSubview("ul.collections", collectionItemView);
   },
+
+  removeGear: function (gear) {
+    this.removeModelSubview(".gears", gear)
+  },
+
 
   render: function(){
     var content = this.template();
