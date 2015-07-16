@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: { format: :json } do
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show, :update]
     resources :gears, only: [:index, :show, :create]
     resources :collections, only: [:index, :show]
     resources :reviews, only: [:index, :show, :create]

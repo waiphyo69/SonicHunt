@@ -31,6 +31,9 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
     this.model.save({},{
       success: function(){
         that.collection.add(that.model, {merge: true});
+        var product = Sonichunt.products.getorFetch(that.productid);
+        product.set({"avg_score": parseInt(that.model.escape('score')) / product.reviews().length})
+        product.save();
       }
     })
   },
