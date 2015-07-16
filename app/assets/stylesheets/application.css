@@ -93,3 +93,7 @@ div.new-gear {
 textarea {
   height: 80px;
 }
+
+a.add-collection {
+  cursor: pointer;
+}

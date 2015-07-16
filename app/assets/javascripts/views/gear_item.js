@@ -9,6 +9,13 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		this.addEditForm();
 	},
 
+	addStuffToCollection: function(){
+		var collection_id = $("collectionclassname").data("id");
+		var stuff_id = $("stuffclassname").data("id");
+			var geartocol = new Sonichunt.Models.GearToCol({gear_id: stuff_id , collection_id: collection_id })
+			geartocol.save()
+	},
+
 	events: {
 		"click .edit-gear-button": "displayGearForm",
 		"click .gear-delete": "destroyGear"

@@ -8,6 +8,7 @@ Sonichunt.Views.CollectionItem = Backbone.CompositeView.extend({
 		this.listenTo(this.model,"sync",this.render);
 	},
 
+
 	render: function(){
 		var content = this.template({collection: this.model});
 		this.$el.html(content);

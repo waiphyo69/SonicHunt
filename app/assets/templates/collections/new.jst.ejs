@@ -1,0 +1,3 @@
+<% collections.forEach{ function(collection) { %>
+<a class="add-collection" data-id='<%=collection.escape('id')%>'> <%= collection.escape('title') %> </a>
+<% }} %>

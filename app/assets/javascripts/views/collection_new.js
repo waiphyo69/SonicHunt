@@ -3,20 +3,13 @@ Sonichunt.Views.CollectionNew = Backbone.CompositeView.extend({
 
   className: "add-to-collection",
 
-  events: {
-    "click a" :"addStuffToCollection",
-    "click .new": "makeNewCollection"
-  },
-
   initialize: function(){
     this.collections = this.collection.where({owner_id: currentUser.id});
   },
 
-  
-
   render: function(){
     var content = this.template({
-      collection: this.model
+      collection: this.collections
     });
     this.$el.html(content);
     return this;
