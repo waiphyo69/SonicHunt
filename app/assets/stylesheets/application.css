@@ -94,6 +94,22 @@ textarea {
   height: 80px;
 }
 
-a.add-collection {
+a.collection-add {
   cursor: pointer;
+}
+
+div.add-to-collection {
+  display: block;
+  height: 80px;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+div.add-to-collection div{
+  display: block;
+  height: 80px;
+  width: 100%;
+  color: black;
+  text-align: center
 }

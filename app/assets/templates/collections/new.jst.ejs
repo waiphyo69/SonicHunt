@@ -1,5 +1,6 @@
 <% collections.forEach( function(collection) { %>
 <a class="collection-add" data-id='<%=collection.escape('id')%>'> <%= collection.escape('title') %> </a>
+<br>
 <% }) %>
 <form class="new-collection">
   <input type="text" name="title">

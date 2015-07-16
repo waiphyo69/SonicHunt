@@ -5,8 +5,13 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 	template: JST["products/item"],
 
 	initialize: function(){
+		var that = this;
 		this.listenTo(this.model,"sync",this.render);
-		this.addCollectionNew();
+		Sonichunt.collections.fetch({
+			success: function(){
+				that.addCollectionNew();
+			}
+		})
 	},
 
 	events: {
@@ -22,13 +27,14 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 		this.addSubview(".add-to-collection", collectionNewView);
 	},
 
-	addGearToCollection: function(){
+	addProductToCollection: function(){
 		var that = this;
 		var collection_id = $(event.target).data("id");
-		var product_id = this.model.escape("id");
+		var product_id = parseInt(this.model.escape("id"));
 		var producttocol = new Sonichunt.Models.ProductToCol({product_id: product_id , collection_id: collection_id })
-		geartocol.save(success: function(){
+		producttocol.save({success: function(){
 			that.render;
+			}
 		})
 	},
 

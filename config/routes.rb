@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :collections, only: [:index, :show]
     resources :reviews, only: [:index, :show, :create, :update, :destroy]
     resources :geartopros, only: [:create]
+    resources :producttocols, only: [:create]
+    resources :geartocols, only: [:create]
   end
 end

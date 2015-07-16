@@ -19,7 +19,7 @@ module Api
     end
 
     def update
-      @collection = Collection.find(params[:id]
+      @collection = Collection.find(params[:id])
       if @collection.update(collection_params)
         render json: @collection
       else

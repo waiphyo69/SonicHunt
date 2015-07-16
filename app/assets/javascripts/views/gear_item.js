@@ -5,9 +5,14 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	template: JST['gears/item'],
 
 	initialize: function(){
+		var that = this;
 		this.listenTo(this.model,"sync change",this.render);
 		this.addEditForm();
-		this.addCollectionNew();
+		Sonichunt.collections.fetch({
+			success: function(){
+				that.addCollectionNew();
+			}
+		})
 	},
 
 	events: {
@@ -28,10 +33,11 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	addGearToCollection: function(){
 		var that = this;
 		var collection_id = $(event.target).data("id");
-		var gear_id = this.model.escape("id");
+		var gear_id = parseInt(this.model.escape("id"));
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
-		geartocol.save(success: function(){
+		geartocol.save({success: function(){
 			that.render;
+			}
 		})
 	},
 
