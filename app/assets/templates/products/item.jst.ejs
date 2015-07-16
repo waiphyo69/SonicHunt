@@ -1,4 +1,5 @@
 <a href=<%="#/products/"+product.escape('id')%>>
   <%= product.escape('name') %>
 </a>
-<div class="add-to-collection"></div>
+<button class="add-product">Add To Collection</button>
+<div class='<%= "add-to-collection-product-"+ product.escape('id') %>' style="margin: auto;height: 200px; color: #fff; display: none; text-align: center"></div>

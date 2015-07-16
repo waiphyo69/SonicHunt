@@ -16,6 +16,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	events: {
+		"click .add-gear": "displayCollectionForm",
 		"click .edit-gear-button": "displayGearForm",
 		"click .gear-delete": "destroyGear",
 		"click 	a.collection-add": "addGearToCollection"
@@ -27,7 +28,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 			model: collection,
 			collection: Sonichunt.collections
 		})
-		this.addSubview(".add-to-collection", collectionNewView);
+		this.addSubview(".add-to-collection-gear-"+ this.model.id, collectionNewView);
 	},
 
 	addGearToCollection: function(){
@@ -37,12 +38,19 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
 		geartocol.save({success: function(){
 			that.render;
+			$(".add-to-collection-gear-"+ this.model.id).css("display","none");
+			$(".add-gear").css("display", "inline")
 			}
 		})
 	},
 
 	displayGearForm: function(){
-		$(".edit-gear-"+ this.model.escape('id')).css("display","inline");
+		$(".add-to-collection-gear-"+ this.model.id).css("display","block");
+		$(".add-gear").css("display", "none")
+	},
+
+	displayCollectionForm: function(){
+  	$(".add-to-collection-gear-"+ this.model.id).css("display","inline");
 		$(".edit-gear-button").css("display", "none")
 	},
 

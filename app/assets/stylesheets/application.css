@@ -98,18 +98,10 @@ a.collection-add {
   cursor: pointer;
 }
 
-div.add-to-collection {
-  display: block;
-  height: 80px;
-  width: 100%;
-  color: black;
-  text-align: center;
-}
 
-div.add-to-collection div{
+.collection-popup{
   display: block;
   height: 80px;
-  width: 100%;
   color: black;
   text-align: center
 }
