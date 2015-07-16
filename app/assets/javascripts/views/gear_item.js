@@ -7,18 +7,32 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	initialize: function(){
 		this.listenTo(this.model,"sync change",this.render);
 		this.addEditForm();
-	},
-
-	addStuffToCollection: function(){
-		var collection_id = $("collectionclassname").data("id");
-		var stuff_id = $("stuffclassname").data("id");
-			var geartocol = new Sonichunt.Models.GearToCol({gear_id: stuff_id , collection_id: collection_id })
-			geartocol.save()
+		this.addCollectionNew();
 	},
 
 	events: {
 		"click .edit-gear-button": "displayGearForm",
-		"click .gear-delete": "destroyGear"
+		"click .gear-delete": "destroyGear",
+		"click 	a.collection-add": "addGearToCollection"
+	},
+
+	addCollectionNew: function(){
+  	var collection = new Sonichunt.Models.Collection();
+		var collectionNewView = new Sonichunt.Views.CollectionNew({
+			model: collection,
+			collection: Sonichunt.collections
+		})
+		this.addSubview(".add-to-collection", collectionNewView);
+	},
+
+	addGearToCollection: function(){
+		var that = this;
+		var collection_id = $(event.target).data("id");
+		var gear_id = this.model.escape("id");
+		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
+		geartocol.save(success: function(){
+			that.render;
+		})
 	},
 
 	displayGearForm: function(){
