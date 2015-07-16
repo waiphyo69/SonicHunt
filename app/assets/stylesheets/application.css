@@ -73,6 +73,7 @@ div.new-review {
   display: none;
 }
 
+
 div.new-gear {
   display: none;
 }
@@ -87,4 +88,8 @@ div.new-gear {
   font-weight: bold;
   color: white;
   cursor: pointer;
+}
+
+textarea {
+  height: 80px;
 }

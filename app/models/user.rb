@@ -61,7 +61,11 @@ class User < ActiveRecord::Base
   has_many :reviews,
   foreign_key: :owner_id,
   class_name: "Review",
-  inverse_of: :owner 
+  inverse_of: :owner
+
+  has_many :reviewed_product,
+  through: :reviews,
+  source: :product
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

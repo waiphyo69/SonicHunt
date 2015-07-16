@@ -14,7 +14,9 @@
       </ul>
     </div>
   <div class="new-review"></div>
-</div>
-<button class="new-review-button">Add your review</button>
+  </div>
+  <% if (currentUser.product_id != product.escape('id') ) {%>
+      <button class="new-review-button">Add your review</button>
+  <% } %>
 <br>
 <a href="#">Back To Main</a>

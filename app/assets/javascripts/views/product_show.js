@@ -11,12 +11,13 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click .new-review-button": "displayNewForm",
+    "click .new-review-button": "displayNewForm"
   },
 
   displayNewForm: function(){
     $(".new-review").css("display","block");
   },
+
 
   addReview: function(review){
     var reviewItemView = new Sonichunt.Views.ReviewItem({model: review});
@@ -33,6 +34,7 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     });
     this.addSubview(".new-review", reviewNewView);
   },
+
 
   render: function(){
     var content = this.template({product: this.model});

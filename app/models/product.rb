@@ -24,4 +24,8 @@ class Product < ActiveRecord::Base
   class_name: "Review",
   inverse_of: :product
 
+  has_many :reviewers,
+  through: :reviews,
+  source: :owner 
+
 end

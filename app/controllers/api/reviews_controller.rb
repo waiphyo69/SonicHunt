@@ -19,6 +19,21 @@ module Api
       end
     end
 
+    def update
+      @review = Review.find(params[:id])
+      if @review.update(review_params)
+        render json: @review
+      else
+        render json: @review.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      render json: { message: 'destroyed!' }
+    end
+
     private
 
     def review_params

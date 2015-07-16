@@ -26,6 +26,7 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
 
   displayNewGearForm: function(){
     $(".new-gear").css("display","block");
+    $(".new-gear-button").css("display", "none");
   },
 
   addGearNewForm: function(){

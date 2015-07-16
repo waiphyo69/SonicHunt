@@ -1,9 +1,10 @@
 <% if (gear.isNew()) { %>
   <h1>New Gear</h1>
 <% } else { %>
-  <h1>Edit Gear</h1>
+  <h1>Update Your Impressions On the Gear!</h1>
 <% } %>
 
+<% if (gear.isNew()) { %>
 <h3>Please select your headphones</h3>
 
 <select id="headphones">
@@ -37,8 +38,9 @@
 <label>Image Url:
   <input type='text' name='image_url' value='<%=gear.escape('image_url')%>'>
 </label>
-
+<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>'>
 <br>
+<% } %>
 
 <label>Impression:
   <input type='textarea' name='impression' value='<%=gear.escape('impression')%>'>
@@ -46,6 +48,5 @@
 
 <br>
 
-<input type='hidden' name='owner_id' value='<%= window.currentUser.id %>'>
 <button class='submit'>Submit</button>
 <button class='cancel'>Cancel</button>

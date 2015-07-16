@@ -1,1 +1,9 @@
 <a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %></a>
+<% if ( review.escape('owner_id') === currentUser.id ) { %>
+  <button class="edit-review-button">Edit your review</button>
+<% } %>
+<div class='<%= "edit-review-"+ review.escape('id') %>' style="margin: auto;height: 300px; color: #fff; display: none; border: solid black 1px; text-align: center">
+</div>
+<% if ( review.escape('owner_id') === currentUser.id ) { %>
+  <button class="review-delete">Delete</button>
+<% } %>

@@ -1,5 +1,6 @@
 class Review < ActiveRecord::Base
   validates :owner_id, :product_id, :description, :score, :helpfulness, presence: true
+  validates :score, :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
 
   belongs_to :owner,
   foreign_key: :owner_id,
