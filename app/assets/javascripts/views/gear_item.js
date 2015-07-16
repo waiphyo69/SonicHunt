@@ -37,10 +37,15 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var gear_id = parseInt(this.model.escape("id"));
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
 		geartocol.save({success: function(){
-			that.render;
 			$(".add-to-collection-gear-"+ this.model.id).css("display","none");
-			$(".add-gear").css("display", "inline")
-			}
+			$(".add-gear").css("display", "inline");
+			Backbone.history.navigate("", {trigger: true})
+		}, error: function(){
+			alert("Already in the collection!")
+			$(".add-to-collection-gear-"+ this.model.id).css("display","none");
+			$(".add-gear").css("display", "inline");
+			Backbone.history.navigate("", {trigger: true})
+		}
 		})
 	},
 

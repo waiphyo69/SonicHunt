@@ -99,9 +99,10 @@ a.collection-add {
 }
 
 
-.collection-popup{
+div.collectionpopup{
   display: block;
   height: 80px;
   color: black;
+  width: 100%;
   text-align: center
 }
