@@ -26,6 +26,27 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 	events: {
 		"click 	a.collection-add": "addProductToCollection",
 		"click .add-product": "displayCollectionForm",
+		"click .submit-new-col": "submit"
+	},
+
+	submit: function(){
+		var that = this;
+  	var attrs = $(".add-to-collection-product-"+ this.model.id+" .new-collection").serializeJSON();
+		attrs["owner_id"] = currentUser.id;
+		var collection = new Sonichunt.Models.Collection(attrs);
+		collection.save({}, {
+			success: function(){
+				var collection_id = collection.id;
+				var product_id = that.model.id;
+				var producttocol = new Sonichunt.Models.ProductToCol({product_id: product_id , collection_id: collection_id })
+        producttocol.save({}, {
+					success: function(){
+						alert("Successfully saved to new collection!");
+						Backbone.histroy.navigate("", {trigger: true})
+					}
+				})
+			}
+		})
 	},
 
 	addCollectionNew: function(){
@@ -42,17 +63,19 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 		var collection_id = $(event.target).data("id");
 		var product_id = parseInt(this.model.escape("id"));
 		var producttocol = new Sonichunt.Models.ProductToCol({product_id: product_id , collection_id: collection_id })
+
 		producttocol.save({},{success: function(){
 			alert("Successfully added to collection!");
 			$(".add-to-collection-product-"+ that.model.id).hide();
 			$(".add-product").show();
 			Backbone.history.navigate(""+collection_id, {trigger: true})
-		}, error: function(){
+		},
+		error: function(){
       alert("Already in the collection");
 			$(".add-to-collection-product-"+ that.model.id).hide();
 			$(".add-product").show();
 			Backbone.history.navigate("", {trigger: true})
-		}
+			}
 		})
 	},
 

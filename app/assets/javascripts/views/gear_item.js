@@ -28,7 +28,28 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		"click .add-gear": "displayCollectionForm",
 		"click .edit-gear-button": "displayGearForm",
 		"click .gear-delete": "destroyGear",
-		"click 	a.collection-add": "addGearToCollection"
+		"click 	a.collection-add": "addGearToCollection",
+		"click .submit-new-col": "submit"
+	},
+
+	submit: function(){
+		var that = this;
+		var attrs = $(".add-to-collection-gear-"+ this.model.id+" .new-collection").serializeJSON();
+		attrs["owner_id"] = currentUser.id;
+		var collection = new Sonichunt.Models.Collection(attrs);
+		collection.save({},{
+			success: function(){
+				var collection_id = collection.id;
+				var gear_id = that.model.id;
+				var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
+				geartocol.save({},{
+					success: function(){
+						alert("Successfully saved to new collection!");
+						Backbone.histroy.navigate("", {trigger: true})
+					}
+				})
+			}
+		})
 	},
 
 	addCollectionNew: function(){
@@ -44,7 +65,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	addGearToCollection: function(){
 		var that = this;
 		var collection_id = $(event.target).data("id");
-		var gear_id = parseInt(this.model.escape("id"));
+		var gear_id = this.model.id;
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
 		geartocol.save({}, {success: function(){
 			alert("Successfully to collection!")
