@@ -1,5 +1,5 @@
 <a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %></a>
-<% if ( review.escape('owner_id') === currentUser.id ) { %>
+<% if ( review.escape('owner_id') === Sonichunt.currentUser.id ) { %>
   <button class="review-delete">Delete</button>
   <button class="edit-review-button">Edit your review</button>
 <% } %>

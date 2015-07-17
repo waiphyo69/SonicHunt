@@ -39,7 +39,7 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var that = this;
   	var attrs = $(".add-to-collection-product-"+ this.model.id+" .new-collection").serializeJSON();
-		attrs["owner_id"] = currentUser.id;
+		attrs["owner_id"] = Sonichunt.currentUser.id;
 		var collection = new Sonichunt.Models.Collection(attrs);
 
 		collection.save({}, {

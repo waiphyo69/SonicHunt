@@ -1,0 +1,20 @@
+<h1>SonicHunt!</h1>
+
+<% if(Sonichunt.currentUser.isSignedIn()) { %>
+
+  <p>
+    Signed in as:
+    <a href="#users/<%= Sonichunt.currentUser.id %>"><%= Sonichunt.currentUser.escape("username") %></a> |
+    <a href="#" id="sign-out-link">Sign Out</a>
+  </p>
+
+<% } else { %>
+
+  <p>
+    <a href="#/users/new">Sign Up</a> |
+    <a href="#/session/new">Sign In</a>
+  </p>
+
+<% } %>
+
+<hr>

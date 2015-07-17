@@ -11,13 +11,13 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "reviews/new": "newReview",
+    "users/new": "userNew",
     "products/:id": "productShow",
     "reviews/:id": "reviewShow",
     "gears/:id": "gearShow",
     "collections/:id": "collectionShow",
-    "users/new": "new",
-    "users/:id": "show",
-    "session/new": "signin"
+    "users/:id": "userShow",
+    "session/new": "signIn"
   },
 
   index: function(){
@@ -27,7 +27,8 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     var rootView = new Sonichunt.Views.RootView({
       products: this.products,
       gears: this.gears,
-      collections: this.collections
+      collections: this.collections,
+      users: this.users
     });
     this.swapView(rootView);
   },
@@ -64,13 +65,32 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.swapView(collectionShowView);
   },
 
+  userNew: function(){
+      var user = new this.users.model();
+      var formView = new Sonichunt.Views.UserForm({
+        collection: this.users,
+        model: user
+      });
+      this.swapView(formView);
+    },
+
+  userShow: function(id){
+      var callback = this.show.bind(this, id);
+      if (!this._requireSignedIn(callback)) { return; }
+
+      var user = this.users.getorFetch(id);
+      var showView = new Sonichunt.Views.UserShow({
+        model: user
+      });
+      this.swapView(showView);
+    },
+
   signIn: function(callback){
     if (!this._requireSignedOut(callback)) { return; }
-
     var signInView = new Sonichunt.Views.SignIn({
       callback: callback
     });
-    this._swapView(signInView);
+    this.swapView(signInView);
   },
 
   _requireSignedIn: function(callback){

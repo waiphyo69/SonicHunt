@@ -39,7 +39,7 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
     if (this.model.isNew()) {
       $(".new-gear-button").css("display", "inline")
       $(".new-gear").css("display","none");
-      attrs["owner_id"] = currentUser.id;
+      attrs["owner_id"] = Sonichunt.currentUser.id;
       this.model.set(attrs);
       this.model.save({},{
         success: function(){

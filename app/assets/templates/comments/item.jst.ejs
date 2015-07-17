@@ -1,6 +1,6 @@
 <strong> <%= comment.escape('author_name') %> </strong>
 <p> <%= comment.escape('content') %> </p>
-<% if ( comment.escape('author_id') === currentUser.id ) { %>
+<% if ( comment.escape('author_id') === Sonichunt.currentUser.id ) { %>
   <button class="comment-delete">Delete</button>
   <button class="edit-comment-button">Edit your comment</button>
 <% } %>

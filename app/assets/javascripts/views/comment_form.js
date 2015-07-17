@@ -32,7 +32,7 @@ Sonichunt.Views.CommentForm = Backbone.CompositeView.extend({
     var attrs = this.$el.serializeJSON();
     if ( this.model.isNew() ) {
       $(".new-comment").hide();
-      attrs["author_id"] = currentUser.id;
+      attrs["author_id"] = Sonichunt.currentUser.id;
       attrs["parent_id"] = that.parentID;
       attrs["parent_type"] = that.parentType;
       this.model.set(attrs);

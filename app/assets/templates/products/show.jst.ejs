@@ -15,7 +15,7 @@
     </div>
   <div class="new-review"></div>
   </div>
-  <% if (currentUser.product_id != product.escape('id') ) {%>
+  <% if (Sonichunt.currentUser.product_id != product.escape('id') ) {%>
       <button class="new-review-button">Add your review</button>
   <% } %>
 <br>

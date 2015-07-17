@@ -1,11 +1,11 @@
 <a href=<%="#/gears/"+gear.escape('id')%>><%= gear.escape('title') %></a>
-<% if ( gear.escape('owner_id') === currentUser.id ) { %>
+<% if ( gear.escape('owner_id') === Sonichunt.currentUser.id ) { %>
   <button class="edit-gear-button">Update your impressions!</button>
   <div class='<%= "edit-gear-"+ gear.escape('id') %>' style="margin: auto;height: 300px; color: #fff; display: none; text-align: center">
   </div>
 <% } %>
 <br>
-<% if ( gear.escape('owner_id') === currentUser.id ) { %>
+<% if ( gear.escape('owner_id') === Sonichunt.currentUser.id ) { %>
   <button class="gear-delete">Delete</button>
 <% } %>
 <br>

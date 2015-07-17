@@ -25,13 +25,14 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
     }
   },
 
-  submit: function(){
+  submit: function(event){
+    event.preventDefault();
     var that = this;
     var attrs = this.$el.serializeJSON();
     attrs["score"] = parseInt(attrs["score"]);
     if ( this.model.isNew() ) {
       $(".new-review").css("display","none");
-      attrs["owner_id"] = currentUser.id;
+      attrs["owner_id"] = Sonichunt.currentUser.id;
       attrs["product_id"] = that.productid;
       this.model.set(attrs);
       this.model.save({},{
