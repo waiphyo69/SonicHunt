@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :geartopros, only: [:create]
     resources :producttocols, only: [:create]
     resources :geartocols, only: [:create]
+    resources :comments, only: [:index, :show, :create, :update, :destroy]
   end
 end

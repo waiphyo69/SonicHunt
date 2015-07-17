@@ -33,6 +33,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	submit: function(){
+		event.preventDefault();
 		var that = this;
 		var attrs = $(".add-to-collection-gear-"+ this.model.id+" .new-collection").serializeJSON();
 		attrs["owner_id"] = currentUser.id;
@@ -45,7 +46,9 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 				geartocol.save({},{
 					success: function(){
 						alert("Successfully saved to new collection!");
-						Backbone.histroy.navigate("", {trigger: true})
+						$(".add-to-collection-gear-"+ that.model.id).hide();
+						$(".add-gear").css("display", "inline");
+						Backbone.history.navigate("", {trigger: true});
 					}
 				})
 			}

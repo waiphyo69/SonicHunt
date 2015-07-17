@@ -63,6 +63,11 @@ class User < ActiveRecord::Base
   class_name: "Review",
   inverse_of: :owner
 
+  has_many :comments,
+  foreign_key: :owner_id,
+  class_name: "Comment",
+  inverse_of: :author
+
   has_many :reviewed_product,
   through: :reviews,
   source: :product

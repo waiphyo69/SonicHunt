@@ -33,4 +33,7 @@ class Gear < ActiveRecord::Base
     foreign_key: :owner_id,
     class_name: "User",
     inverse_of: :gears
+
+    has_many :comments,
+    inverse_of: :review
 end

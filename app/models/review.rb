@@ -20,4 +20,7 @@ class Review < ActiveRecord::Base
   has_many :upvoters,
   through: :upvoter_ids,
   source: :upvoter
+
+  has_many :comments,
+  inverse_of: :review
 end

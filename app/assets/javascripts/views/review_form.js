@@ -31,7 +31,7 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
     attrs["score"] = parseInt(attrs["score"]);
     if ( this.model.isNew() ) {
       $(".new-review").css("display","none");
-      attrs["owner_id"] = parseInt(attrs["owner_id"]);
+      attrs["owner_id"] = currentUser.id;
       attrs["product_id"] = parseInt(attrs["product_id"]);
       this.model.set(attrs);
       this.model.save({},{

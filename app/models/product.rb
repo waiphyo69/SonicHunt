@@ -26,6 +26,5 @@ class Product < ActiveRecord::Base
 
   has_many :reviewers,
   through: :reviews,
-  source: :owner 
-
+  source: :owner
 end

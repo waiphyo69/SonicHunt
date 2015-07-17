@@ -25,7 +25,6 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.addSubview(".reviews", reviewItemView);
   },
 
-
   addReviewNewForm: function(){
     var review = new Sonichunt.Models.Review();
     var reviewNewView = new Sonichunt.Views.ReviewForm({
