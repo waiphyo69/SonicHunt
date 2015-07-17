@@ -5,6 +5,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.gears = Sonichunt.gears;
     this.collections = Sonichunt.collections;
     this.reviews = new Sonichunt.Collections.Reviews();
+    this.users = new Sonichunt.Collections.Users();
     },
 
   routes: {
@@ -13,7 +14,10 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     "products/:id": "productShow",
     "reviews/:id": "reviewShow",
     "gears/:id": "gearShow",
-    "collections/:id": "collectionShow"
+    "collections/:id": "collectionShow",
+    "users/new": "new",
+    "users/:id": "show",
+    "session/new": "signin"
   },
 
   index: function(){
@@ -60,7 +64,41 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.swapView(collectionShowView);
   },
 
-  
+  signIn: function(callback){
+    if (!this._requireSignedOut(callback)) { return; }
+
+    var signInView = new Sonichunt.Views.SignIn({
+      callback: callback
+    });
+    this._swapView(signInView);
+  },
+
+  _requireSignedIn: function(callback){
+    if (!Sonichunt.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      this.signIn(callback);
+      return false;
+    }
+
+    return true;
+  },
+
+  _requireSignedOut: function(callback){
+    if (Sonichunt.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      callback();
+      return false;
+    }
+
+    return true;
+  },
+
+  _goHome: function(){
+    Backbone.history.navigate("", { trigger: true });
+  },
+
+
+
   swapView: function(view){
     this._currentView && this._currentView.remove();
     this._currentView = view;

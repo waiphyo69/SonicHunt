@@ -1,8 +1,3 @@
+<header id="header"></header>
 <div id="main"></div>
 <script>$(Sonichunt.initialize);</script>
-<script type="text/javascript">
-    window.currentUser = {
-        id : "<%=current_user.id if current_user%>",
-        product_id: "<%=current_user.reviewed_product.first.id if current_user && current_user.reviewed_product.length == 1%>"
-    }
-</script>
