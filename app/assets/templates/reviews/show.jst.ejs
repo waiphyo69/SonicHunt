@@ -6,4 +6,8 @@
   <h2> Description: </h2>
   <p> <%= review.escape('description')%></p>
 </div>
+<h2> Comments </h2>
+<ul class="comments"></ul>
+<button class='new-comment-button'>New Comment</button>
+<div class="new-comment"></div>
 <a href=<%="#/products/" + review.escape('product_id') %>> Back To Product Page </a>

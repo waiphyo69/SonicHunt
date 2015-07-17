@@ -4,5 +4,6 @@ json.products @gear.products do |product|
 end
 json.comments @gear.comments do |comment|
   json.extract! comment, :id, :author_id, :content, :parent_id
+  json.author_name comment.author.username
 end
 json.owner_name @gear.owner.username

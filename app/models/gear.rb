@@ -34,6 +34,5 @@ class Gear < ActiveRecord::Base
     class_name: "User",
     inverse_of: :gears
 
-    has_many :comments,
-    inverse_of: :review
+    has_many :comments, as: :parent
 end

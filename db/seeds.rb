@@ -69,3 +69,7 @@ reviews = Review.create!([{
    },{
    owner_id: 2, product_id: 1, title: "Best In The World", description: "I have never listended to a better pair of cans. They are just smooth and rich and pitch-perfect and involving. Pairs well with Woo Audio 7 Tube Amp", score: 10
    }])
+
+comments = Comment.create!([{
+  author_id: 1, parent_id: 1, parent_type: "Review", content: "Check out my review people :)"
+  }])

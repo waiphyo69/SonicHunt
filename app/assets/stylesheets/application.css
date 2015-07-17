@@ -73,6 +73,10 @@ div.new-review {
   display: none;
 }
 
+div.new-comment {
+  display: none;
+  height: 50px;
+}
 
 div.new-gear {
   display: none;

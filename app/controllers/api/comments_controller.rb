@@ -1,5 +1,5 @@
 module Api
-  class commentsController < ApiController
+  class CommentsController < ApiController
     def index
       @comments= Comment.all
       render json: @comments
@@ -36,7 +36,7 @@ module Api
 
     private
     def comment_params
-      params.require(:comment).permit(:id, :author_id, :parent_id )
+      params.require(:comment).permit(:id, :author_id, :parent_id, :author_name, :content, :parent_type )
     end
   end
 end

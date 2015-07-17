@@ -16,8 +16,5 @@
 <input type='number' name='score' value='<%=review.escape('score')%>'>
 </label>
 <br>
-<% if (review.isNew()) { %>
-<input type='hidden' name='product_id' value='<%= productid %>'>
-<% } %>
 <button class='submit'>Submit</button>
 <button class='cancel'>Cancel</button>

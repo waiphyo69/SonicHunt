@@ -50,6 +50,7 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
           headphone.save();
           dac.save();
           amplifier.save();
+          alert("Successfully created your gear bro!");
           Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true});
         }, error: function(){
           alert("Input is invalid! Try again!");
@@ -61,6 +62,7 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
       $(".edit-gear-"+this.model.escape('id')).css("display","none");
       this.model.set(attrs);
       this.model.save({}, {success: function(){
+        alert("Successfully updated your impressions!");
         Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true});
         },error: function(){
           alert("Input is invalid! Try again!");

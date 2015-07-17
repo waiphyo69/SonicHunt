@@ -1,3 +1,3 @@
-Sonichunt.Models.Comments = Backbone.Model.extend({
+Sonichunt.Models.Comment = Backbone.Model.extend({
   urlRoot: "api/comments"
 })

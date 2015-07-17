@@ -1,2 +1,8 @@
+<strong> <%= comment.escape('author_name') %> </strong>
 <p> <%= comment.escape('content') %> </p>
-<strong> By <%= comment.escapae('author_name') %> </strong>
+<% if ( comment.escape('author_id') === currentUser.id ) { %>
+  <button class="comment-delete">Delete</button>
+  <button class="edit-comment-button">Edit your comment</button>
+<% } %>
+<div class='<%= "edit-comment-"+ comment.escape('id') %>' style="margin: auto;height: 50px; color: #fff; display: none; border: solid black 1px; text-align: center">
+</div>

@@ -32,7 +32,7 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
     if ( this.model.isNew() ) {
       $(".new-review").css("display","none");
       attrs["owner_id"] = currentUser.id;
-      attrs["product_id"] = parseInt(attrs["product_id"]);
+      attrs["product_id"] = that.productid;
       this.model.set(attrs);
       this.model.save({},{
         success: function(){
@@ -53,7 +53,6 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
           success: function(){
             var product = Sonichunt.products.getorFetch(that.model.escape('product_id'));
             if (product.reviews().length > 1) {
-              debugger
               var oldAvgScore = ( ( parseInt( product.escape('avg_score') ) * product.reviews().length ) - oldScore )/ ( product.reviews().length - 1 );
             } else {
               var oldAvgScore = 0;
@@ -70,8 +69,8 @@ Sonichunt.Views.ReviewForm = Backbone.CompositeView.extend({
 
   render: function(){
     var content = this.template({
-      review: this.model,
-      productid: this.productid});
+      review: this.model
+      });
     this.$el.html(content);
     return this;
   }
