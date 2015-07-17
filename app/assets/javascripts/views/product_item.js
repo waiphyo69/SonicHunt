@@ -7,6 +7,15 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 	initialize: function(){
 		var that = this;
 		this.listenTo(this.model,"sync",this.render);
+		$(document).click(function(e) {
+		    var target = e.target;
+		    if ( $(".add-to-collection-product-"+ that.model.id).css("display") === "block" &&
+				!$(target).parents().is(".add-to-collection-product-"+ that.model.id) &&
+				$(target).attr("class") != "add-product"){
+					$(".add-to-collection-product-"+ that.model.id).hide();
+					$(".add-product").css("display","inline");
+		    }
+		});
 		Sonichunt.collections.fetch({
 			success: function(){
 				that.addCollectionNew();
@@ -33,23 +42,25 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 		var collection_id = $(event.target).data("id");
 		var product_id = parseInt(this.model.escape("id"));
 		var producttocol = new Sonichunt.Models.ProductToCol({product_id: product_id , collection_id: collection_id })
-		producttocol.save({success: function(){
-			$(".add-to-collection-product-"+ this.model.id).css("display","none");
-			$(".add-product").css("display", "inline");
-			Backbone.history.navigate("", {trigger: true})
+		producttocol.save({},{success: function(){
+			alert("Successfully added to collection!");
+			$(".add-to-collection-product-"+ that.model.id).hide();
+			$(".add-product").show();
+			Backbone.history.navigate(""+collection_id, {trigger: true})
 		}, error: function(){
       alert("Already in the collection");
-			$(".add-to-collection-product-"+ this.model.id).css("display","none");
-			$(".add-product").css("display", "inline");
+			$(".add-to-collection-product-"+ that.model.id).hide();
+			$(".add-product").show();
 			Backbone.history.navigate("", {trigger: true})
 		}
 		})
 	},
 
 	displayCollectionForm: function(){
-		$(".add-to-collection-product-"+ this.model.id).css("display","block");
-		$(".add-product").css("display", "none");
+		$(".add-to-collection-product-"+ this.model.id).show();
+		$(".add-product").hide();
 	},
+
 
 
 	render: function(){

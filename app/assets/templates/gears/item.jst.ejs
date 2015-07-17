@@ -4,8 +4,11 @@
   <div class='<%= "edit-gear-"+ gear.escape('id') %>' style="margin: auto;height: 300px; color: #fff; display: none; text-align: center">
   </div>
 <% } %>
+<br>
 <% if ( gear.escape('owner_id') === currentUser.id ) { %>
   <button class="gear-delete">Delete</button>
 <% } %>
+<br>
 <button class="add-gear">Add To Collection</button>
+<br>
 <div class='<%= "add-to-collection-gear-"+ gear.escape('id') %>' style="margin: auto;height: 200px; color: #fff; display: none; text-align: center"></div>

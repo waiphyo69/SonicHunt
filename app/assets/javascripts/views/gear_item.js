@@ -8,6 +8,15 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var that = this;
 		this.listenTo(this.model,"sync change",this.render);
 		this.addEditForm();
+		$(document).click(function(e) {
+				var target = e.target;
+				if ( $(".add-to-collection-gear-"+ that.model.id).css("display") === "block" &&
+				!$(target).parents().is(".add-to-collection-gear-"+ that.model.id) &&
+				$(target).attr("class") != "add-gear"){
+					$(".add-to-collection-gear-"+ that.model.id).hide();
+					$(".add-gear").css("display","inline");
+				}
+		});
 		Sonichunt.collections.fetch({
 			success: function(){
 				that.addCollectionNew();
@@ -23,6 +32,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	addCollectionNew: function(){
+
   	var collection = new Sonichunt.Models.Collection();
 		var collectionNewView = new Sonichunt.Views.CollectionNew({
 			model: collection,
@@ -36,27 +46,28 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var collection_id = $(event.target).data("id");
 		var gear_id = parseInt(this.model.escape("id"));
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
-		geartocol.save({success: function(){
-			$(".add-to-collection-gear-"+ this.model.id).css("display","none");
+		geartocol.save({}, {success: function(){
+			alert("Successfully to collection!")
+			$(".add-to-collection-gear-"+ that.model.id).hide();
 			$(".add-gear").css("display", "inline");
 			Backbone.history.navigate("", {trigger: true})
 		}, error: function(){
 			alert("Already in the collection!")
-			$(".add-to-collection-gear-"+ this.model.id).css("display","none");
+			$(".add-to-collection-gear-"+ that.model.id).hide();
 			$(".add-gear").css("display", "inline");
 			Backbone.history.navigate("", {trigger: true})
-		}
+			}
 		})
 	},
 
 	displayGearForm: function(){
-		$(".add-to-collection-gear-"+ this.model.id).css("display","block");
-		$(".add-gear").css("display", "none")
+		$(".edit-gear-"+ this.model.id).show();
+		$(".edit-gear-button").hide()
 	},
 
 	displayCollectionForm: function(){
-  	$(".add-to-collection-gear-"+ this.model.id).css("display","inline");
-		$(".edit-gear-button").css("display", "none")
+  	$(".add-to-collection-gear-"+ this.model.id).show();
+		$(".add-gear").hide()
 	},
 
 	destroyGear: function(){

@@ -51,6 +51,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
           dac.save();
           amplifier.save();
           Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true});
+        }, error: function(){
+          alert("Input is invalid! Try again!");
         }
       });
     }
@@ -60,6 +62,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
       this.model.set(attrs);
       this.model.save({}, {success: function(){
         Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true});
+        },error: function(){
+          alert("Input is invalid! Try again!");
         }
       })
     }
