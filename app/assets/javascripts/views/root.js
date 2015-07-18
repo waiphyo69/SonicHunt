@@ -12,8 +12,8 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.listenTo(this.products, "add", this.addProduct);
     this.listenTo(this.gears, "add", this.addGear);
     this.listenTo(this.collections, "add", this.addCollection);
-    this.products.each(this.addProduct.bind(this));
     this.gears.each(this.addGear.bind(this));
+    this.products.each(this.addProduct.bind(this));
     this.collections.each(this.addCollection.bind(this));
     this.addGearNewForm();
   },
@@ -26,8 +26,8 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
   },
 
   displayNewGearForm: function(){
-    $(".new-gear").css("display","block");
-    $(".new-gear-button").css("display", "none");
+    $(".new-gear").show();
+    $(".new-gear-button").hide();
   },
 
   addGearNewForm: function(){
@@ -43,28 +43,31 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
   },
 
 
-  displayProducts: function(){
-    $("div.collection-container").css("display", "none");
-    $("div.gear-container").css("display", "none");
-    $("div.product-container").css("display", "block");
+  displayProducts: function(event){
+    event.preventDefault();
+    $(".index div:not(.product-container)").hide();
+    $("div.product-container").show();
+    $(".add-product").css("display","inline");
   },
 
-  displayGears: function(){
-    $("div.product-container").css("display", "none");
-    $("div.collection-container").css("display", "none");
-    $("div.gear-container").css("display", "block");
+  displayGears: function(event){
+    event.preventDefault();
+    $(".index div:not(.gear-container)").hide();
+    $("div.gear-container").show();
+    $(".add-gear").css("display","inline");
   },
 
-  displayCollections: function(){
-    $("div.gear-container").css("display", "none");
-    $("div.product-container").css("display", "none");
-    $("div.collection-container").css("display", "block");
+  displayCollections: function(event){
+    event.preventDefault();
+    $(".index div:not(.collection-container)").hide();
+    $("div.collection-container").show();
   },
 
 
   addProduct: function(product){
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
     this.addSubview("ul.products", productItemView);
+    productItemView.$el.append("<button class='add-product'>Add To Collection</button>");
   },
 
   addGear: function(gear){

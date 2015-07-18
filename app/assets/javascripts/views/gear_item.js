@@ -14,7 +14,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 				!$(target).parents().is(".add-to-collection-gear-"+ that.model.id) &&
 				$(target).attr("class") != "add-gear"){
 					$(".add-to-collection-gear-"+ that.model.id).hide();
-					$(".add-gear").css("display","inline");
+					$("button.add-gear").css("display","inline");
 				}
 		});
 		Sonichunt.collections.fetch({
@@ -47,7 +47,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 					success: function(){
 						alert("Successfully saved to new collection!");
 						$(".add-to-collection-gear-"+ that.model.id).hide();
-						$(".add-gear").css("display", "inline");
+						$(".add-gear").show();
 						Backbone.history.navigate("", {trigger: true});
 					}
 				})
@@ -91,6 +91,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 
 	displayCollectionForm: function(){
   	$(".add-to-collection-gear-"+ this.model.id).show();
+		$(".collectionpopup").show();
 		$(".add-gear").hide()
 	},
 
@@ -111,6 +112,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	render: function(){
 		var content = this.template({gear: this.model});
 		this.$el.html(content);
+		this.$el.append("<button class='add-gear'>Add To Collection</button>");
 		this.attachSubviews();
 		return this;
 	}

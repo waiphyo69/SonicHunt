@@ -11,7 +11,12 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
 
   addProduct: function(product){
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
+    productItemView.$el.append( "<button data-id="+product.escape('id') + ">Remove</button>" );
     this.addSubview(".products", productItemView);
+    
+    if ( Sonichunt.currentUser.id === parseInt( this.model.escape('owner_id') ) ) {
+      productItemView.$el.append( "<button class='remove' data-id="+product.escape('id') + ">Remove</button>" );
+    }
   },
 
   addGear: function(gear){

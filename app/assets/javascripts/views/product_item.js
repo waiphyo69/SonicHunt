@@ -93,6 +93,7 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 
 	displayCollectionForm: function(){
 		$(".add-to-collection-product-"+ this.model.id).show();
+		$("#collectionpopup").show();
 		$(".add-product").hide();
 	},
 
