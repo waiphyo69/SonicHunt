@@ -13,6 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, header, nav, a, ul, li,
+strong, main, section, img, div, p,
+form, fieldset, label, article, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+button{
+  background-color: black;
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+button:hover,
+button:focus,
+button:active {
+    transform: scale(1.1);
+}
+
 .group:after{
   content: "";
   display: block;
@@ -23,18 +63,42 @@
   display: block;
 }
 
+header{
+  background-color: black;
+  color: white
+}
 
 .header-container{
+  position: relative;
   background-color: black;
   height: 50px;
+  bottom: 200px;
 }
 
 .index div{
+  position: relative;
   display: none;
   float: left;
   padding: 20px;
   margin: 15px;
-  text-align: center;
+  bottom: 220px;
+}
+
+div.collectionpopup{
+  position: relative;
+  display: block;
+  top: 200px;
+  margin: auto;
+  background-color: black;
+  width: 200px;
+  border-radius: 20px
+}
+
+a.collection-add{
+  color: white;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px
 }
 
 
@@ -44,19 +108,21 @@ div.welcome{
   font-weight: bold;
   color: white;
   width: 100%;
-  text-align: center;
 }
 
 div.welcome img{
+  position: relative;
   z-index: 0;
   height: 400px;
   width: 100%;
+  bottom: 200px;
 }
 
 div.welcome h1{
+ z-index: 100;
  position: relative;
  display: block;
- top: 200px;
+ bottom: 10px;
 }
 
 div.gear-show div{
@@ -79,9 +145,6 @@ div.new-comment {
   height: 50px;
 }
 
-div.new-gear {
-  display: none;
-}
 
 .header-container a{
   position: relative;
@@ -103,11 +166,23 @@ a.collection-add {
   cursor: pointer;
 }
 
+a.collection-add:hover {
+  color: red;
+}
+
+form.new-collection input{
+  background-color: gray;
+}
 
 div.collectionpopup{
   display: block;
-  height: 80px;
+  height: 120px;
   color: black;
-  width: 100%;
-  text-align: center
+  width: 200px;
+}
+
+div.new-gear{
+  display: none;
+  position: relative;
+  top: 5px;
 }

@@ -1,0 +1,51 @@
+{
+  "name": "hover.css",
+  "version": "2.0.2",
+  "author": {
+    "name": "Ian Lunn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IanLunn/Hover"
+  },
+  "bugs": {
+    "url": "https://github.com/IanLunn/Hover/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-version": "^0.3.0"
+  },
+  "dependencies": {
+    "load-grunt-tasks": "~0.2.0"
+  },
+  "gitHead": "19a27a405e71402032284a880f5e33d1843d3a32",
+  "description": "A collection of CSS3 powered hover effects to be applied to links, buttons, logos, SVG, featured images and so on. Easily apply to your own elements, modify or just use for inspiration. Available in CSS, Sass, and LESS.",
+  "homepage": "https://github.com/IanLunn/Hover",
+  "_id": "hover.css@2.0.2",
+  "scripts": {},
+  "_shasum": "1cfd74a16cef96c66ce812ce05783e9de2ff41b4",
+  "_from": "hover.css@*",
+  "_npmVersion": "2.3.0",
+  "_nodeVersion": "0.10.29",
+  "_npmUser": {
+    "name": "ianlunn",
+    "email": "hello@ianlunn.co.uk"
+  },
+  "maintainers": [
+    {
+      "name": "ianlunn",
+      "email": "hello@ianlunn.co.uk"
+    }
+  ],
+  "dist": {
+    "shasum": "1cfd74a16cef96c66ce812ce05783e9de2ff41b4",
+    "tarball": "http://registry.npmjs.org/hover.css/-/hover.css-2.0.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/hover.css/-/hover.css-2.0.2.tgz"
+}
