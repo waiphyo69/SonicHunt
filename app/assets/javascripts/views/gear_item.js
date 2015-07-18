@@ -8,15 +8,21 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var that = this;
 		this.listenTo(this.model,"sync change",this.render);
 		this.addEditForm();
+
 		$(document).click(function(e) {
+
 				var target = e.target;
+
 				if ( $(".add-to-collection-gear-"+ that.model.id).css("display") === "block" &&
 				!$(target).parents().is(".add-to-collection-gear-"+ that.model.id) &&
 				$(target).attr("class") != "add-gear"){
+
 					$(".add-to-collection-gear-"+ that.model.id).hide();
 					$("button.add-gear").css("display","inline");
+
 				}
 		});
+
 		Sonichunt.collections.fetch({
 			success: function(){
 				that.addCollectionNew();
@@ -33,18 +39,25 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	submit: function(){
+
 		event.preventDefault();
 		var that = this;
 		var attrs = $(".add-to-collection-gear-"+ this.model.id+" .new-collection").serializeJSON();
 		attrs["owner_id"] = Sonichunt.currentUser.id;
 		var collection = new Sonichunt.Models.Collection(attrs);
+
 		collection.save({},{
+
 			success: function(){
+
 				var collection_id = collection.id;
 				var gear_id = that.model.id;
 				var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
 				geartocol.save({},{
+
 					success: function(){
+
+						Sonichunt.collections.add(collection, {merge: true})
 						alert("Successfully saved to new collection!");
 						$(".add-to-collection-gear-"+ that.model.id).hide();
 						$(".add-gear").show();
@@ -91,35 +104,45 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	displayGearForm: function(){
+
 		$(".edit-gear-"+ this.model.id).show();
 		$(".edit-gear-button").hide()
+
 	},
 
 	displayCollectionForm: function(){
+
   	$(".add-to-collection-gear-"+ this.model.id).show();
 		$(".collectionpopup").show();
 		$(".add-gear").hide()
+
 	},
 
 	destroyGear: function(){
+
 		event.preventDefault();
 		this.model.destroy();
 		alert("Gear successfully deleted!");
+
 	},
 
 	addEditForm: function(){
+
 		var gear = Sonichunt.gears.getorFetch(this.model.id);
 		var editView = new Sonichunt.Views.GearForm({
 			model: gear
 		});
 		this.addSubview(".edit-gear-"+this.model.id, editView);
+
 	},
 
 	render: function(){
+
 		var content = this.template({gear: this.model});
 		this.$el.html(content);
 		this.$el.append("<button class='add-gear'>Add To Collection</button>");
 		this.attachSubviews();
 		return this;
+		
 	}
 })

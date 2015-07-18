@@ -4,8 +4,6 @@ Sonichunt.Views.CollectionNew = Backbone.CompositeView.extend({
 
   className: "collectionpopup",
 
-  id: "coll",
-
   initialize: function(){
     this.collections = this.collection.where({owner_id: Sonichunt.currentUser.id});
   },

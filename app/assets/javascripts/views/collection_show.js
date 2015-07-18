@@ -13,7 +13,15 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
 
   events: {
     "click .remove-pro-from-col": "deleteProFromCol",
-    "click .remove-gear-from-col": "deleteGearFromCol"
+    "click .remove-gear-from-col": "deleteGearFromCol",
+    "click .delete": "destroyCol"
+  },
+
+
+  destroyCol: function(){
+    event.preventDefault();
+    this.model.destroy();
+    Backbone.history.navigate("", { trigger: true })
   },
 
   deleteProFromCol: function(event){

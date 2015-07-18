@@ -27,6 +27,12 @@ module Api
       end
     end
 
+    def destroy
+      @collection = Collection.find(params[:id])
+      @collection.destroy
+      render json: { message: 'destroyed!' }
+    end
+
     private
     def collection_params
       params.require(:collection).permit(:owner_id, :image_url, :title)

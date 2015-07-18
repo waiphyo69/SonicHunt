@@ -49,6 +49,7 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 				var producttocol = new Sonichunt.Models.ProductToCol({product_id: product_id , collection_id: collection_id })
         producttocol.save({}, {
 					success: function(){
+						Sonichunt.collections.add(collection, {merge: true})
 						alert("Successfully saved to new collection!");
 						$(".add-to-collection-product-"+ that.model.id).hide();
 						$(".add-product").show();
@@ -94,7 +95,7 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 
 	displayCollectionForm: function(){
 		$(".add-to-collection-product-"+ this.model.id).show();
-		$("#collectionpopup").show();
+		$(".collectionpopup").show();
 		$(".add-product").hide();
 	},
 
