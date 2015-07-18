@@ -1,4 +1,4 @@
-Sonichunt.Collections.Collection = Backbone.Collection.extend({
+Sonichunt.Collections.Collections = Backbone.Collection.extend({
   url: "/api/collections",
 
   model: Sonichunt.Models.Collection,
@@ -20,4 +20,4 @@ Sonichunt.Collections.Collection = Backbone.Collection.extend({
     return collection
   }
 })
-Sonichunt.collections = new Sonichunt.Collections.Collection();
+Sonichunt.collections = new Sonichunt.Collections.Collections();

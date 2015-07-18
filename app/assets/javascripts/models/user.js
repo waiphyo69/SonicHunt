@@ -4,6 +4,37 @@ Sonichunt.Models.User = Backbone.Model.extend({
   toJSON: function(){
     var json = { user: _.clone(this.attributes) };
     return json;
+  },
+
+
+  gears: function() {
+    this._gears = this._gears ||
+      new Sonichunt.Collections.Gears([], { user: this });
+    return this._gears;
+    },
+
+  reviews: function () {
+    this._reviews = this._reviews ||
+      new Sonichunt.Collections.Reviews([], { user: this });
+    return this._reviews;
+    },
+
+  collections: function () {
+    this._collections = this._collections ||
+      new Sonichunt.Collections.Collections([], { user: this });
+    return this._collections;
+    },
+
+  parse: function (response) {
+    if (response.gears && response.reviews && response.collections) {
+      this.reviews().set(response.reviews);
+      this.gears().set(response.gears);
+      this.collections().set(response.collections);
+      delete response.gears;
+      delete response.reviews;
+      delete response.collections;
+    }
+    return response;
   }
 });
 

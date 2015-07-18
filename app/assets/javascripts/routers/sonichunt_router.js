@@ -79,9 +79,8 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     },
 
   userShow: function(id){
-      var callback = this.show.bind(this, id);
+      var callback = this.userShow.bind(this, id);
       if (!this._requireSignedIn(callback)) { return; }
-
       var user = this.users.getorFetch(id);
       var showView = new Sonichunt.Views.UserShow({
         model: user

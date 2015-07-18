@@ -1,4 +1,5 @@
 Sonichunt.Collections.Users = Backbone.Collection.extend({
+
   url: "/api/users",
   model: Sonichunt.Models.User,
 
@@ -19,4 +20,5 @@ Sonichunt.Collections.Users = Backbone.Collection.extend({
 
     return user;
   }
+  
 });

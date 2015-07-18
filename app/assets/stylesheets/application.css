@@ -53,54 +53,16 @@ button:active {
     transform: scale(1.1);
 }
 
-.group:after{
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.index div.product-container{
-  display: block;
-}
-
 header{
   background-color: black;
   color: white
 }
 
-.header-container{
-  position: relative;
-  background-color: black;
-  height: 50px;
-  bottom: 200px;
-}
-
-.index div{
-  position: relative;
-  display: none;
-  float: left;
-  padding: 20px;
-  margin: 15px;
-  bottom: 220px;
-}
-
-div.collectionpopup{
-  position: relative;
+.group:after{
+  content: "";
   display: block;
-  top: 200px;
-  margin: auto;
-  background-color: black;
-  width: 200px;
-  border-radius: 20px
+  clear: both;
 }
-
-a.collection-add{
-  color: white;
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px
-}
-
 
 
 div.welcome{
@@ -125,6 +87,119 @@ div.welcome h1{
  bottom: 10px;
 }
 
+
+.index div.product-container{
+  display: block;
+}
+
+
+.index div{
+  position: relative;
+  display: none;
+  float: left;
+  padding: 20px;
+  margin: 15px;
+  bottom: 220px;
+}
+
+.header-container{
+  position: relative;
+  background-color: black;
+  height: 50px;
+  bottom: 200px;
+}
+
+nav.user-info{
+  position: relative;
+  background-color: gray;
+  height: 200px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  bottom: 20px
+}
+
+.user-info > h4 {
+  position: relative;
+  top: 60px;
+}
+
+div.user-stuff-container{
+  display: block;
+  position: relative;
+  top: 400px;
+  left: 30px;
+}
+
+.user-stuff-container div.user-reviews-container{
+  display: block;
+}
+
+.user-stuff-container div{
+  display: none;
+  position: relative;
+  float: left;
+  padding: 20px;
+  margin: 15px;
+  bottom: 420px;
+}
+
+div.user-header-container{
+  display: block;
+  position: relative;
+  background-color: black;
+  height: 50px;
+  bottom: 20px;
+}
+
+
+
+.header-container a{
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 180px;
+  left: 150px;
+  top: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.user-header-container a{
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 180px;
+  left: 150px;
+  top: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+
+div.collectionpopup{
+  position: relative;
+  display: block;
+  top: 200px;
+  margin: auto;
+  background-color: black;
+  width: 200px;
+  border-radius: 20px;
+  height: 120px;
+}
+
+a.collection-add{
+  color: white;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px
+}
+
+
+
 div.gear-show div{
   display: block;
   float: left;
@@ -145,19 +220,6 @@ div.new-comment {
   height: 50px;
 }
 
-
-.header-container a{
-  position: relative;
-  display: block;
-  float: left;
-  margin-right: 180px;
-  left: 150px;
-  top: 15px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-}
-
 textarea {
   height: 80px;
 }
@@ -174,12 +236,7 @@ form.new-collection input{
   background-color: gray;
 }
 
-div.collectionpopup{
-  display: block;
-  height: 120px;
-  color: black;
-  width: 200px;
-}
+
 
 div.new-gear{
   display: none;
@@ -196,4 +253,19 @@ li.product-item div, li.gear-item div{
   top: 280px;
   left: 100px;
   z-index: 100
+}
+
+.user-show .review-item div{
+  position: absolute;
+  z-index: 100;
+  top: 600px;
+  width: 200px;
+  left: 180px;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.user-show div.collectionpopup{
+  top: 630px;
+  right: 250px;
 }

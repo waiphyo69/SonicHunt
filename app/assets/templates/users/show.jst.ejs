@@ -1,0 +1,21 @@
+<nav class='user-info'>
+  <h4> <%= user.escape('username') %> </h4>
+  <h4> email: <%= user.escape('email') %> </h4>
+ </nav>
+<div class="user-header-container group">
+  <a class="reviews">Reviews</a>
+  <a class="gears">Gears</a>
+  <a class="collections">Collections</a>
+</div>
+<div class='user-stuff-container group'>
+  <div class='user-reviews-container'>
+  <ul class='user-reviews'></ul>
+  </div>
+  <div class='user-gears-container'>
+  <ul class='user-gears'></ul>
+  </div>
+  <div class='user-collections-container'>
+  <ul class='user-collections'></ul>
+  </div>
+</div>
+<a href="#">Back To Main</a>
