@@ -2,6 +2,8 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 
 	tagName: "li",
 
+  className: "product-item",
+
 	template: JST["products/item"],
 
 	initialize: function(){

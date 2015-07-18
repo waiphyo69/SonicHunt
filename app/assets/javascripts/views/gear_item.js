@@ -2,6 +2,8 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 
 	tagName: "li",
 
+	className: "gear-item",
+	
 	template: JST['gears/item'],
 
 	initialize: function(){
@@ -143,6 +145,6 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		this.$el.append("<button class='add-gear'>Add To Collection</button>");
 		this.attachSubviews();
 		return this;
-		
+
 	}
 })

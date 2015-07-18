@@ -186,3 +186,14 @@ div.new-gear{
   position: relative;
   top: 5px;
 }
+
+li.product-item, li.gear-item{
+  position: relative
+}
+
+li.product-item div, li.gear-item div{
+  position: absolute;
+  top: 280px;
+  left: 100px;
+  z-index: 100
+}
