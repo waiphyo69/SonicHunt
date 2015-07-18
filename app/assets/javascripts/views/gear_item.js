@@ -48,7 +48,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 						alert("Successfully saved to new collection!");
 						$(".add-to-collection-gear-"+ that.model.id).hide();
 						$(".add-gear").show();
-						Backbone.history.navigate("", {trigger: true});
+						Backbone.history.navigate("",{trigger: true});
 					}
 				})
 			}
@@ -66,16 +66,22 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	addGearToCollection: function(){
+		event.preventDefault();
 		var that = this;
 		var collection_id = $(event.target).data("id");
 		var gear_id = this.model.id;
 		var geartocol = new Sonichunt.Models.GearToCol({gear_id: gear_id , collection_id: collection_id })
-		geartocol.save({}, {success: function(){
-			alert("Successfully to collection!")
+
+		geartocol.save({}, {
+
+			success: function(){
+			alert("Successfully saved to collection!")
 			$(".add-to-collection-gear-"+ that.model.id).hide();
 			$(".add-gear").css("display", "inline");
 			Backbone.history.navigate("", {trigger: true})
-		}, error: function(){
+		},
+
+			error: function(){
 			alert("Already in the collection!")
 			$(".add-to-collection-gear-"+ that.model.id).hide();
 			$(".add-gear").css("display", "inline");

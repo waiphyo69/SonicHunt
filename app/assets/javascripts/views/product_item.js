@@ -71,6 +71,7 @@ Sonichunt.Views.ProductItem = Backbone.CompositeView.extend({
 	},
 
 	addProductToCollection: function(){
+		event.preventDefault();
 		var that = this;
 		var collection_id = $(event.target).data("id");
 		var product_id = parseInt(this.model.escape("id"));

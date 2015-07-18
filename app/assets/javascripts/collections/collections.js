@@ -17,7 +17,7 @@ Sonichunt.Collections.Collection = Backbone.Collection.extend({
         }
       })
     }
-    return collection;
+    return collection
   }
 })
 Sonichunt.collections = new Sonichunt.Collections.Collection();

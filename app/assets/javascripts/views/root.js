@@ -5,9 +5,9 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.products = options.products;
     this.gears = options.gears;
     this.collections = options.collections;
-    this.listenTo(this.products, "sync", this.render);
-    this.listenTo(this.gears, "sync remove", this.render);
-    this.listenTo(this.collections, "sync", this.render);
+    this.listenTo(this.products, "sync add", this.render);
+    this.listenTo(this.gears, "sync add remove", this.render);
+    this.listenTo(this.collections, "sync add", this.render);
     this.listenTo(this.gears, "remove", this.removeGear);;
     this.listenTo(this.products, "add", this.addProduct);
     this.listenTo(this.gears, "add", this.addGear);

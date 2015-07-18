@@ -58,11 +58,15 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   },
 
   collectionShow: function(id){
-    var collection = this.collections.getorFetch(id);
-    var collectionShowView = new Sonichunt.Views.CollectionShow({
-      model: collection
-    });
-    this.swapView(collectionShowView);
+    var that = this;
+    this.collections.fetch({success: function(){
+      var collection = that.collections.getorFetch(id);
+      var collectionShowView = new Sonichunt.Views.CollectionShow({
+        model: collection
+      });
+      that.swapView(collectionShowView);
+      }
+    })
   },
 
   userNew: function(){
