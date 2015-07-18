@@ -87,6 +87,26 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(super)
   end
 
+  def follower_hash
+    zipped_follows = followee_follows.pluck(:follower_id).zip(followee_follows)
+    follows_hash = {}
+    zipped_follows.each do |(id, follow)|
+      follows_hash[id] = follow
+    end
+
+    follows_hash
+  end
+
+  def followee_hash
+    zipped_follows = follower_follows.pluck(:followee_id).zip(follower_follows)
+    follows_hash = {}
+    zipped_follows.each do |(id, follow)|
+      follows_hash[id] = follow
+    end
+
+    follows_hash
+  end
+
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
   end

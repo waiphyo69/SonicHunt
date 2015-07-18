@@ -8,8 +8,10 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.reviews(), "sync change", this.render);
     this.listenTo(this.model.gears(), "sync change", this.render);
     this.listenTo(this.model.collections(), "sync change", this.render);
-    this.listenTo(this.model.followers(), "sync change", this.render);
-    this.listenTo(this.model.followees(), "sync change", this.render);
+    this.listenTo(this.model.followers(), "sync change remove", this.render);
+    this.listenTo(this.model.followees(), "sync change remove", this.render);
+    this.listenTo(this.model.followers(), "remove", this.removeFollower);
+    this.listenTo(this.model.followees(), "remove", this.removeFollowee);
     this.listenTo(this.model.reviews(), "add", this.addReview);
     this.listenTo(this.model.gears(), "add", this.addGear);
     this.listenTo(this.model.collections(), "add", this.addCollection);
@@ -30,6 +32,14 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     "click a.gears": "displayGears",
     "click a.followers": "displayFollowers",
     "click a.followees": "displayFollowees",
+  },
+
+  removeFollower: function (follower) {
+    this.removeModelSubview(".followers", follower)
+  },
+
+  removeFollowee: function (followee) {
+    this.removeModelSubview(".followees", followee)
   },
 
   displayReviews: function(event){
@@ -55,12 +65,15 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     event.preventDefault();
     $(".user-stuff-container div:not(.user-followers-container)").hide();
     $("div.user-followers-container").show();
+    $("div.follow").show();
   },
 
   displayFollowees: function(event){
     event.preventDefault();
     $(".user-stuff-container div:not(.user-followees-container)").hide();
     $("div.user-followees-container").show();
+    $("div.follow").show();
+    $("div.follow div").show();
   },
 
   addReview: function(review){
@@ -79,13 +92,23 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   addFollower: function(follower){
-    var followerItemView = new Sonichunt.Views.UserItem({model: follower});
-    this.addSubview("ul.user-followers", followerItemView);
+    var that = this;
+    follower.fetch({
+      success: function(){
+          var followerItemView = new Sonichunt.Views.UserItem({model: follower, collection: that.model.followers()});
+          that.addSubview("ul.user-followers", followerItemView);
+      }
+    });
   },
 
   addFollowee: function(followee){
-    var followeeItemView = new Sonichunt.Views.UserItem({model: followee});
-    this.addSubview("ul.user-followees", followeeItemView);
+    var that = this;
+    followee.fetch({
+      success: function(){
+        var followeeItemView = new Sonichunt.Views.UserItem({model: followee, collection: that.model.followees()});
+        that.addSubview("ul.user-followees", followeeItemView);
+      }
+    })
   },
 
   render: function(){

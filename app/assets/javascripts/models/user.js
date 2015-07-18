@@ -6,6 +6,12 @@ Sonichunt.Models.User = Backbone.Model.extend({
     return json;
   },
 
+  follow: function () {
+    if (!this._follow) {
+      this._follow = new Sonichunt.Models.Follow();
+    }
+    return this._follow;
+  },
 
   gears: function() {
     this._gears = this._gears ||
@@ -38,6 +44,10 @@ Sonichunt.Models.User = Backbone.Model.extend({
   },
 
   parse: function (response) {
+    if (response.follow) {
+      this.follow().set(response.follow);
+      delete response.follow;
+    }
     if (response.gears && response.reviews && response.collections &&
         response.followers && response.followees) {
       this.reviews().set(response.reviews);

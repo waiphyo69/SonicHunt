@@ -1,1 +1,8 @@
 <a href=<%="#/users/"+ user.escape('id')%>> <%= user.escape('username') %> </a>
+<button class="follow-button">
+<% if ( user.follow().isNew() ){ %>
+  Follow
+<% }else {%>
+  Unfollow
+<% }%>
+</button>

@@ -14,3 +14,4 @@ end
 json.followees @user.followees do |followee|
   json.extract! followee, :id, :username, :email
 end
+json.followee_hash @followee_hash
