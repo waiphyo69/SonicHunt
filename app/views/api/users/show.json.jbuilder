@@ -8,3 +8,9 @@ end
 json.collections @user.collections do |collection|
   json.extract! collection, :id, :owner_id, :title, :image_url
 end
+json.followers @user.followers do |follower|
+  json.extract! follower, :id, :username, :email
+end
+json.followees @user.followees do |followee|
+  json.extract! followee, :id, :username, :email
+end

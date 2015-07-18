@@ -73,3 +73,11 @@ reviews = Review.create!([{
 comments = Comment.create!([{
   author_id: 1, parent_id: 1, parent_type: "Review", content: "Check out my review people :)"
   }])
+
+follows = Follow.create!([{
+  follower_id: 2, followee_id: 1
+  },{
+  follower_id: 3, followee_id: 1
+  },{
+  follower_id: 1, followee_id: 2
+  }])

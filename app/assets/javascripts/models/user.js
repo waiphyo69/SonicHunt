@@ -25,11 +25,26 @@ Sonichunt.Models.User = Backbone.Model.extend({
     return this._collections;
     },
 
+  followers: function () {
+    this._followers = this._followers ||
+      new Sonichunt.Collections.Users([], { followee: this });
+    return this._followers;
+  },
+
+  followees: function () {
+    this._followees = this._followees ||
+      new Sonichunt.Collections.Users([], { follower: this });
+    return this._followees;
+  },
+
   parse: function (response) {
-    if (response.gears && response.reviews && response.collections) {
+    if (response.gears && response.reviews && response.collections &&
+        response.followers && response.followees) {
       this.reviews().set(response.reviews);
       this.gears().set(response.gears);
       this.collections().set(response.collections);
+      this.followers().set(response.followers);
+      this.followees().set(response.followees);
       delete response.gears;
       delete response.reviews;
       delete response.collections;

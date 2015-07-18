@@ -1,11 +1,16 @@
 <nav class='user-info'>
   <h4> <%= user.escape('username') %> </h4>
   <h4> email: <%= user.escape('email') %> </h4>
+  <% if ( Sonichunt.currentUser.id === parseInt(user.escape('id'))) {%>
+    <h4> This is you </h4>
+  <%}%>
  </nav>
 <div class="user-header-container group">
   <a class="reviews">Reviews</a>
   <a class="gears">Gears</a>
   <a class="collections">Collections</a>
+  <a class="followers">Followers</a>
+  <a class="followees">Followees</a>
 </div>
 <div class='user-stuff-container group'>
   <div class='user-reviews-container'>
@@ -16,6 +21,12 @@
   </div>
   <div class='user-collections-container'>
   <ul class='user-collections'></ul>
+  </div>
+  <div class='user-followers-container'>
+  <ul class='user-followers'></ul>
+  </div>
+  <div class='user-followees-container'>
+  <ul class='user-followees'></ul>
   </div>
 </div>
 <a href="#">Back To Main</a>

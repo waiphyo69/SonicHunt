@@ -54,6 +54,7 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
   displayGears: function(event){
     event.preventDefault();
     $(".index div:not(.gear-container)").hide();
+    $(".new-gear-button").show();
     $("div.gear-container").show();
     $(".add-gear").css("display","inline");
   },
