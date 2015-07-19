@@ -24,17 +24,17 @@ music genres, music tastes and ear preferences ( they do not need to
 Users can:
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Follow other users
-- [ ] Create product reviews
-- [ ] Create gears
-- [ ] Save products and gears to collections
-- [ ] Have their personal page
-- [ ] Comment on others' reviews and gears
-- [ ] View products, reviews, gears, collection and other users' pages
-- [ ] Favorite gears
-- [ ] Vote up/down for a review
+- [X] Create accounts
+- [X] Create sessions (log in)
+- [X] Follow other users
+- [X] Create product reviews
+- [X] Create gears
+- [X] Save products and gears to collections
+- [X] Have their personal page
+- [X] Comment on others' reviews and gears
+- [X] View products, reviews, gears, collection and other users' pages
+- [X] Favorite gears
+- [X] Vote up/down for a review
 - [ ] Search for products and gears by product name
 - [ ] View a feed of products sorted by average score
 - [ ] View a feed of gears that contain a product sorted by popularity

@@ -1,11 +1,13 @@
 Sonichunt.Routers.Router = Backbone.Router.extend({
   initialize: function(){
+
     this.$rootEl = $("#main");
     this.products = Sonichunt.products;
     this.gears = Sonichunt.gears;
     this.collections = Sonichunt.collections;
     this.reviews = new Sonichunt.Collections.Reviews();
     this.users = new Sonichunt.Collections.Users();
+
     },
 
   routes: {
@@ -20,6 +22,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     "session/new": "signIn"
   },
 
+
   index: function(){
     this.products.fetch();
     this.gears.fetch();
@@ -33,6 +36,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.swapView(rootView);
   },
 
+
   productShow: function(id){
     var product = this.products.getorFetch(id);
     var productShowView = new Sonichunt.Views.ProductShow({
@@ -40,6 +44,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     });
     this.swapView(productShowView);
   },
+
 
   reviewShow: function(id){
     var review = this.reviews.getorFetch(id);
@@ -49,6 +54,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.swapView(reviewShowView);
   },
 
+
   gearShow: function(id){
     var gear = this.gears.getorFetch(id);
     var gearShowView = new Sonichunt.Views.GearShow({
@@ -56,6 +62,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     });
     this.swapView(gearShowView);
   },
+
 
   collectionShow: function(id){
     var that = this;
@@ -69,6 +76,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     })
   },
 
+
   userNew: function(){
       var user = new this.users.model();
       var formView = new Sonichunt.Views.UserForm({
@@ -77,6 +85,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       });
       this.swapView(formView);
     },
+
 
   userShow: function(id){
       var callback = this.userShow.bind(this, id);
@@ -88,6 +97,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
       this.swapView(showView);
     },
 
+
   signIn: function(callback){
     if (!this._requireSignedOut(callback)) { return; }
     var signInView = new Sonichunt.Views.SignIn({
@@ -95,6 +105,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     });
     this.swapView(signInView);
   },
+
 
   _requireSignedIn: function(callback){
     if (!Sonichunt.currentUser.isSignedIn()) {
@@ -106,6 +117,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     return true;
   },
 
+
   _requireSignedOut: function(callback){
     if (Sonichunt.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
@@ -116,10 +128,10 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     return true;
   },
 
+
   _goHome: function(){
     Backbone.history.navigate("", { trigger: true });
   },
-
 
 
   swapView: function(view){
