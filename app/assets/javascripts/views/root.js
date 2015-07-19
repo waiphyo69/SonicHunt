@@ -2,6 +2,7 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
   template: JST["root/index"],
 
   initialize: function (options){
+    var that = this;
     this.products = options.products;
     this.gears = options.gears;
     this.collections = options.collections;
@@ -17,6 +18,10 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.products.each(this.addProduct.bind(this));
     this.collections.each(this.addCollection.bind(this));
     this.addGearNewForm();
+    $("#search").keyup(function(event){
+      event.preventDefault();
+      that.renderSearch();
+    })
   },
 
   events: {
@@ -100,7 +105,39 @@ Sonichunt.Views.RootView = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  }
+  },
+
+  renderSearch: _.throttle( function(){
+    var input = $("#search").val();
+    newProducts = new Sonichunt.Collections.Products();
+    newGears = new Sonichunt.Collections.Gears();
+    newCollections = new Sonichunt.Collections.Collections();
+
+    Sonichunt.products.each(function (product){
+      if ( product.get('name').toLowerCase().includes(input) ){
+        newProducts.add(product);
+      }
+    });
+
+    Sonichunt.gears.each(function (gear){
+      if ( gear.get('title').toLowerCase().includes(input) ){
+        newGears.add(gear);
+      }
+    });
+
+    Sonichunt.collections.each(function (collection){
+      if ( collection.get('title').toLowerCase().includes(input) ){
+        newCollections.add(collection);
+      }
+    });
+
+    var searchView = new Sonichunt.Views.RootView({
+      products: newProducts,
+      gears: newGears,
+      collections: newCollections
+    });
+    Sonichunt.router.swapView(searchView);
+  }, 500 )
 
 
 })

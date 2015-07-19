@@ -4,7 +4,6 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
 
   className: "gear-form",
 
-  tagName: "form",
 
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)

@@ -14,9 +14,8 @@
  *= require_self
  */
 
-html, body, header, nav, a, ul, li,
-strong, main, section, img, div, p,
-form, fieldset, label, article, footer, small {
+html, body, header, nav, a, ul, li, form,
+strong, main, section, img, div, p, fieldset, label, article, footer, small {
   margin: 0;
   padding: 0;
   border: 0;
@@ -55,7 +54,7 @@ button:active {
 
 header{
   background-color: black;
-  color: white
+  color: white;
 }
 
 .group:after{
@@ -88,25 +87,11 @@ div.welcome h1{
 }
 
 
-.index div.product-container{
-  display: block;
-}
-
-
-.index div{
-  position: relative;
-  display: none;
-  float: left;
-  padding: 20px;
-  margin: 15px;
-  bottom: 220px;
-}
-
 .header-container{
   position: relative;
   background-color: black;
   height: 50px;
-  bottom: 200px;
+  bottom: 20px;
 }
 
 nav.user-info{
@@ -125,25 +110,8 @@ nav.user-info{
   top: 60px;
 }
 
-div.user-stuff-container{
-  display: block;
-  position: relative;
-  top: 400px;
-  left: 30px;
-}
 
-.user-stuff-container div.user-reviews-container{
-  display: block;
-}
 
-.user-stuff-container div{
-  display: none;
-  position: relative;
-  float: left;
-  padding: 20px;
-  margin: 15px;
-  bottom: 420px;
-}
 
 div.user-header-container{
   display: block;
@@ -156,6 +124,9 @@ div.user-header-container{
 
 
 .header-container a{
+  border: solid white 5px;
+  border-radius: 5px;
+  padding: 4px;
   position: relative;
   display: block;
   float: left;
@@ -177,18 +148,24 @@ div.user-header-container{
   font-weight: bold;
   color: white;
   cursor: pointer;
+  padding: 4px;
+  border: solid 2px white;
 }
 
+.header-container a:hover, .user-header-container a:hover {
+  background-color: gray;
+}
 
 div.collectionpopup{
+  margin: auto;
   position: relative;
   display: block;
-  top: 200px;
+  bottom: 850px;
   margin: auto;
   background-color: black;
   width: 200px;
   border-radius: 20px;
-  height: 120px;
+  height: 200px;
 }
 
 a.collection-add{
@@ -228,9 +205,6 @@ a.collection-add {
   cursor: pointer;
 }
 
-a.collection-add:hover {
-  color: red;
-}
 
 form.new-collection input{
   background-color: gray;
@@ -268,4 +242,37 @@ li.product-item div, li.gear-item div{
 .user-show div.collectionpopup{
   top: 630px;
   right: 250px;
+}
+
+
+
+
+div.search form input{
+  color: black;
+  position: relative;
+  height: 50px;
+  background-color: white;
+  float: right;
+  display: block;
+  width: 200px;
+  position: relative;
+  bottom: 60px;
+  border-radius: 20px;
+  right: 200px;
+  font-size: 20px;
+}
+
+a:hover{
+  background-color: red;
+}
+
+div.gear-form {
+  display: block;
+  position: relative;
+  bottom: 700px;
+  background-color: black;
+  height: 250px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px;
 }

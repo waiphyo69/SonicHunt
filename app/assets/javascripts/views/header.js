@@ -5,6 +5,8 @@ Sonichunt.Views.Header = Backbone.View.extend({
     this.render();
   },
 
+  className: "head group",
+
   events: {
     "click #sign-out-link": "signOut"
   },
