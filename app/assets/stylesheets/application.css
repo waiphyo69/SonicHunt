@@ -29,6 +29,10 @@ strong, main, section, img, div, p, fieldset, label, article, footer, small {
   background: transparent;
 }
 
+ul, li {
+  appearance: none;
+}
+
 button{
   background-color: black;
   color: white;
@@ -152,7 +156,7 @@ div.user-header-container{
 }
 
 .header-container a:hover, .user-header-container a:hover {
-  background-color: gray;
+  background-color: red;
 }
 
 div.collectionpopup{
@@ -165,6 +169,7 @@ div.collectionpopup{
   width: 200px;
   border-radius: 20px;
   height: 200px;
+  overflow: hidden;
 }
 
 a.collection-add{
@@ -239,8 +244,13 @@ li.product-item div, li.gear-item div{
 }
 
 .user-show div.collectionpopup{
-  top: 630px;
+  top: 360px;
   right: 250px;
+}
+
+.collectionpopup a:hover{
+  color: red;
+  background-color: black;
 }
 
 
@@ -254,7 +264,6 @@ div.search form input{
   float: right;
   display: block;
   width: 200px;
-  position: relative;
   bottom: 60px;
   border-radius: 20px;
   right: 200px;
@@ -282,4 +291,14 @@ div.user-stuff-container div{
 
 .user-stuff-container div.user-reviews-container{
   display: block;
+}
+
+.auth-button, .guest-login {
+  position: relative;
+  margin: auto;
+  padding: 5px;
+  border: solid white 1px;
+  z-index: 50;
+  border-radius: 5px;
+  cursor: pointer
 }
