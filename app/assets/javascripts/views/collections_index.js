@@ -20,8 +20,7 @@ Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
   },
 
   removeSelf: function(){
-    this.remove();
-    this.unbind();
+    this.undelegateEvents();
   },
 
 
@@ -55,6 +54,8 @@ Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
     var searchView = new Sonichunt.Views.CollectionsIndex({
       collection: newCollections
     });
-    Sonichunt.router.swapView(searchView);
+    if (Sonichunt.router._currentView.className === "collections-container") {
+      Sonichunt.router.swapView(searchView);
+    }
   }, 500 )
 })

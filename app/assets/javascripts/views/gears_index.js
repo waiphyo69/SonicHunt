@@ -11,7 +11,7 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
     this.collection.each(this.addGear.bind(this));
     this.addGearNewForm();
     $("#search").keyup(function(){
-          that.renderSearch();
+        that.renderSearch();
     });
   },
 
@@ -23,9 +23,9 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
   },
 
   removeSelf: function(){
-    this.remove();
-    this.unbind();
+    this.undelegateEvents();
   },
+
 
   removeGear: function (gear) {
     this.removeModelSubview(".gears", gear)
@@ -80,6 +80,8 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
     var searchView = new Sonichunt.Views.GearsIndex({
       collection: newGears
     });
-    Sonichunt.router.swapView(searchView);
+    if (Sonichunt.router._currentView.className === "gears-container") {
+      Sonichunt.router.swapView(searchView);
+    }
   }, 500 )
 })

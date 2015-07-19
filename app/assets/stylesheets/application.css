@@ -99,7 +99,6 @@ nav.user-info{
   background-color: gray;
   height: 200px;
   display: block;
-  text-align: center;
   font-weight: bold;
   border-radius: 5px;
   bottom: 20px
@@ -266,10 +265,10 @@ a:hover{
   background-color: red;
 }
 
-div.gear-form {
+.gear-form {
   display: block;
   position: relative;
-  bottom: 700px;
+  bottom: 280px;
   background-color: black;
   height: 250px;
   width: 300px;

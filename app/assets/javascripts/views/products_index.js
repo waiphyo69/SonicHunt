@@ -19,9 +19,9 @@ Sonichunt.Views.ProductsIndex = Backbone.CompositeView.extend({
   },
 
   removeSelf: function(){
-    this.remove();
-    this.unbind();
+    this.undelegateEvents();
   },
+
 
   addProduct: function(product){
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
@@ -50,6 +50,8 @@ Sonichunt.Views.ProductsIndex = Backbone.CompositeView.extend({
     var searchView = new Sonichunt.Views.ProductsIndex({
       collection: newProducts
     });
-    Sonichunt.router.swapView(searchView);
+    if (Sonichunt.router._currentView.className === "products-container") {
+      Sonichunt.router.swapView(searchView);
+    }
   }, 500 )
 })
