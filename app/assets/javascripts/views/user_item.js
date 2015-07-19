@@ -24,7 +24,6 @@ Sonichunt.Views.UserItem = Backbone.CompositeView.extend({
     this.model.follow().save({},{
       success: function(){
         that.collection.add(that.model,{ merge: true});
-        alert("Successfully followed!");
       }
     });
   },

@@ -1,12 +1,21 @@
 module Api
   class GearsController < ApiController
     def index
-      @gears= Gear.all
-      render json: @gears
+      @gears = Gear.all
+      if current_user
+        @upvoted_gear_hash = current_user.gear_upvote_hash
+      else
+        @upvoted_gear_hash = {}
+      end
+      render :index
     end
 
     def show
       @gear = Gear.find(params[:id])
+      @upvoted_gear_hash = {}
+      if current_user
+        @upvoted_gear_hash[@gear.id] = @gear.subscribeds.find_by(subscriber_id: current_user.id)
+      end
       render :show
     end
 

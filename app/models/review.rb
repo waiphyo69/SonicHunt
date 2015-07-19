@@ -12,7 +12,7 @@ class Review < ActiveRecord::Base
   class_name: "Product",
   inverse_of: :reviews
 
-  has_many :upvoter_ids,
+  has_many :upvoteds,
   foreign_key: :review_id,
   class_name: "Reviewtouser",
   inverse_of: :review

@@ -3,5 +3,13 @@
   <button class="review-delete">Delete</button>
   <button class="edit-review-button">Edit your review</button>
 <% } %>
+<% if ( parseInt(review.escape('owner_id')) !=  Sonichunt.currentUser.id){ %>
+  <button class="upvote-button">
+<% if ( review.upvote().isNew() ){ %>
+  Upvote
+<% }else {%>
+  Downvote
+<% }}%>
+</button>
 <div class='<%= "edit-review-"+ review.escape('id') %>' style="margin: auto;height: 300px; color: #fff; display: none; border: solid black 1px; text-align: center">
 </div>

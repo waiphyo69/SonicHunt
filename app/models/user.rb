@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   through: :followee_follows,
   source: :followee
 
-  has_many :gear_ids,
+  has_many :subscribeds,
   foreign_key: :subscriber_id,
   class_name: "Geartouser",
   inverse_of: :subscriber
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   through: :gear_ids,
   source: :gear
 
-  has_many :review_ids,
+  has_many :upvoteds,
   foreign_key: :upvoter_id,
   class_name: "Reviewtouser",
   inverse_of: :upvoter
@@ -105,6 +105,26 @@ class User < ActiveRecord::Base
     end
 
     follows_hash
+  end
+
+  def review_upvote_hash
+    zipped_upvoted_reviews = upvoteds.pluck(:review_id).zip(upvoteds)
+    reviews_hash = {}
+    zipped_upvoted_reviews.each do |(id, review)|
+      reviews_hash[id] = review
+    end
+
+    reviews_hash
+  end
+
+  def gear_upvote_hash
+    zipped_upvoted_gears = subscribeds.pluck(:gear_id).zip(subscribeds)
+    gears_hash = {}
+    zipped_upvoted_gears.each do |(id, gear)|
+      gears_hash[id] = gear
+    end
+
+    gears_hash
   end
 
   def ensure_session_token

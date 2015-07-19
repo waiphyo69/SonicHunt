@@ -5,6 +5,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync change", this.render);
+    this.listenTo(this.model.follow(), "sync change", this.render);
     this.listenTo(this.model.reviews(), "sync change", this.render);
     this.listenTo(this.model.gears(), "sync change", this.render);
     this.listenTo(this.model.collections(), "sync change", this.render);
@@ -32,6 +33,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     "click a.gears": "displayGears",
     "click a.followers": "displayFollowers",
     "click a.followees": "displayFollowees",
+    "click .show-follow-button": "toggleFollow"
   },
 
   removeFollower: function (follower) {
@@ -82,8 +84,13 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   addGear: function(gear){
-    var gearItemView = new Sonichunt.Views.GearItem({model: gear});
-    this.addSubview("ul.user-gears", gearItemView);
+    var that = this;
+    gear.fetch({
+      success: function(){
+        var gearItemView = new Sonichunt.Views.GearItem({model: gear});
+        that.addSubview("ul.user-gears", gearItemView);
+      }
+    })
   },
 
   addCollection: function(collection){
@@ -110,6 +117,32 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
       }
     })
   },
+  createFollow: function () {
+    var that = this;
+    this.model.follow().set({
+      follower_id: Sonichunt.currentUser.id,
+      followee_id: parseInt(that.model.escape('id'))
+    });
+    this.model.follow().save();
+  },
+
+  destroyFollow: function () {
+    this.model.follow().destroy({
+      success: function(model){
+        model.unset("id");
+      }
+    });
+  },
+
+  toggleFollow: function (event) {
+    event.preventDefault();
+    if (this.model.follow().isNew()) {
+      this.createFollow();
+    } else {
+      this.destroyFollow();
+    }
+  },
+
 
   render: function(){
     var html = this.template({ user: this.model });

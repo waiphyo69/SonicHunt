@@ -81,3 +81,15 @@ follows = Follow.create!([{
   },{
   follower_id: 1, followee_id: 2
   }])
+
+  reviewtousers = Reviewtouser.create!([{
+    review_id: 1, upvoter_id: 2
+    },{
+    review_id: 2, upvoter_id: 3
+    }])
+
+  geartousers = Geartouser.create!([{
+    gear_id: 1, subscriber_id: 2
+    },{
+    gear_id: 1, subscriber_id: 3
+    }])

@@ -5,3 +5,4 @@ json.comments @review.comments do |comment|
 end
 
 json.owner_name @review.owner.username
+json.upvote @upvoted_review_hash[@review.id]

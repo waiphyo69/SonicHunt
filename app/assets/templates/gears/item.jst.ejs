@@ -1,10 +1,18 @@
 <a href=<%="#/gears/"+gear.escape('id')%>><%= gear.escape('title') %></a>
-<% if ( gear.escape('owner_id') === Sonichunt.currentUser.id ) { %>
+<% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="edit-gear-button">Update your impressions!</button>
   <div class='<%= "edit-gear-"+ gear.escape('id') %>' style="margin: auto;height: 300px; color: #fff; display: none; text-align: center">
   </div>
 <% } %>
-<% if ( gear.escape('owner_id') === Sonichunt.currentUser.id ) { %>
+<% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="gear-delete">Delete</button>
 <% } %>
+<% if ( parseInt(gear.escape('owner_id')) !=  Sonichunt.currentUser.id){ %>
+  <button class="upvote-button">
+<% if ( gear.upvote().isNew() ){ %>
+  Upvote
+<% }else {%>
+  Downvote
+<% }}%>
+</button>
 <div class='<%= "add-to-collection-gear-"+ gear.escape('id') %>' style="margin: auto;height: 200px; color: #fff; display: none; text-align: center"></div>

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :users, only: [:index, :show, :create]
     resources :follows, only: [:create, :index, :destroy]
+    resources :geartousers, only: [:create, :index, :destroy]
+    resources :reviewtousers, only: [:create, :index, :destroy]
   end
 end

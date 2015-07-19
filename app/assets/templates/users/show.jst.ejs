@@ -3,6 +3,14 @@
   <h4> email: <%= user.escape('email') %> </h4>
   <% if ( Sonichunt.currentUser.id === parseInt(user.escape('id'))) {%>
     <h4> This is you </h4>
+    <% } else { %>
+      <button class="show-follow-button">
+      <% if ( user.follow().isNew() ){ %>
+        Follow
+      <% }else {%>
+        Unfollow
+      <% }%>
+      </button>
   <%}%>
  </nav>
 <div class="user-header-container group">

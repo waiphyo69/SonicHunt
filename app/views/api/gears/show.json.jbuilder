@@ -7,3 +7,4 @@ json.comments @gear.comments do |comment|
   json.author_name comment.author.username
 end
 json.owner_name @gear.owner.username
+json.upvote @upvoted_gear_hash[@gear.id]

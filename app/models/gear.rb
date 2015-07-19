@@ -20,7 +20,7 @@ class Gear < ActiveRecord::Base
     through: :product_ids,
     source: :product
 
-    has_many :subscriber_ids,
+    has_many :subscribeds,
     foreign_key: :gear_id,
     class_name: "Geartouser",
     inverse_of: :gear

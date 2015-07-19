@@ -3,12 +3,13 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	tagName: "li",
 
 	className: "gear-item",
-	
+
 	template: JST['gears/item'],
 
 	initialize: function(){
 		var that = this;
 		this.listenTo(this.model,"sync change",this.render);
+		this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
 		this.addEditForm();
 
 		$(document).click(function(e) {
@@ -37,7 +38,36 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		"click .edit-gear-button": "displayGearForm",
 		"click .gear-delete": "destroyGear",
 		"click 	a.collection-add": "addGearToCollection",
-		"click .submit-new-col": "submit"
+		"click .submit-new-col": "submit",
+		"click .upvote-button": "toggleUpvote"
+	},
+
+
+	createUpvote: function () {
+		var that = this;
+		this.model.upvote().set({
+			subscriber_id: Sonichunt.currentUser.id,
+			gear_id: parseInt(this.model.escape('id'))
+		});
+		this.model.upvote().save();
+	},
+
+	destroyUpvote: function () {
+		var that = this;
+		this.model.upvote().destroy({
+			success: function(model){
+				model.unset("id");
+			}
+		});
+	},
+
+	toggleUpvote: function (event) {
+		event.preventDefault();
+		if (this.model.upvote().isNew()) {
+			this.createUpvote();
+		} else {
+			this.destroyUpvote();
+		}
 	},
 
 	submit: function(){

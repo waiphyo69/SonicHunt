@@ -3,17 +3,47 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   tagName: "li",
 
   className: "review-item",
-  
+
   template: JST["reviews/item"],
 
   initialize: function(){
     this.listenTo( this.model, "sync change", this.render);
+    this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
     this.addEditForm();
   },
 
   events: {
     "click button.edit-review-button": "displayEditForm",
-    "click .review-delete": "destroyReview"
+    "click .review-delete": "destroyReview",
+    "click .upvote-button": "toggleUpvote"
+  },
+
+
+  createUpvote: function () {
+    var that = this;
+    this.model.upvote().set({
+      upvoter_id: Sonichunt.currentUser.id,
+      review_id: parseInt(this.model.escape('id'))
+    });
+    this.model.upvote().save();
+  },
+
+  destroyUpvote: function () {
+    var that = this;
+    this.model.upvote().destroy({
+      success: function(model){
+        model.unset("id");
+      }
+    });
+  },
+
+  toggleUpvote: function (event) {
+    event.preventDefault();
+    if (this.model.upvote().isNew()) {
+      this.createUpvote();
+    } else {
+      this.destroyUpvote();
+    }
   },
 
   destroyReview: function(){
