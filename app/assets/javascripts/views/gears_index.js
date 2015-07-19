@@ -4,16 +4,27 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
   className: "gears-container",
 
   initialize: function(){
+    var that = this;
     this.listenTo(this.collection, "sync change", this.render);
     this.listenTo(this.collection, "add", this.addGear);
     this.listenTo(this.collection, "remove", this.removeGear)
     this.collection.each(this.addGear.bind(this));
     this.addGearNewForm();
+    $("#search").keyup(function(){
+          that.renderSearch();
+    });
   },
 
 
   events: {
-    "click .new-gear-button": "displayNewGearForm"
+    "click .new-gear-button": "displayNewGearForm",
+    "click a.products": "removeSelf",
+    "click a.collections": "removeSelf"
+  },
+
+  removeSelf: function(){
+    this.remove();
+    this.unbind();
   },
 
   removeGear: function (gear) {
@@ -54,5 +65,21 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  }
+  },
+
+  renderSearch: _.throttle( function(){
+    var input = $("#search").val();
+    newGears = new Sonichunt.Collections.Gears();
+    Sonichunt.gears.each(function (gear){
+      if ( gear.get('title').toLowerCase().includes(input) ){
+        newGears.add(gear);
+      }
+    });
+
+
+    var searchView = new Sonichunt.Views.GearsIndex({
+      collection: newGears
+    });
+    Sonichunt.router.swapView(searchView);
+  }, 500 )
 })
