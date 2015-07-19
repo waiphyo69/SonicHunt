@@ -8,7 +8,17 @@ Sonichunt.Views.Header = Backbone.View.extend({
   className: "head group",
 
   events: {
-    "click #sign-out-link": "signOut"
+    "click #sign-out-link": "signOut",
+    "click .guest-login": "guestLogin"
+  },
+
+  guestLogin: function(event){
+    event.preventDefault();
+
+    Sonichunt.currentUser.signIn({
+      username: "bob123",
+      password: "bob123"
+    });
   },
 
   template: JST['shared/header'],

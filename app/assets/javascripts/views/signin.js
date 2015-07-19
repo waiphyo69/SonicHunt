@@ -31,6 +31,7 @@ Sonichunt.Views.SignIn = Backbone.View.extend({
     });
   },
 
+
   signInCallback: function(event){
     if(this.callback) {
       this.callback();

@@ -16,7 +16,7 @@ Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
 
   events: {
     "click a.products": "removeSelf",
-    "click a.collections": "removeSelf"
+    "click a.gears": "removeSelf"
   },
 
   removeSelf: function(){

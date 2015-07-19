@@ -276,3 +276,11 @@ div.gear-form {
   margin: auto;
   border-radius: 10px;
 }
+
+div.user-stuff-container div{
+  display: none;
+}
+
+.user-stuff-container div.user-reviews-container{
+  display: block;
+}

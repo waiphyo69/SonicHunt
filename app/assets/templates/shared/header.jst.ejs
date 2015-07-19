@@ -1,5 +1,6 @@
 <h1>SonicHunt!</h1>
-
+A meeting place for audio enthusiasts.
+<br>
 <% if(Sonichunt.currentUser.isSignedIn()) { %>
 
   <p>
@@ -13,6 +14,7 @@
   <p>
     <a href="#/users/new">Sign Up</a> |
     <a href="#/session/new">Sign In</a>
+    <button class="guest-login">DemoUser</button>
   </p>
 
 <% } %>
