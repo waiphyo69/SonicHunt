@@ -5,7 +5,7 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
   className: "gear-form",
 
   tagName: "form",
-  
+
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
     if ( this.model.isNew() ) {
@@ -18,7 +18,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
 
   events: {
   "click .submit": "submit",
-  "click .cancel": "cancel"
+  "click .cancel": "cancel",
+  "change #input-post-image": "fileInputChange"
   },
 
   cancel: function(){
@@ -34,19 +35,27 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
 
   submit: function(){
     event.preventDefault();
+    var headphone_id = $("#headphones option:selected").data("id");
+    var dac_id = $("#dacs option:selected").data("id");
+    var amplifier_id = $("#amplifiers option:selected").data("id");
     var that = this;
     var attrs = this.$el.serializeJSON();
+    var file = this.$("#input-gear-image")[0].files[0];
     if (this.model.isNew()) {
       $(".new-gear-button").css("display", "inline")
       $(".new-gear").css("display","none");
       attrs["owner_id"] = Sonichunt.currentUser.id;
-      this.model.set(attrs);
-      this.model.save({},{
+      var formData = new FormData();
+      formData.append("gear[title]", attrs["title"]);
+      formData.append("gear[image]", file);
+      formData.append("gear[impression]", attrs["impression"]);
+      formData.append("gear[owner_id]" , Sonichunt.currentUser.id);
+      that.model.saveFormData(formData,{
         success: function(){
+          var headphone = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: headphone_id });
+          var dac = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: dac_id });
+          var amplifier = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: amplifier_id });
           that.collection.add(that.model, {merge: true});
-          var headphone = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#headphones option:selected").data("id") });
-          var dac = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#dacs option:selected").data("id") });
-          var amplifier = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: $("#amplifiers option:selected").data("id") });
           headphone.save();
           dac.save();
           amplifier.save();
@@ -80,5 +89,27 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
     });
     this.$el.html(content);
     return this;
+  },
+
+  fileInputChange: function(event){
+    console.log(event.currentTarget.files[0]);
+
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      that._updatePreview(reader.result);
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      that._updatePreview("");
+    }
+  },
+
+  _updatePreview: function(src){
+    this.$el.find("#preview-post-image").attr("src", src);
   }
 })

@@ -1,5 +1,8 @@
 module Api
   class GearsController < ApiController
+
+    wrap_parameters false
+
     def index
       @gears = Gear.all
       if current_user
@@ -45,7 +48,7 @@ module Api
 
     private
     def gear_params
-      params.require(:gear).permit(:id, :owner_id, :title, :impression, :image_url, :popularity)
+      params.require(:gear).permit(:id, :owner_id, :title, :impression, :image, :popularity)
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717140311) do
+ActiveRecord::Schema.define(version: 20150720203247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,16 @@ ActiveRecord::Schema.define(version: 20150717140311) do
   add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
 
   create_table "gears", force: :cascade do |t|
-    t.integer  "owner_id",               null: false
-    t.string   "title",                  null: false
-    t.text     "impression",             null: false
-    t.string   "image_url",              null: false
-    t.integer  "popularity", default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "owner_id",                       null: false
+    t.string   "title",                          null: false
+    t.text     "impression",                     null: false
+    t.integer  "popularity",         default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "gears", ["owner_id"], name: "index_gears_on_owner_id", using: :btree

@@ -1,6 +1,10 @@
 class Gear < ActiveRecord::Base
 
-    validates :owner_id, :title, :impression, :image_url, :popularity, presence: true
+    validates :owner_id, :title, :impression, :popularity, presence: true
+
+    has_attached_file :image, default_url: "missing.png"
+
+    validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
     has_many :collection_ids,
     foreign_key: :gear_id,

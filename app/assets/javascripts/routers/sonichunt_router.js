@@ -56,7 +56,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   gearsIndex: function(){
     this.gears.fetch();
     var gearsIndexView = new Sonichunt.Views.GearsIndex({
-      collection: this.gears
+        collection: this.gears
     });
     this.swapView(gearsIndexView);
   },

@@ -36,8 +36,8 @@ products = Product.create!([{
     }])
 
 gears = Gear.create!([{
-  owner_id: 1, title: "Classical Music", impression: "Great pairing for classical music", image_url: "https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/11024378_556543914487500_810834771_n.jpg"
-  }])
+  owner_id: 1, title: "Classical Music", impression: "Great pairing for classical music", image: File.open("/users/waiphyo300/Documents/grad_stack.jpg")
+}]);
 
 gearstoproducts = Geartopro.create!([{
   gear_id: 1, product_id: 1

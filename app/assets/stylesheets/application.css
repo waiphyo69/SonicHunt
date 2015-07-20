@@ -284,14 +284,33 @@ li.product-item div, li.gear-item div{
   margin-right: 20px;
 }
 
+.review-item {
+  position: relative;
+}
+
 .user-show .review-item div{
   position: absolute;
   z-index: 100;
-  top: 600px;
   width: 200px;
+  margin: auto;
+  height: 300px;
   left: 180px;
+  display: block;
+  color: #fff;
   border-radius: 5px;
   background-color: black;
+}
+
+.review-item div{
+  z-index: 100;
+  position: absolute;
+  left: 100px;
+  width: 200px;
+  margin: auto;
+  display: block;
+  background-color: black;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .user-show div.collectionpopup{
@@ -309,7 +328,7 @@ li.product-item div, li.gear-item div{
 div.search form input{
   color: black;
   position: relative;
-  height: 50px;
+  height: 30px;
   background-color: white;
   float: right;
   display: block;
@@ -366,4 +385,15 @@ img.show{
   width: 200px;
   height: 200px;
   margin: auto 0 ;
+}
+
+a.product-back {
+  width: 150px;
+  margin-top: 20px;
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  background: black;
 }

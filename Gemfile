@@ -33,6 +33,14 @@ gem 'backbone-on-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'ejs'
+
+gem 'figaro'
+
+gem 'paperclip'
+
+gem 'aws-sdk', '~> 1.6'
+
 group :production do
   gem 'rails_12factor'
 end
