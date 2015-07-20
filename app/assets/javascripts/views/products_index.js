@@ -19,7 +19,7 @@ Sonichunt.Views.ProductsIndex = Backbone.CompositeView.extend({
   },
 
   removeSelf: function(){
-    this.undelegateEvents();
+    this.remove();
   },
 
 

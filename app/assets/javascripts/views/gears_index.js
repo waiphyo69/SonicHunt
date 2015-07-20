@@ -23,7 +23,7 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
   },
 
   removeSelf: function(){
-    this.undelegateEvents();
+    this.remove();
   },
 
 

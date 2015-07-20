@@ -23,6 +23,11 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     this.model.collections().each(this.addCollection.bind(this));
     this.model.followers().each(this.addFollower.bind(this));
     this.model.followees().each(this.addFollowee.bind(this));
+    $(document).on("click","#search", function(){
+      if (Sonichunt.router._currentView.className === "user-show group") {
+        Backbone.history.navigate("", { trigger: true });
+      }
+    })
   },
 
   template: JST['users/show'],
