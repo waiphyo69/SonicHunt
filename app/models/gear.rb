@@ -26,7 +26,7 @@ class Gear < ActiveRecord::Base
     inverse_of: :gear
 
     has_many :subscribers,
-    through: :subscriber_ids,
+    through: :subscribeds,
     source: :subscriber
 
     belongs_to :owner,

@@ -10,6 +10,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var that = this;
 		this.listenTo(this.model,"sync change",this.render);
 		this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
+		this.listenTo( this.model.upvoters(), "sync add remove", this.render );
 		this.addEditForm();
 
 		$(document).click(function(e) {
@@ -50,12 +51,14 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 			gear_id: parseInt(this.model.escape('id'))
 		});
 		this.model.upvote().save();
+		this.model.upvoters().add(Sonichunt.currentUser);
 	},
 
 	destroyUpvote: function () {
 		var that = this;
 		this.model.upvote().destroy({
 			success: function(model){
+				that.model.upvoters().remove(Sonichunt.currentUser);
 				model.unset("id");
 			}
 		});
@@ -169,8 +172,8 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	render: function(){
-
-		var content = this.template({gear: this.model});
+		var numUpvoters = this.model.upvoters().length;
+		var content = this.template({gear: this.model, numUpvoters: numUpvoters});
 		this.$el.html(content);
 		this.$el.append("<button class='add-gear'>Add To Collection</button>");
 		this.attachSubviews();

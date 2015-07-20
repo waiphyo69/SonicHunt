@@ -1,4 +1,5 @@
 <a href=<%="#/products/"+product.escape('id')%>>
+  <img class="thumb" src="<%=product.escape('image_url')%>">
   <%= product.escape('name') %>
 </a>
 <div class='<%= "add-to-collection-product-"+ product.escape('id') %>' style="margin: auto; width: 100%;height: 200px; color: #fff; display: none; text-align: center"></div>

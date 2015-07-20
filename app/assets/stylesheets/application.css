@@ -27,6 +27,20 @@ strong, main, section, img, div, p, fieldset, label, article, footer, small {
   vertical-align: inherit;
   color: inherit;
   background: transparent;
+  box-sizing: inherit;
+}
+
+body{
+  box-sizing: content-box;
+  font-style: sans-serif;
+  font-size: 16px;
+}
+
+
+img{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 ul, li {
@@ -54,6 +68,10 @@ button:hover,
 button:focus,
 button:active {
     transform: scale(1.1);
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 header{
@@ -93,9 +111,11 @@ div.welcome h1{
 
 .header-container{
   position: relative;
-  background-color: black;
-  height: 50px;
-  bottom: 20px;
+  background-color: #C0C0C0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  bottom: 9px;
+  padding: 20px;
 }
 
 nav.user-info{
@@ -127,18 +147,13 @@ div.user-header-container{
 
 
 .header-container a{
-  border: solid white 5px;
-  border-radius: 5px;
-  padding: 4px;
   position: relative;
-  display: block;
   float: left;
-  margin-right: 180px;
-  left: 150px;
-  top: 15px;
-  font-weight: bold;
-  color: white;
+  color: black;
+  display: block;
+  margin-right: 20px;
   cursor: pointer;
+  left: 50px;
 }
 
 .user-header-container a{
@@ -156,7 +171,7 @@ div.user-header-container{
 }
 
 .header-container a:hover, .user-header-container a:hover {
-  background-color: red;
+  color: red;
 }
 
 div.collectionpopup{
@@ -222,8 +237,20 @@ div.new-gear{
   top: 5px;
 }
 
-li.product-item, li.gear-item{
-  position: relative
+li.product-item, li.gear-item, li.review-item{
+  position: relative;
+  display: block;
+  height: 100px;
+  width: 100%;
+}
+
+li.product-item:hover, li.gear-item:hover, li.review-item:hover{
+  background: gray;
+}
+
+li.product-item  a{
+  position: relative;
+  margin-top: 20px;
 }
 
 li.product-item div, li.gear-item div{
@@ -231,6 +258,17 @@ li.product-item div, li.gear-item div{
   top: 280px;
   left: 100px;
   z-index: 100
+}
+
+.thumb {
+  float: left;
+  display: block;
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-right: 20px;
 }
 
 .user-show .review-item div{
@@ -270,9 +308,7 @@ div.search form input{
   font-size: 20px;
 }
 
-a:hover{
-  background-color: red;
-}
+
 
 .gear-form {
   display: block;
@@ -301,4 +337,13 @@ div.user-stuff-container div{
   z-index: 50;
   border-radius: 5px;
   cursor: pointer
+}
+
+.auth-button:hover, .guest-login:hover {
+  background: red;
+}
+
+.upvote-button{
+  float: left;
+  margin-right: 20px;
 }

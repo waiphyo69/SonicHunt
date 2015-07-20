@@ -18,7 +18,7 @@ class Review < ActiveRecord::Base
   inverse_of: :review
 
   has_many :upvoters,
-  through: :upvoter_ids,
+  through: :upvoteds,
   source: :upvoter
 
   has_many :comments, as: :parent

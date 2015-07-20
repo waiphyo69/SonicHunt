@@ -7,7 +7,7 @@ Sonichunt.Models.Gear = Backbone.Model.extend({
     }
     return this._upvote;
   },
-  
+
   products: function() {
     this._products = this._products ||
       new Sonichunt.Collections.Products([], { gear: this });
@@ -20,11 +20,22 @@ Sonichunt.Models.Gear = Backbone.Model.extend({
     return this._comments;
     },
 
+  upvoters: function () {
+    this._upvoters = this._upvoters ||
+      new Sonichunt.Collections.Users([], { gear: this });
+    return this._upvoters;
+    },
+
+
   parse: function (response) {
     if (response.upvote) {
       this.upvote().set(response.upvote);
       delete response.upvote;
       }
+    if (response.upvoters) {
+        this.upvoters().set(response.upvoters);
+        delete response.upvoters;
+        }
     if (response.products && response.comments) {
       this.comments().set(response.comments);
       this.products().set(response.products);

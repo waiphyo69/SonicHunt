@@ -2,13 +2,14 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
 
   tagName: "li",
 
-  className: "review-item",
+  className: "review-item group",
 
   template: JST["reviews/item"],
 
   initialize: function(){
     this.listenTo( this.model, "sync change", this.render);
     this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
+    this.listenTo( this.model.upvoters(), "sync add remove", this.render );
     this.addEditForm();
   },
 
@@ -26,12 +27,14 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
       review_id: parseInt(this.model.escape('id'))
     });
     this.model.upvote().save();
+    this.model.upvoters().add(Sonichunt.currentUser);
   },
 
   destroyUpvote: function () {
     var that = this;
     this.model.upvote().destroy({
       success: function(model){
+        that.model.upvoters().remove(Sonichunt.currentUser);
         model.unset("id");
       }
     });
@@ -66,7 +69,8 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    var content = this.template({review: this.model});
+    var numUpvoters = this.model.upvoters().length;
+    var content = this.template({review: this.model, numUpvoters: numUpvoters});
     this.$el.html(content);
     this.attachSubviews();
     return this;
