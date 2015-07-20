@@ -196,10 +196,19 @@ a.collection-add{
 
 
 
-div.gear-show div{
+.gear-section{
   display: block;
   float: left;
   text-align: center;
+  margin-left: 200px;
+}
+
+.gear-info{
+  position: relative;
+  display: block;
+  float: left;
+  text-align: center;
+  margin-left: 50px;
 }
 
 div.product-show > div{
@@ -242,6 +251,10 @@ li.product-item, li.gear-item, li.review-item{
   display: block;
   height: 100px;
   width: 100%;
+}
+
+li.review-item{
+  height: 60px;
 }
 
 li.product-item:hover, li.gear-item:hover, li.review-item:hover{
@@ -288,7 +301,6 @@ li.product-item div, li.gear-item div{
 
 .collectionpopup a:hover{
   color: red;
-  background-color: black;
 }
 
 
@@ -346,4 +358,12 @@ div.user-stuff-container div{
 .upvote-button{
   float: left;
   margin-right: 20px;
+}
+
+img.show{
+  display: block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: auto 0 ;
 }

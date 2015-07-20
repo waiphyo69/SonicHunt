@@ -8,7 +8,7 @@
    &#9650 <br> <%= numUpvoters %>
  </button>
  <% }}%>
-<a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %></a>
+<a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %><br>By: <%= review.escape('owner_name') %></a>
 <% if ( parseInt(review.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="review-delete">Delete</button>
   <button class="edit-review-button">Edit your review</button>

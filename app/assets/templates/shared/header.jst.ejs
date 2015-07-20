@@ -8,6 +8,7 @@ A meeting place for audio enthusiasts.
     Signed in as:
     <a class="auth-button" href="#users/<%= Sonichunt.currentUser.id %>"><%= Sonichunt.currentUser.escape("username") %></a> |
     <a class="auth-button" href="#" id="sign-out-link">Sign Out</a>
+    <a class="auth-button" href="">Home</a>
   </p>
 
 <% } else { %>
@@ -16,6 +17,7 @@ A meeting place for audio enthusiasts.
     <a class="auth-button" href="#/users/new">Sign Up</a> |
     <a class="auth-button" href="#/session/new">Sign In</a>
     <a class="guest-login">DemoUser</a>
+    <a class="auth-button" href="">Home</a>
   </p>
 
 <% } %>
