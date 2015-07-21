@@ -2,6 +2,8 @@ Sonichunt.Views.CollectionItem = Backbone.CompositeView.extend({
 
 	tagName: "li",
 
+	className: "collection-item",
+	
 	template: JST["collections/item"],
 
 	initialize: function(){

@@ -13,8 +13,8 @@
 <%= gear.escape('title') %></a>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="edit-gear-button">Update your impressions!</button>
-  <div class='<%= "edit-gear-"+ gear.escape('id') %>' style="margin: auto;width: 200px;height: 180px; color: #fff; display: none; text-align: center">
-  </div>
+  <edit-gear class='<%= "edit-gear-"+ gear.escape('id') %>'>
+  </edit-gear>
 <% } %>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="gear-delete">Delete</button>

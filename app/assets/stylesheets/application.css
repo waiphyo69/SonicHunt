@@ -43,8 +43,8 @@ img{
   height: auto;
 }
 
-ul, li {
-  appearance: none;
+ul {
+  list-style: none;
 }
 
 button{
@@ -244,6 +244,17 @@ div.new-gear{
   display: none;
   position: relative;
   top: 5px;
+  color: white;
+  background-color: black;
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  right: 250px;
+  bottom: 30px;
+}
+
+.gear-form input{
+  margin: 20px 0;
 }
 
 li.product-item, li.gear-item, li.review-item{
@@ -322,6 +333,14 @@ li.product-item div, li.gear-item div{
   color: red;
 }
 
+edit-gear {
+  position: absolute;
+  display: none;
+  background: black;
+  color: white;
+  width: 300px;
+}
+
 
 
 
@@ -340,17 +359,6 @@ div.search form input{
 }
 
 
-
-.gear-form {
-  display: block;
-  position: relative;
-  bottom: 280px;
-  background-color: black;
-  height: 250px;
-  width: 300px;
-  margin: auto;
-  border-radius: 10px;
-}
 
 div.user-stuff-container div{
   display: none;
@@ -396,4 +404,30 @@ a.product-back {
   border: 1px solid white;
   color: white;
   background: black;
+}
+
+.coll-thumb {
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 240px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.collection-item {
+  float: left;
+  position: relative;
+}
+
+.collection-item img:hover {
+  background: red;
+}
+
+.collection-item h2{
+  color: gray;
+  margin: auto;
+  position: absolute;
+  top: 80px;
 }

@@ -1,3 +1,4 @@
 <a href=<%="#/collections/"+collection.escape('id')%>>
-  <%= collection.escape('title') %>
+  <img class="coll-thumb" src=<%=collection.escape('image_url')%>>
+  <h2><%= collection.escape('title') %></h2>
 </a>

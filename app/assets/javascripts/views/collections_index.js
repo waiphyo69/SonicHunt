@@ -1,7 +1,7 @@
 Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
   template: JST["collections/index"],
 
-  className: "collections-container",
+  className: "collections-container group",
 
   initialize: function(){
     var that = this;

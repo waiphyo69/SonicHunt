@@ -1,7 +1,7 @@
 <% if (gear.isNew()) { %>
   <h1>New Gear</h1>
 <% } else { %>
-  <h1>Update Your Impressions On the Gear!</h1>
+  <h1>Update Impressions On Your Gear!</h1>
 <% } %>
 
 <% if (gear.isNew()) { %>
@@ -41,8 +41,8 @@
 <% } %>
 
 <label>Impression:
-  <input type='textarea' name='impression' value='<%=gear.escape('impression')%>'>
-</label>
+  <textarea name='impression' value='<%=gear.escape('impression')%>'>
+</textarea>
 
 <br>
 
