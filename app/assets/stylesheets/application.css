@@ -413,12 +413,16 @@ a.product-back {
   height: 240px;
   border: 1px solid #000;
   border-radius: 5px;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .collection-item {
+  display: block;
   float: left;
   position: relative;
+  width: 150px;
+  margin-right: 40px;
+  text-align: center;
 }
 
 .collection-item img:hover {
@@ -428,6 +432,6 @@ a.product-back {
 .collection-item h2{
   color: gray;
   margin: auto;
-  position: absolute;
-  top: 80px;
+  position: relative;
+  bottom: 150px;
 }
