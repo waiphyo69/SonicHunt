@@ -5,9 +5,11 @@ class Gear < ActiveRecord::Base
     has_attached_file :image,
     default_url: "missing.png",
     :storage => :s3,
-    :bucket => ENV["s3_bucket"],
-    :access_key_id => ENV["s3_access_key_id"],
-    :secret_access_key => ENV["s3_secret_access_key"]
+    s3_credentials: {
+        access_key_id: ENV["s3_access_key_id"],
+        secret_access_key: ENV["s3_secret_access_key"],
+        bucket: ENV["s3_bucket"]
+        }
 
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
