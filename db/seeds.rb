@@ -36,7 +36,7 @@ products = Product.create!([{
     }])
 
 gears = Gear.create!([{
-  owner_id: 1, title: "Classical Music", impression: "Great pairing for classical music", image: File.open("/users/waiphyo300/Documents/grad_stack.jpg")
+  owner_id: 1, title: "Classical Music", impression: "Great pairing for classical music", image: File.open(Rails.root.join("app/assets/images/seed_images/grad_stack.jpg"))
 }]);
 
 gearstoproducts = Geartopro.create!([{

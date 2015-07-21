@@ -1,6 +1,6 @@
 json.partial! "api/users/user", user: @user
 json.gears @user.gears do |gear|
-  json.extract! gear, :id, :owner_id, :title, :impression, :image_url, :popularity
+  json.extract! gear, :id, :owner_id, :title, :impression, :image, :popularity
 end
 json.reviews @user.reviews do |review|
   json.extract! review, :id, :owner_id, :product_id, :description, :score, :helpfulness, :title
