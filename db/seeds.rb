@@ -44,9 +44,9 @@ products = Product.create!([{
 gears = Gear.create!([{
   owner_id: 1, title: "My first audiophile stack", impression: "I cannot get enough of this pairing. I mainly listen to Jazz, Classical and Pop on these.", image: File.open(Rails.root.join("app/assets/images/seed_images/grad_stack.jpg"))
   },{
-  owner_id: 2, title: "Kate's audio bliss", impression: "My stack might not be high end in terms of how much they cost but these Audiotechnica cans synergize so well with the little Dragonfly.", image: File.open(Rails.root.join("app/assets/images/seed_images/audragon_stack.jpeg"))
+  owner_id: 3, title: "Kate's audio bliss", impression: "My stack might not be high end in terms of how much they cost but these Audiotechnica cans synergize so well with the little Dragonfly.", image: File.open(Rails.root.join("app/assets/images/seed_images/audragon_stack.jpeg"))
   },{
-  owner_id: 3, title: "Journey into open end", impression: "Sennheiser HD700 paired with wooaudio WA7 tube amps. Need I say more?", image: File.open(Rails.root.join("app/assets/images/seed_images/sennwoo_stack.jpg"))
+  owner_id: 2, title: "Journey into open end", impression: "Sennheiser HD700 paired with wooaudio WA7 tube amps. Need I say more?", image: File.open(Rails.root.join("app/assets/images/seed_images/sennwoo_stack.jpg"))
     }]);
 
 gearstoproducts = Geartopro.create!([{
