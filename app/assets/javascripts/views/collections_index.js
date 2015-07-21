@@ -54,7 +54,7 @@ Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
     var searchView = new Sonichunt.Views.CollectionsIndex({
       collection: newCollections
     });
-    if (Sonichunt.router._currentView.className === "collections-container") {
+    if (Sonichunt.router._currentView.className === "collections-container group") {
       Sonichunt.router.swapView(searchView);
     }
   }, 500 )

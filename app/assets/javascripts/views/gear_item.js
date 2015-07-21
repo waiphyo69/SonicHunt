@@ -27,6 +27,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 				}
 		});
 
+
 		Sonichunt.collections.fetch({
 			success: function(){
 				that.addCollectionNew();
