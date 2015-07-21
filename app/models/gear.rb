@@ -2,7 +2,7 @@ class Gear < ActiveRecord::Base
 
     validates :owner_id, :title, :impression, :popularity, presence: true
 
-    has_attached_file :image, default_url: "missing.png"
+    has_attached_file :image, default_url: "missing.png", bucket: ENV["s3_bucket"]
 
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
