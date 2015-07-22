@@ -847,7 +847,7 @@ svg:hover {
   margin-bottom: 20px;
 }
 
-.submit, .cancel, .new-review-button, .follow-button{
+button.submit, button.cancel, .new-review-button, .follow-button{
   padding: 12px;
   display: block;
   color: white;
