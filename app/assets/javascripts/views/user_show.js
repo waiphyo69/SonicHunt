@@ -4,6 +4,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
   className: "user-show group",
 
   initialize: function(options){
+    
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.follow(), "sync change remove", this.render);
     this.listenTo(this.model.reviews(), "sync change remove", this.render);
@@ -26,6 +27,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     this.model.followers().each(this.addFollower.bind(this));
     this.model.followees().each(this.addFollowee.bind(this));
     this.addImageEditView();
+
     $(document).on("click","#search", function(){
       if (Sonichunt.router._currentView.className === "user-show group") {
         Backbone.history.navigate("#/products", { trigger: true });

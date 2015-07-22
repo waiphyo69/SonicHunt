@@ -8,7 +8,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     this.reviews = new Sonichunt.Collections.Reviews();
     this.users = new Sonichunt.Collections.Users();
 
-    },
+  },
 
   routes: {
     "products": "productsIndex",

@@ -48,7 +48,13 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
   },
 
   removeReview: function (review) {
+    var that = this;
     this.removeModelSubview(".reviews", review)
+    this.model.save({},{
+      success: function(){
+        Backbone.history.navigate("#/products/"+that.model.escape('id'), {trigger: true})
+      }
+    })
   },
 
 

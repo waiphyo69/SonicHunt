@@ -1,7 +1,6 @@
-<div class="productshow group">
+    <img class="show" src=<%= product.escape('image_url')%>>
     <div class="product-info">
       <h1> <%= product.escape('name') %> </h1>
-      <img class="show" src=<%= product.escape('image_url')%>>
       <h2> Category: <%= product.escape('category')%> </h2>
       <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
       <br>
@@ -12,10 +11,9 @@
       <h1> Reviews </h1>
       <ul class="reviews">
       </ul>
-    </div>
-  <div class="new-review"></div>
-  </div>
   <% if (Sonichunt.currentUser.product_id != product.escape('id') ) {%>
       <button class="new-review-button">Add your review</button>
   <% } %>
 <br>
+<div class="new-review"></div>
+</div>

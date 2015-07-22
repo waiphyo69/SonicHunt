@@ -5,16 +5,16 @@
 <% } %>
 
 <label>Title:
-<input type='text' name='title' value='<%=review.escape('title')%>'>
+<input class="input-text" type='text' name='title' value='<%=review.escape('title')%>'>
 </label>
 <br>
 <label>Description:
 <br>
-<textarea name='description' value='<%=review.escape('description')%>'></textarea>
+<textarea class="input-textarea" name='description' value='<%=review.escape('description')%>'></textarea>
 </label>
 <br>
 <label>Score:
-<input type='number' name='score' value='<%=review.escape('score')%>'>
+<input class="input-number" type='number' name='score' value='<%=review.escape('score')%>'>
 </label>
 <br>
 <button class='submit'>Submit</button>

@@ -15,7 +15,7 @@
  */
 
 html, body, header, nav, a, ul, li, form,
-strong, main, section, img, div, p, fieldset, label, article, footer, small, h1 {
+strong, main, section, img, div, p, fieldset, label, article, footer, small {
   margin: 0;
   padding: 0;
   border: 0;
@@ -78,6 +78,7 @@ button:hover {
 }
 
 header{
+  z-index: 100;
   position: relative;
   padding: 15px;
   display: block;
@@ -146,6 +147,7 @@ nav.user-info{
   margin-right: 30px;
   cursor: pointer;
   padding: 20px 0;
+  overflow: hidden;
 }
 
 .user-header-container a{
@@ -401,11 +403,12 @@ div.user-header-container{
 }
 
 img.show{
+  float: left;
   display: block;
   position: relative;
-  width: 200px;
-  height: 200px;
-  margin: auto 0 ;
+  width: 300px;
+  height: 300px;
+  margin: auto 15px;
 }
 
 a.product-back {
@@ -725,6 +728,7 @@ button.add-product, button.add-gear {
   white-space: nowrap;
   overflow: hidden;
   right: 5px;
+  width: 200px;
 }
 
 .user-dropdown:after{
@@ -811,8 +815,8 @@ svg:hover {
 .user-item-thumb{
   position: relative;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border: 1px solid #000;
   border-radius: 50%;
   margin: auto;
@@ -827,7 +831,70 @@ svg:hover {
   position: relative;
   border: 1px solid #838383;
   display: block;
-  margin: auto;
-  width: 150px;
+  margin-left: 20px;
+  width: 180px;
   padding: 20px;
+  border-radius: 5px;
+}
+
+.user-item a{
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.user-item img{
+  margin-bottom: 20px;
+}
+
+.submit, .cancel, .new-review-button, .follow-button{
+  padding: 12px;
+  display: block;
+  color: white;
+  background: #534540;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+.follow-button:hover {
+  background: #756966;
+}
+
+div.product-info{
+  color: black;
+  display: block;
+  float: left;
+  width: 400px;
+  padding: 40px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  line-height: 1.5em;
+  background: #edeceb;
+  min-height: 600px;
+  text-align: center;
+}
+
+
+div.review-section{
+  padding-left: 20px;
+  padding-top: 30px;
+  width: 500px;
+  color: black;
+  float: left;
+  min-height: 650px;
+  background-color: #fbfbfb;
+}
+
+.review-form{
+  padding: 19px;
+  display: block;
+  background: #eee;
+  font-size: 24px;
+  width: 600px;
+  text-align: center;
+  background: transparent;
+  margin: auto;
+  text-align: center;
 }
