@@ -1,4 +1,6 @@
-<a href=<%="#/users/"+ user.escape('id')%>> <%= user.escape('username') %> </a>
+<a href=<%="#/users/"+ user.escape('id')%>>
+  <%= user.escape('username') %> <img class="user-item-thumb" src=<%= user.escape('image_url') %>>
+</a>
 <% if ( parseInt(user.escape('id')) !=  Sonichunt.currentUser.id){ %>
   <button class="follow-button">
 <% if ( user.follow().isNew() ){ %>

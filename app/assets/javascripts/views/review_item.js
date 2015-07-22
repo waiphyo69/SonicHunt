@@ -50,9 +50,13 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   destroyReview: function(){
+    var that = this;
     event.preventDefault();
-    this.model.destroy();
-    alert("Review successfully deleted!")
+    this.model.destroy({
+      success: function(){
+        that.remove();
+      }
+    });
   },
 
   displayEditForm: function(){

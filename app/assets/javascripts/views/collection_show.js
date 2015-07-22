@@ -67,11 +67,16 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
   },
 
   addGear: function(gear){
-    var gearItemView = new Sonichunt.Views.GearItem({model: gear});
-    this.addSubview(".gears", gearItemView);
-    if ( Sonichunt.currentUser.id === parseInt( this.model.escape('owner_id') ) ) {
-      gearItemView.$el.append( "<button class='remove-gear-from-col' data-id="+gear.escape('id') + ">Remove</button>" );
-    };
+    var that = this;
+    gear.fetch({
+      success: function(){
+        var gearItemView = new Sonichunt.Views.GearItem({model: gear});
+        that.addSubview(".gears", gearItemView);
+        if ( Sonichunt.currentUser.id === parseInt( that.model.escape('owner_id') ) ) {
+          gearItemView.$el.append( "<button class='remove-gear-from-col' data-id="+gear.escape('id') + ">Remove</button>" );
+        };
+      }
+    })
   },
 
   render: function(){

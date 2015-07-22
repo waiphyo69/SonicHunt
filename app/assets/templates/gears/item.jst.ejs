@@ -11,7 +11,7 @@
 <img class="thumb" src="<%=gear.escape('image_url')%>">
 <item-title><%= gear.escape('title') %></item-title>
 <br>
-<item-description>By <%= gear.escape('owner_name') %><item-description>
+<item-description group>By <%= gear.escape('owner_name') %><img class="item-owner-thumb" src=<%= gear.escape('owner_image_url')%>></item-description>
 </a>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <a class="edit-gear-button">&#10000</a>

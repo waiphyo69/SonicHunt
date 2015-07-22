@@ -11,4 +11,5 @@ json.upvoters @gear.subscribers do |upvoter|
   json.extract! upvoter, :id, :username, :email
 end
 json.owner_name @gear.owner.username
+json.owner_image_url asset_path(@gear.owner.image.url(:original))
 json.upvote @upvoted_gear_hash[@gear.id]

@@ -14,6 +14,19 @@ Sonichunt.Views.Header = Backbone.View.extend({
           $("#search").animate({"width": "200px"});
 				}
       });
+      $(document).click(function(e) {
+
+          var target = e.target;
+
+          if ( $(".user-dropdown").css("display") === "block" &&
+          !$(target).parents().is(".user-dropdown") &&
+          $(target).attr("class") != "svg" &&
+          $(target).attr("class") != "profile-pic-thumb"){
+
+              $('.user-dropdown').hide();
+
+        }
+      });
   },
 
   className: "head group",
@@ -21,12 +34,13 @@ Sonichunt.Views.Header = Backbone.View.extend({
   events: {
     "click #sign-out-link": "signOut",
     "click .guest-login": "guestLogin",
-    "click svg": "showdropDown"
+    "click .svg": "showdropDown",
+    "click .profile-pic-thumb": "showdropDown"
   },
 
 
   showdropDown: function(){
-    $('.user-dropdown').toggle();
+    $('.user-dropdown').show();
   },
 
   template: JST['shared/header'],

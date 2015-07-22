@@ -5,14 +5,16 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync change", this.render);
-    this.listenTo(this.model.follow(), "sync change", this.render);
-    this.listenTo(this.model.reviews(), "sync change", this.render);
-    this.listenTo(this.model.gears(), "sync change", this.render);
-    this.listenTo(this.model.collections(), "sync change", this.render);
+    this.listenTo(this.model.follow(), "sync change remove", this.render);
+    this.listenTo(this.model.reviews(), "sync change remove", this.render);
+    this.listenTo(this.model.gears(), "sync change remove", this.render);
+    this.listenTo(this.model.collections(), "sync change remove", this.render);
     this.listenTo(this.model.followers(), "sync change remove", this.render);
     this.listenTo(this.model.followees(), "sync change remove", this.render);
     this.listenTo(this.model.followers(), "remove", this.removeFollower);
     this.listenTo(this.model.followees(), "remove", this.removeFollowee);
+    this.listenTo(this.model.gears(), "remove", this.removeGear);
+    this.listenTo(this.model.reviews(), "remove", this.removeReview);
     this.listenTo(this.model.reviews(), "add", this.addReview);
     this.listenTo(this.model.gears(), "add", this.addGear);
     this.listenTo(this.model.collections(), "add", this.addCollection);
@@ -26,7 +28,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     this.addImageEditView();
     $(document).on("click","#search", function(){
       if (Sonichunt.router._currentView.className === "user-show group") {
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("#/products", { trigger: true });
       }
     })
   },
@@ -42,6 +44,14 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     "click .show-follow-button": "toggleFollow",
     "click .edit-pic": "displayImageEditForm",
     "click .cancel-image": "hideImageEditForm",
+  },
+
+  removeGear: function (gear) {
+    this.removeModelSubview(".user-gears", gear)
+  },
+
+  removeReview: function (review) {
+    this.removeModelSubview(".user-reviews", review)
   },
 
   displayImageEditForm: function(){

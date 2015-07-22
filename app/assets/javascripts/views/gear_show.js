@@ -2,6 +2,8 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
 
   template: JST["gears/show"],
 
+  className: "gear-show group",
+
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.products(), "add", this.addProduct);
@@ -11,6 +13,11 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
     this.model.comments().each(this.addComment.bind(this));
     this.addCommentNewForm();
     this.listenTo(this.model.comments(), "remove", this.removeComment);
+    $(document).on("click","#search", function(){
+      if (Sonichunt.router._currentView.className === "gear-show group") {
+        Backbone.history.navigate("#/products", { trigger: true });
+      }
+    })
   },
 
 

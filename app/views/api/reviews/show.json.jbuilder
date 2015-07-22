@@ -8,4 +8,5 @@ json.upvoters @review.upvoters do |upvoter|
 end
 
 json.owner_name @review.owner.username
+json.owner_image_url asset_path(@review.owner.image.url(:original))
 json.upvote @upvoted_review_hash[@review.id]

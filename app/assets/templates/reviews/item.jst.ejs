@@ -7,11 +7,14 @@
    &#9650 <br> <%= numUpvoters %>
  </button>
  <% }%>
+<a href=<%="#/reviews/"+review.escape('id')%>>
 <item-title>
-<a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %>
+<%= review.escape('title') %></a>
 </item-title>
   <br>
-  <item-description>By: <%= review.escape('owner_name') %></a></item-description>
+  <item-description group>By: <%= review.escape('owner_name') %><img class="item-owner-thumb" src=<%= review.escape('owner_image_url')%>></item-description>
+</a>
+
 <% if ( parseInt(review.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <a class="review-delete"><i class="fa fa-trash-o"></i></a>
   <a class="edit-review-button">&#10000</a>

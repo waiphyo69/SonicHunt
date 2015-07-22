@@ -136,9 +136,6 @@ nav.user-info{
 
 
 
-
-
-
 .header-container a{
   color: #7F7F7F;
   font-size: 14px;
@@ -251,7 +248,7 @@ div.new-gear{
   margin: 20px 0;
 }
 
-li.product-item, li.gear-item, li.review-item{
+li.product-item, li.gear-item{
   position: relative;
   display: block;
   height: 100px;
@@ -259,7 +256,7 @@ li.product-item, li.gear-item, li.review-item{
 }
 
 li.review-item{
-  height: 60px;
+  height: 80px;
 }
 
 li.product-item:hover, li.gear-item:hover, li.review-item:hover{
@@ -678,11 +675,14 @@ item-title{
   color: black;
   font-weight: bold;
   font-size: 18px;
-}
-
-item-title, item-description{
   position: relative;
   top: 12px;
+}
+
+
+item-description{
+  position: relative;
+  top: 18px;
 }
 
 button.add-product, button.add-gear {
@@ -760,6 +760,7 @@ svg:hover {
 
 
 
+
 .profile-pic-thumb{
   position: absolute;
   top: 0;
@@ -775,9 +776,9 @@ svg:hover {
 
 
 .drop-down-container {
-  position: relative;
+  position: absolute;
   float: right;
-  left: 390px;
+  left: 915px;
   top: 13px;
 }
 
@@ -792,4 +793,41 @@ svg:hover {
   color: #838383;
   margin-top: 50px;
   right: 40px;
+}
+
+.item-owner-thumb{
+  float: left;
+  position: relative;
+  left: 150px;
+  bottom: 5px;
+  display: block;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.user-item-thumb{
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.user-item-thumb:hover,.profile-pic-thumb:hover{
+  cursor: pointer;
+}
+
+.user-item {
+  float: left;
+  position: relative;
+  border: 1px solid #838383;
+  display: block;
+  margin: auto;
+  width: 150px;
+  padding: 20px;
 }

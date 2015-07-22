@@ -4,7 +4,7 @@ Sonichunt.Views.UserItem = Backbone.CompositeView.extend({
 
   tagName: "li",
 
-  className: "user-item",
+  className: "user-item group",
 
   initialize: function(){
     this.listenTo( this.model, "sync change", this.render );

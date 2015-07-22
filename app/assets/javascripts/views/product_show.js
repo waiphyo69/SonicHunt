@@ -2,6 +2,8 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
 
   template: JST["products/show"],
 
+  className: "product-show group",
+
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.reviews(), "add sync remove", this.render);
@@ -9,6 +11,11 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.reviews(), "remove", this.removeReview);
     this.model.reviews().each(this.addReview.bind(this));
     this.addReviewNewForm();
+    $(document).on("click","#search", function(){
+      if (Sonichunt.router._currentView.className === "product-show group") {
+        Backbone.history.navigate("#/products", { trigger: true });
+      }
+    })
   },
 
   events: {
