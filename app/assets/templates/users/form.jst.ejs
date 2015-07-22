@@ -1,31 +1,35 @@
-<h2>Sign Up</h2>
+<div class="intro">
+<h1> WELCOME TO SONIC HUNT </h1>
+<h1> get involved in our audiophile community </h1>
+</div>
 
-<form>
+<form class="form group">
+  <fieldset class="form-fieldset">
+    <div class="input">
+      <label>Username
+      <input type="text" name="user[username]">
+      </label>
+    </div>
 
-  <label>
-    Username
-    <input type="text" name="user[username]"
-           value="<%= user.escape("username") %>">
-  </label>
+    <div class="input">
+      <label>Email
+      <input type="text" name="user[email]">
+      </label>
+    </div>
 
-  <br>
 
-  <label>
-    Email
-    <input type="email" name="user[email]"
-           value="<%= user.escape("email") %>">
-  </label>
+    <div class="input">
+      <label>Password
+      <input type="password" name="user[password]">
+      </label>
+    </div>
 
-  <br>
+    <div class="submit">
+      <button class="sign-up-button">Sign Up</button>
+      <button class="demo-user">Demo User</button>
+      <br>
+      <a href="#">Sign In</a>
+    </div>
 
-  <label>
-    Password
-    <input type="password" name="user[password]"
-           value="<%= user.escape("password") %>">
-  </label>
-
-  <br>
-
-  <button>Create Account</button>
-
+  </fieldset>
 </form>

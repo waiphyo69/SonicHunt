@@ -1,4 +1,5 @@
 json.extract! @collection, :id, :owner_id, :title, :image_url
+json.owner_name @collection.owner.username
 json.products @collection.products do |product|
   json.extract! product, :id, :name, :image_url, :category, :info, :avg_score
 end

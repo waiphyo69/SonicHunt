@@ -37,11 +37,34 @@ Sonichunt.Models.User = Backbone.Model.extend({
     return this._followers;
   },
 
+
   followees: function () {
     this._followees = this._followees ||
       new Sonichunt.Collections.Users([], { follower: this });
     return this._followees;
   },
+
+  saveFormData: function(formData, options){
+  var method = this.isNew() ? "POST" : "PUT";
+  var model = this;
+
+  $.ajax({
+    url: _.result(model, "url"),
+    type: method,
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(resp){
+      model.set(model.parse(resp));
+      model.trigger('sync', model, resp, options);
+      options.success && options.success(model, resp, options);
+    },
+    error: function(resp){
+      options.error && options.error(model, resp, options);
+      }
+    });
+  },
+
 
   parse: function (response) {
     if (response.follow) {
@@ -90,6 +113,7 @@ Sonichunt.Models.CurrentUser = Sonichunt.Models.User.extend({
       success: function(data){
         model.set(data);
         options.success && options.success();
+        Backbone.history.navigate("#/products", {trigger: true})
       },
       error: function(){
         options.error && options.error();
@@ -114,10 +138,8 @@ Sonichunt.Models.CurrentUser = Sonichunt.Models.User.extend({
   fireSessionEvent: function(){
     if(this.isSignedIn()){
       this.trigger("signIn");
-      console.log("currentUser is signed in!", this);
     } else {
       this.trigger("signOut");
-      console.log("currentUser is signed out!", this);
     }
   }
 

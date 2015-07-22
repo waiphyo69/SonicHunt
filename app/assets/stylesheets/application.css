@@ -15,7 +15,7 @@
  */
 
 html, body, header, nav, a, ul, li, form,
-strong, main, section, img, div, p, fieldset, label, article, footer, small {
+strong, main, section, img, div, p, fieldset, label, article, footer, small, h1 {
   margin: 0;
   padding: 0;
   border: 0;
@@ -32,8 +32,9 @@ strong, main, section, img, div, p, fieldset, label, article, footer, small {
 
 body{
   box-sizing: content-box;
-  font-style: sans-serif;
+  font-family: 'Helvetica Neue';
   font-size: 16px;
+  color: #838383;
 }
 
 
@@ -48,8 +49,8 @@ ul {
 }
 
 button{
-  background-color: black;
-  color: white;
+  background-color: #CCF2FF;
+  color: gray;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -64,6 +65,8 @@ button{
   transition-property: transform;
 }
 
+
+
 button:hover,
 button:focus,
 button:active {
@@ -75,8 +78,9 @@ button:hover {
 }
 
 header{
-  background-color: black;
-  color: white;
+  padding: 15px;
+  display: block;
+  border-bottom: 1px solid #E4E2E2;
 }
 
 .group:after{
@@ -111,28 +115,22 @@ div.welcome h1{
 
 .header-container{
   position: relative;
-  background-color: #C0C0C0;
-  border-top: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
-  bottom: 9px;
+  background-color: #F7F7FA;
+  border-bottom: 1px solid #E4E2E2;
+  height: 25px;
   padding: 20px;
+  margin-bottom: 40px;
 }
 
 nav.user-info{
   position: relative;
-  background-color: gray;
-  height: 200px;
   display: block;
   font-weight: bold;
   border-radius: 5px;
-  bottom: 20px
+  padding: 20px;
+  margin: 0 auto;
+  background: #D0D0D0;
 }
-
-.user-info > h4 {
-  position: relative;
-  top: 60px;
-}
-
 
 
 
@@ -147,13 +145,14 @@ div.user-header-container{
 
 
 .header-container a{
+  color: #7F7F7F;
+  font-size: 14px;
+  font-weight: 500;
   position: relative;
   float: left;
-  color: black;
   display: block;
-  margin-right: 20px;
+  margin-right: 30px;
   cursor: pointer;
-  left: 50px;
 }
 
 .user-header-container a{
@@ -269,7 +268,7 @@ li.review-item{
 }
 
 li.product-item:hover, li.gear-item:hover, li.review-item:hover{
-  background: gray;
+  background: #F7F7FA;
 }
 
 li.product-item  a{
@@ -281,18 +280,18 @@ li.product-item div, li.gear-item div{
   position: absolute;
   top: 280px;
   left: 100px;
-  z-index: 100
+  z-index: 100;
 }
 
 .thumb {
   float: left;
   display: block;
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 120px;
+  height: 90px;
   border: 1px solid #000;
   border-radius: 5px;
-  margin-right: 20px;
+  margin-right: 26px;
 }
 
 .review-item {
@@ -336,29 +335,36 @@ li.product-item div, li.gear-item div{
 edit-gear {
   position: absolute;
   display: none;
+  z-index: 100;
   background: black;
   color: white;
   width: 300px;
 }
 
 
-
-
-div.search form input{
-  color: black;
-  position: relative;
-  height: 30px;
-  background-color: white;
-  float: right;
+.search{
   display: block;
-  width: 200px;
-  bottom: 60px;
-  border-radius: 20px;
-  right: 200px;
-  font-size: 20px;
+  float: right;
 }
 
+.search input{
+  position: relative;
+  bottom: 38px;
+  display: block;
+  right: 50px;
+  width: 200px;
+  height: 30px;
+  color: #B1B1B1;
+  border-radius: 20px;
+  border: 1px solid #B8B8B8;
+  font-size: 20px;
+  margin-right: 200px;
+}
 
+div.title {
+  width: 940px;
+  margin: 0 auto;
+}
 
 div.user-stuff-container div{
   display: none;
@@ -378,13 +384,19 @@ div.user-stuff-container div{
   cursor: pointer
 }
 
-.auth-button:hover, .guest-login:hover {
+.auth-button:hover, .guest-login:hover, .delete-gear {
   background: red;
 }
 
 .upvote-button{
   float: left;
   margin-right: 20px;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  text-align: center;
+  color: blue;
+  font-size: 16px;
 }
 
 img.show{
@@ -434,4 +446,261 @@ a.product-back {
   margin: auto;
   position: relative;
   bottom: 150px;
+}
+
+.profile-pic {
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.profile-pic-container {
+  float: left;
+  position: relative;
+}
+
+.edit-pic {
+  position: absolute;
+  bottom: 80px;
+  z-index: 100;
+  left: 90px;
+}
+
+.edit-pic:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.profile-text {
+  position: relative;
+  bottom: 30px;
+  float: left;
+  margin-left: 50px;
+}
+
+h4.username {
+  font-size: 30px;
+}
+
+h4.user-email {
+  font-weight: normal;
+}
+
+.user-show {
+  display: block;
+}
+
+edit-image {
+  display: none;
+  z-index: 100;
+  color: black;
+}
+
+div.user-top-container{
+  display: block;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.title h1{
+  float: left;
+  margin-left: 8px;
+  margin-top: 5px;
+  margin-bottom: auto;
+  font-weight: bold;
+  font-size: 20px;
+  color: #3300CC;
+}
+
+.logo-container{
+  float: left;
+  border-radius: 50%;
+  background: #3300CC;
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.logo{
+  position: relative;
+  right: 18px;
+  bottom: 8px;
+  font-size: 25px;
+  font-weight: bold;
+  margin: auto;
+}
+
+.logo:hover{
+  cursor: pointer;
+}
+
+.title a{
+  float: left;
+  margin-left: 30px;
+  margin-top: 13px;
+}
+
+.form-fieldset {
+  padding: 19px;
+  display: block;
+  background: #eee;
+  font-size: 24px;
+  width: 600px;
+  text-align: center;
+  background: transparent;
+}
+
+.form {
+  margin: auto;
+}
+
+.input  label {
+  font-weight: 700;
+  padding: 0 0 5px 0;
+  color: #aaa;
+}
+
+.input  input {
+  display: block;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  height: 30px;
+  font-size: 20px;
+  margin: auto;
+}
+
+.input  input:focus {
+  border-color: #0c0;
+}
+
+
+.submit {
+  margin: 20px 0 0 0;
+  padding: 0 0 3px 0;
+}
+
+.submit  button {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  background: #00BFFF;
+  font-weight: 700;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.submit  button:hover {
+  background: #0000FF;
+  cursor: pointer;
+}
+
+.submit  button:active {
+  top: 3px;
+  background: #000080;
+  box-shadow: none;
+}
+
+.SignIn,.SignUp {
+  display: block;
+  position: absolute;
+  background: url("http://drive.google.com/uc?export=view&id=0B8bCp1aDfhNTYk5OQnhYQzM1OVE");
+  width: 1920px;
+  height: 1080px;
+}
+
+
+.intro {
+  margin-top: 50px;
+  display: block;
+  margin-left: 100px;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 36px;
+  font-family: cursive;
+}
+
+.intro h1{
+  margin-bottom: 50px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.submit > a{
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.submit > a:hover{
+  background: -webkit-linear-gradient(#FF0000, #0000FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-text{
+  width: 980px;
+  margin: 0 auto;
+}
+
+
+ul.products, ul.gears, ul.collections {
+  display: block;
+  width: 900px;
+  margin: 0 auto;
+}
+
+
+ul.products li, ul.gears li{
+  margin-bottom: 23px;
+  display: block;
+}
+
+
+
+
+item-title{
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+item-title, item-description{
+  position: relative;
+  top: 12px;
+}
+
+button.add-product, button.add-gear {
+  position: absolute;
+  color: white;
+  float: right;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: blue;
+  border: 1px solid black;
+  position: absolute;
+  right: 200px;
+}
+
+
+.gear-delete, .edit-gear-button {
+  color: blue;
+  height: 50px;
+  width: 50px;
+  float: right;
+  position: relative;
+  right: 60px;
+}
+
+.gear-delete:hover, .edit-gear-button:hover {
+  cursor: pointer;
+  color: red;
 }

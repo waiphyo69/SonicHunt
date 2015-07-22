@@ -1,5 +1,5 @@
 <div class="collection-show">
-  <h1> <%= collection.escape('title') %> </h1>
+  <h1> <%= collection.escape('title') %> </h1> Collected By: <%= collection.escape('owner_name') %>
   <% if ( parseInt(collection.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
     <button class="delete">Delete Collection</button>
     <% } %>

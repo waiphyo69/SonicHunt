@@ -1,4 +1,3 @@
-<% if ( parseInt(review.escape('owner_id')) !=  Sonichunt.currentUser.id){ %>
 <% if ( review.upvote().isNew() ){ %>
     <button class="upvote-button">
      &#9650 <br> <%= numUpvoters %>
@@ -7,8 +6,9 @@
   <button class="upvote-button" style="color: red;">
    &#9650 <br> <%= numUpvoters %>
  </button>
- <% }}%>
-<a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %><br>By: <%= review.escape('owner_name') %></a>
+ <% }%>
+<a href=<%="#/reviews/"+review.escape('id')%>><%= review.escape('title') %><br>
+  By: <%= review.escape('owner_name') %></a>
 <% if ( parseInt(review.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
   <button class="review-delete">Delete</button>
   <button class="edit-review-button">Edit your review</button>

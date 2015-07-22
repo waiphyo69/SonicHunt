@@ -11,7 +11,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     },
 
   routes: {
-    "": "productsIndex",
+    "products": "productsIndex",
     "collections": "collectionsIndex",
     "gears": "gearsIndex",
     "reviews/new": "newReview",
@@ -21,7 +21,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
     "gears/:id": "gearShow",
     "collections/:id": "collectionShow",
     "users/:id": "userShow",
-    "session/new": "signIn"
+    "": "signIn"
   },
 
 
@@ -38,6 +38,8 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
   },
 
   productsIndex: function(){
+    $("header").show();
+    $("header").children().show();
     this.products.fetch();
     var productsIndexView = new Sonichunt.Views.ProductsIndex({
       collection: this.products
@@ -103,6 +105,7 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
 
 
   userNew: function(){
+      $("header").hide();
       var user = new this.users.model();
       var formView = new Sonichunt.Views.UserForm({
         collection: this.users,
@@ -124,7 +127,10 @@ Sonichunt.Routers.Router = Backbone.Router.extend({
 
 
   signIn: function(callback){
-    if (!this._requireSignedOut(callback)) { return; }
+    $("header").hide();
+    if (Sonichunt.currentUser.isSignedIn()){
+      return Backbone.history.navigate("#/products", { trigger: true });
+    }
     var signInView = new Sonichunt.Views.SignIn({
       callback: callback
     });

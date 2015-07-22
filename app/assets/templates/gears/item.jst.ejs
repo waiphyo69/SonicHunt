@@ -1,4 +1,3 @@
-<% if ( parseInt(gear.escape('owner_id')) !=  Sonichunt.currentUser.id){ %>
 <% if ( gear.upvote().isNew() ){ %>
     <button class="upvote-button">
      &#9650 <br> <%= numUpvoters %>
@@ -7,17 +6,20 @@
   <button class="upvote-button" style="color: red;">
    &#9650 <br> <%= numUpvoters %>
  </button>
-<% }}%>
+<% }%>
 <a href=<%="#/gears/"+gear.escape('id')%>>
 <img class="thumb" src="<%=gear.escape('image_url')%>">
-<%= gear.escape('title') %></a>
+<item-title><%= gear.escape('title') %></item-title>
+<br>
+<item-description>By <%= gear.escape('owner_name') %><item-description>
+</a>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
-  <button class="edit-gear-button">Update your impressions!</button>
+  <a class="edit-gear-button">&#10000</a>
   <edit-gear class='<%= "edit-gear-"+ gear.escape('id') %>'>
   </edit-gear>
 <% } %>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
-  <button class="gear-delete">Delete</button>
+  <a class="gear-delete"><i class="fa fa-trash-o"></i></a>
 <% } %>
 </button>
 <div class='<%= "add-to-collection-gear-"+ gear.escape('id') %>' style="margin: auto;height: 200px; color: #fff; display: none; text-align: center"></div>

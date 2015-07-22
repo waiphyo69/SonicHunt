@@ -1,20 +1,28 @@
-<h2>Sign In</h2>
+<div class="intro">
+<h1> WELCOME TO SONIC HUNT </h1>
+<h1> get involved in our audiophile community </h1>
+</div>
 
-<form>
+<form class="form group">
+  <fieldset class="form-fieldset">
+    <div class="input">
+      <label>Username
+      <input type="text" name="user[username]">
+      </label>
+    </div>
 
-  <label>
-    Username
-    <input type="text" name="user[username]">
-  </label>
+    <div class="input">
+      <label>Password
+      <input type="password" name="user[password]">
+      </label>
+    </div>
 
-  <br>
+    <div class="submit">
+      <button class="sign-in-button">Sign In</button>
+      <button class="demo-user">Demo User</button>
+      <br>
+      <a href="#/users/new">Sign Up</a>
+    </div>
 
-  <label>
-    Password
-    <input type="password" name="user[password]">
-  </label>
-
-  <br>
-
-  <button>Sign In</button>
+  </fieldset>
 </form>

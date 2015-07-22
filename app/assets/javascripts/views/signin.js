@@ -5,8 +5,20 @@ Sonichunt.Views.SignIn = Backbone.View.extend({
     this.listenTo(Sonichunt.currentUser, "signIn", this.signInCallback);
   },
 
+  className: "SignIn",
+
   events: {
-    "submit form": "submit"
+    "click .sign-in-button": "submit",
+    "click button.demo-user": "guestLogin"
+  },
+
+  guestLogin: function(event){
+    event.preventDefault();
+
+    Sonichunt.currentUser.signIn({
+      username: "bob123",
+      password: "bob123"
+    });
   },
 
   template: JST['shared/signin'],
@@ -29,15 +41,15 @@ Sonichunt.Views.SignIn = Backbone.View.extend({
         alert("Wrong username/password combination. Please try again.");
       }
     });
-  },
-
-
-  signInCallback: function(event){
-    if(this.callback) {
-      this.callback();
-    } else {
-      Backbone.history.navigate("", { trigger: true });
-    }
   }
+  //
+  //
+  // signInCallback: function(event){
+  //   if(this.callback) {
+  //     this.callback();
+  //   } else {
+  //     Backbone.history.navigate("#/products", { trigger: true });
+  //   }
+  // }
 
 });

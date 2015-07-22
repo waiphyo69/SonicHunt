@@ -1,27 +1,8 @@
-<h1>SonicHunt!</h1>
-A meeting place for audio enthusiasts.
-<br>
-<br>
-<% if(Sonichunt.currentUser.isSignedIn()) { %>
-
-  <p>
-    Signed in as:
-    <a class="auth-button" href="#users/<%= Sonichunt.currentUser.id %>"><%= Sonichunt.currentUser.escape("username") %></a> |
-    <a class="auth-button" href="#" id="sign-out-link">Sign Out</a>
-    <a class="auth-button" href="">Home</a>
-  </p>
-
-<% } else { %>
-
-  <p>
-    <a class="auth-button" href="#/users/new">Sign Up</a> |
-    <a class="auth-button" href="#/session/new">Sign In</a>
-    <a class="guest-login">DemoUser</a>
-    <a class="auth-button" href="">Home</a>
-  </p>
-
-<% } %>
-<div class="search">
-<form><input id="search" type="text" value="Search"></form>
+<div class="title group">
+<div class="logo-container">
+<a class="logo" href="#/products">S</a>
 </div>
-<hr>
+<h1>Sonic Hunt</h1>
+</div>
+<form class="search"><input id="search" type="text" value="Search"></form>
+</div>

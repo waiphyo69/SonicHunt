@@ -23,6 +23,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     this.model.collections().each(this.addCollection.bind(this));
     this.model.followers().each(this.addFollower.bind(this));
     this.model.followees().each(this.addFollowee.bind(this));
+    this.addImageEditView();
     $(document).on("click","#search", function(){
       if (Sonichunt.router._currentView.className === "user-show group") {
         Backbone.history.navigate("", { trigger: true });
@@ -38,7 +39,28 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
     "click a.gears": "displayGears",
     "click a.followers": "displayFollowers",
     "click a.followees": "displayFollowees",
-    "click .show-follow-button": "toggleFollow"
+    "click .show-follow-button": "toggleFollow",
+    "click .edit-pic": "displayImageEditForm",
+    "click .cancel-image": "hideImageEditForm",
+  },
+
+  displayImageEditForm: function(){
+    event.preventDefault();
+    $("edit-image").show();
+    $(".edit-pic").hide();
+  },
+
+  hideImageEditForm: function(){
+    $("edit-image").hide();
+    $(".edit-pic").show();
+  },
+
+
+  addImageEditView: function(){
+    var imageEditView = new Sonichunt.Views.UserImageForm({
+      model: this.model
+    });
+    this.addSubview("edit-image", imageEditView)
   },
 
   removeFollower: function (follower) {
@@ -84,8 +106,13 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   addReview: function(review){
-    var reviewItemView = new Sonichunt.Views.ReviewItem({model: review});
-    this.addSubview("ul.user-reviews", reviewItemView);
+    var that = this;
+    review.fetch({
+      success: function(){
+        var reviewItemView = new Sonichunt.Views.ReviewItem({model: review});
+        that.addSubview("ul.user-reviews", reviewItemView);
+      }
+    })
   },
 
   addGear: function(gear){

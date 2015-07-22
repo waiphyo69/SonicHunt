@@ -6,8 +6,20 @@ Sonichunt.Views.UserForm = Backbone.View.extend({
 
   template: JST['users/form'],
 
+  className: "SignUp",
+
   events: {
-    "submit form": "submit"
+    "click .sign-up-button": "submit",
+    "click button.demo-user": "guestLogin"
+  },
+
+  guestLogin: function(event){
+    event.preventDefault();
+
+    Sonichunt.currentUser.signIn({
+      username: "bob123",
+      password: "bob123"
+    });
   },
 
   render: function(){
@@ -25,17 +37,28 @@ Sonichunt.Views.UserForm = Backbone.View.extend({
     var that = this;
 
     this.model.set(userData);
+
     this.model.save({}, {
       success: function(){
         Sonichunt.currentUser.fetch();
         that.collection.add(that.model, { merge: true });
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("#/products", { trigger: true });
+
       },
       error: function(data){
-        alert("Form invalid. Let the user know what went wrong.");
-        console.log(data);
+
+        alert("Invalid username and/or email and/or password. Please try again");
+
       }
     });
+  },
+
+  signInCallback: function(event){
+    if(this.callback) {
+      this.callback();
+    } else {
+      Backbone.history.navigate("#/products", { trigger: true });
+    }
   }
 
 });

@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.serializejson
+//= require jquery.watermarkinput
 //= require underscore
 //= require backbone
 //= require sonichunt

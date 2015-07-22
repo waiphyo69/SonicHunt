@@ -2,7 +2,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 
 	tagName: "li",
 
-	className: "gear-item",
+	className: "gear-item group",
 
 	template: JST['gears/item'],
 
@@ -176,7 +176,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 		var numUpvoters = this.model.upvoters().length;
 		var content = this.template({gear: this.model, numUpvoters: numUpvoters});
 		this.$el.html(content);
-		this.$el.append("<button class='add-gear'>Add To Collection</button>");
+		this.$el.append("<button class='add-gear'>+</button>");
 		this.attachSubviews();
 		return this;
 

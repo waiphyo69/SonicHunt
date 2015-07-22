@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+
+  has_attached_file :image,
+  default_url: "http://avatars-cdn.producthunt.com/267114/220?1437407114"
+
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   has_many :follower_follows,
   foreign_key: :followee_id,
   class_name: "Follow",

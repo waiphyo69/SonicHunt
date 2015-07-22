@@ -26,7 +26,7 @@ Sonichunt.Views.ProductsIndex = Backbone.CompositeView.extend({
   addProduct: function(product){
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
     this.addSubview("ul.products", productItemView);
-    productItemView.$el.append("<button class='add-product'>Add To Collection</button>");
+    productItemView.$el.append('<button class="add-product">+</button>');
   },
 
 

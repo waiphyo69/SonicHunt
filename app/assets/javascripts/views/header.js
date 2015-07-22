@@ -4,14 +4,14 @@ Sonichunt.Views.Header = Backbone.View.extend({
     this.listenTo(Sonichunt.currentUser, "signIn signOut", this.render);
     this.render();
     $(document).on("click","#search", function(){
-        $("#search").css("width", "500px");
+        $("#search").animate({"width": "560px"})
     });
     $(document).click(function(e) {
 
 				var target = e.target;
 
 				if ( $(target).attr("id") != "search" ){
-          $("#search").css("width", "200px");
+          $("#search").animate({"width": "200px"});
 				}
       });
   },
@@ -21,15 +21,6 @@ Sonichunt.Views.Header = Backbone.View.extend({
   events: {
     "click #sign-out-link": "signOut",
     "click .guest-login": "guestLogin"
-  },
-
-  guestLogin: function(event){
-    event.preventDefault();
-
-    Sonichunt.currentUser.signIn({
-      username: "bob123",
-      password: "bob123"
-    });
   },
 
   template: JST['shared/header'],
