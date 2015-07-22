@@ -8,6 +8,8 @@
   <div class="profile-text group">
   <h4 class="username"> @<%= user.escape('username') %> </h4>
   <h4 class="user-email"> email: <%= user.escape('email') %> </h4>
+  </div>
+  <div class="follow-or-you">
   <% if ( Sonichunt.currentUser.id === parseInt(user.escape('id'))) {%>
     <h4> THIS IS YOU </h4>
     <% } else { %>
@@ -21,14 +23,24 @@
   <%}%>
 </div>
 </div>
- </nav>
 <div class="user-header-container group">
-  <a class="reviews">Reviews</a>
-  <a class="gears">Gears</a>
-  <a class="collections">Collections</a>
-  <a class="followers">Followers</a>
-  <a class="followees">Following</a>
+  <a class="reviews">
+    <%= numReviews %><br>Reviews
+    </a>
+  <a class="gears">
+    <%= numGears %><br>Gears
+    </a>
+  <a class="collections">
+    <%= numCollections %><br>Collections
+    </a>
+  <a class="followers">
+    <%= numFollowers %><br>Followers
+    </a>
+  <a class="followees">
+    <%= numFollowees %><br>Following
+    </a>
 </div>
+ </nav>
 <div class='user-stuff-container group'>
   <div class='user-reviews-container'>
   <ul class='user-reviews'></ul>

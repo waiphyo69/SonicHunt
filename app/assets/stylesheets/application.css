@@ -78,6 +78,7 @@ button:hover {
 }
 
 header{
+  position: relative;
   padding: 15px;
   display: block;
   border-bottom: 1px solid #E4E2E2;
@@ -117,30 +118,24 @@ div.welcome h1{
   position: relative;
   background-color: #F7F7FA;
   border-bottom: 1px solid #E4E2E2;
-  height: 25px;
-  padding: 20px;
+  padding: 0 20px;
   margin-bottom: 40px;
+  display: block;
 }
 
 nav.user-info{
   position: relative;
   display: block;
   font-weight: bold;
-  border-radius: 5px;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   margin: 0 auto;
-  background: #D0D0D0;
+  background: #534540;
+  color: white;
+  margin-bottom: 40px;
 }
 
 
 
-div.user-header-container{
-  display: block;
-  position: relative;
-  background-color: black;
-  height: 50px;
-  bottom: 20px;
-}
 
 
 
@@ -153,24 +148,24 @@ div.user-header-container{
   display: block;
   margin-right: 30px;
   cursor: pointer;
+  padding: 20px 0;
 }
 
 .user-header-container a{
+  overflow: hidden;
   position: relative;
+  height: 100%;
   display: block;
   float: left;
-  margin-right: 120px;
-  left: 100px;
-  top: 15px;
   font-weight: bold;
   color: white;
   cursor: pointer;
-  padding: 4px;
-  border: solid 2px white;
+  padding: 11px 48px;
+  text-align: center;
 }
 
-.header-container a:hover, .user-header-container a:hover {
-  color: red;
+.user-header-container a:hover {
+  background-color: #756966;
 }
 
 div.collectionpopup{
@@ -349,9 +344,7 @@ edit-gear {
 
 .search input{
   position: relative;
-  bottom: 38px;
   display: block;
-  right: 50px;
   width: 200px;
   height: 30px;
   color: #B1B1B1;
@@ -364,6 +357,7 @@ edit-gear {
 div.title {
   width: 940px;
   margin: 0 auto;
+  position: relative;
 }
 
 div.user-stuff-container div{
@@ -372,6 +366,16 @@ div.user-stuff-container div{
 
 .user-stuff-container div.user-reviews-container{
   display: block;
+}
+
+div.user-header-container{
+  width: 824px;
+  margin: 0 auto;
+  background: #827774;
+  border-radius: 5px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
 }
 
 .auth-button, .guest-login {
@@ -395,7 +399,7 @@ div.user-stuff-container div{
   background: none;
   border: none;
   text-align: center;
-  color: blue;
+  color: #534540;
   font-size: 16px;
 }
 
@@ -487,11 +491,15 @@ h4.username {
 }
 
 h4.user-email {
-  font-weight: normal;
+  position: relative;
+  bottom: 20px;
+  font-weight: 300;
+  color: #838383;
 }
 
 .user-show {
   display: block;
+  position: relative;
 }
 
 edit-image {
@@ -502,7 +510,7 @@ edit-image {
 
 div.user-top-container{
   display: block;
-  width: 600px;
+  width: 940px;
   margin: 0 auto;
 }
 
@@ -513,13 +521,13 @@ div.user-top-container{
   margin-bottom: auto;
   font-weight: bold;
   font-size: 20px;
-  color: #3300CC;
+  color: #534540;
 }
 
 .logo-container{
   float: left;
   border-radius: 50%;
-  background: #3300CC;
+  background: #534540;
   width: 40px;
   height: 40px;
   color: white;
@@ -651,14 +659,14 @@ div.user-top-container{
 }
 
 
-ul.products, ul.gears, ul.collections {
+ul.products, ul.gears, ul.collections, ul.user-reviews, ul.user-gears, ul.user-collections, ul.user-followers, ul.user-followees {
   display: block;
   width: 900px;
   margin: 0 auto;
 }
 
 
-ul.products li, ul.gears li{
+ul.products li, ul.gears li, ul.user-reviews li, ul.user-gears li, ul.user-followers li, ul.user-followees li{
   margin-bottom: 23px;
   display: block;
 }
@@ -684,15 +692,15 @@ button.add-product, button.add-gear {
   border-radius: 50%;
   font-weight: bold;
   font-size: 18px;
-  background-color: blue;
+  background-color: #534540;
   border: 1px solid black;
   position: absolute;
   right: 200px;
 }
 
 
-.gear-delete, .edit-gear-button {
-  color: blue;
+.gear-delete, .review-delete, .edit-gear-button, .edit-review-button {
+  color: #534540;
   height: 50px;
   width: 50px;
   float: right;
@@ -700,7 +708,88 @@ button.add-product, button.add-gear {
   right: 60px;
 }
 
-.gear-delete:hover, .edit-gear-button:hover {
+.gear-delete:hover, .review-delete:hover, .edit-gear-button:hover, .edit-review-button:hover {
   cursor: pointer;
   color: red;
+}
+
+
+.user-dropdown{
+  top: 35px;
+  background: white;
+  display: none;
+  position: absolute;
+  z-index: 100;
+  border: 1px solid #838383;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  right: 5px;
+}
+
+.user-dropdown:after{
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+
+
+.user-dropdown > li{
+  position: relative;
+}
+
+
+.user-dropdown li a{
+  width: 100%;
+  display: block;
+  padding: 10px;
+  position: relative;
+  margin: auto;
+}
+
+
+.user-dropdown li a:hover{
+  background: #F7F7FA;
+}
+
+svg:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+
+
+.profile-pic-thumb{
+  position: absolute;
+  top: 0;
+  right: 40px;
+  float: right;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+}
+
+
+.drop-down-container {
+  position: relative;
+  float: right;
+  left: 390px;
+  top: 13px;
+}
+
+.follow-or-you{
+  float: right;
+  text-align: center;
+}
+
+.follow-or-you h4{
+  position: relative;
+  font-weight: 300;
+  color: #838383;
+  margin-top: 50px;
+  right: 40px;
 }

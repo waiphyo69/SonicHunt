@@ -177,7 +177,19 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
 
 
   render: function(){
-    var html = this.template({ user: this.model });
+    numReviews = this.model.reviews().length;
+    numGears = this.model.gears().length;
+    numCollections = this.model.collections().length;
+    numFollowers = this.model.followers().length;
+    numFollowees = this.model.followees().length;
+    var html = this.template({
+      user: this.model,
+      numReviews: numReviews,
+      numGears: numGears,
+      numCollections: numCollections,
+      numFollowers: numFollowers,
+      numFollowees: numFollowees
+      });
     this.$el.html(html);
     this.attachSubviews();
     return this;

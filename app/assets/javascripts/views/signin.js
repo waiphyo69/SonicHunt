@@ -31,7 +31,7 @@ Sonichunt.Views.SignIn = Backbone.View.extend({
 
   submit: function(event){
     event.preventDefault();
-    var $form = $(event.currentTarget);
+    var $form = $(".form-fieldset");
     var formData = $form.serializeJSON().user;
 
     Sonichunt.currentUser.signIn({

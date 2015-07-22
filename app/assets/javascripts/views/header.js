@@ -20,7 +20,13 @@ Sonichunt.Views.Header = Backbone.View.extend({
 
   events: {
     "click #sign-out-link": "signOut",
-    "click .guest-login": "guestLogin"
+    "click .guest-login": "guestLogin",
+    "click svg": "showdropDown"
+  },
+
+
+  showdropDown: function(){
+    $('.user-dropdown').toggle();
   },
 
   template: JST['shared/header'],

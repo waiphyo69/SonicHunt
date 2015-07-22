@@ -14,7 +14,7 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click button.edit-review-button": "displayEditForm",
+    "click .edit-review-button": "displayEditForm",
     "click .review-delete": "destroyReview",
     "click .upvote-button": "toggleUpvote"
   },
