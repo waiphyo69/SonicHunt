@@ -60,7 +60,8 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   displayEditForm: function(){
-    $(".edit-review-"+ this.model.escape('id')).css("display","block");
+    $(".edit-review-"+ this.model.escape('id')).show();
+    $(".edit-review-"+ this.model.escape('id')).children().show();
   },
 
 

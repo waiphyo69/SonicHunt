@@ -3,7 +3,7 @@
   <br>
   <item-title>@<%= user.escape('username') %></item-title>
   <br>
-  <item-description><%= user.escape('email') %></item-description>
+  <user-item-email><%= user.escape('email') %></user-item-email>
 </a>
 <% if ( parseInt(user.escape('id')) !=  Sonichunt.currentUser.id){ %>
   <button class="follow-button">

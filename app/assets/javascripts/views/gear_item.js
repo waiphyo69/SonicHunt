@@ -155,11 +155,11 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	},
 
 	destroyGear: function(){
-
+    var that = this;
 		event.preventDefault();
-		this.model.destroy();
-		alert("Gear successfully deleted!");
-
+		this.model.destroy({ success: function(){
+			that.remove();
+		}});
 	},
 
 	addEditForm: function(){

@@ -1,14 +1,20 @@
-    <img class="show" src=<%= product.escape('image_url')%>>
-    <div class="product-info">
-      <h1> <%= product.escape('name') %> </h1>
-      <h2> Category: <%= product.escape('category')%> </h2>
-      <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
-      <br>
-      <h2> Info: </h2>
-      <p> <%= product.escape('info')%></p>
+
+  <div class="product-info group">
+      <div class="product-top group">
+          <img class="show" src=<%= product.escape('image_url')%>>
+          <div class="product-brief">
+            <h1> <%= product.escape('name') %> </h1>
+            <h2> Category: <%= product.escape('category')%> </h2>
+            <h2> Average Rating: <%= product.escape('avg_score')%> </h2>
+          </div>
+      </div>
+      <div class="product-description">
+        <h2 class="mini-header"> Info </h2>
+        <p> <%= product.escape('info')%></p>
+      </div>
     </div>
     <div class="review-section">
-      <h1> Reviews </h1>
+      <h1 class="mini-header"> Reviews </h1>
       <ul class="reviews">
       </ul>
   <% if (Sonichunt.currentUser.product_id != product.escape('id') ) {%>

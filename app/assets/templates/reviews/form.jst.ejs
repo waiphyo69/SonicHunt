@@ -1,7 +1,7 @@
 <% if (review.isNew()) { %>
-  <h1>New Review</h1>
+  <h1 style="font-weight: bold; margin: 0 auto;">New Review</h1>
 <% } else { %>
-  <h1>Edit Review</h1>
+  <h1 style="font-weight: bold; margin: 0 auto; color: black;">Edit Review</h1>
 <% } %>
 
 <label>Title:
@@ -17,5 +17,5 @@
 <input class="input-number" type='number' name='score' value='<%=review.escape('score')%>'>
 </label>
 <br>
-<button class='submit'>Submit</button>
-<button class='cancel'>Cancel</button>
+<button style="display: inline;" class='submit'>Submit</button>
+<button style="display: inline;" class='cancel'>Cancel</button>
