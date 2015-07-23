@@ -36,7 +36,7 @@ module Api
 
     private
     def comment_params
-      params.require(:comment).permit(:id, :author_id, :parent_id, :author_name, :content, :parent_type )
+      params.require(:comment).permit(:id, :author_id, :parent_id, :author_name,:author_image_url, :content, :parent_type )
     end
   end
 end

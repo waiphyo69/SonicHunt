@@ -7,6 +7,8 @@ Sonichunt.Views.ReviewShow = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
+    this.listenTo( this.model.upvoters(), "sync add remove", this.render );
     this.listenTo(this.model.comments(), "add sync remove", this.render);
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.model.comments().each(this.addComment.bind(this));
@@ -20,14 +22,45 @@ Sonichunt.Views.ReviewShow = Backbone.CompositeView.extend({
   },
 
 
+  events: {
+    "click .new-comment-button": "displayNewCommentForm",
+    "click .upvote-button": "toggleUpvote"
+  },
+
+
+  createUpvote: function () {
+    var that = this;
+    this.model.upvote().set({
+      upvoter_id: Sonichunt.currentUser.id,
+      review_id: parseInt(this.model.escape('id'))
+    });
+    this.model.upvote().save();
+    this.model.upvoters().add(Sonichunt.currentUser);
+  },
+
+  destroyUpvote: function () {
+    var that = this;
+    this.model.upvote().destroy({
+      success: function(model){
+        that.model.upvoters().remove(Sonichunt.currentUser);
+        model.unset("id");
+      }
+    });
+  },
+
+  toggleUpvote: function (event) {
+    event.preventDefault();
+    if (this.model.upvote().isNew()) {
+      this.createUpvote();
+    } else {
+      this.destroyUpvote();
+    }
+  },
+
   removeComment: function (comment) {
     this.removeModelSubview(".comments", comment)
   },
 
-
-  events: {
-    "click .new-comment-button": "displayNewCommentForm"
-  },
 
   displayNewCommentForm: function(){
     $(".new-comment").show();
@@ -50,7 +83,8 @@ Sonichunt.Views.ReviewShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    var content = this.template({review: this.model, product: this.model.product});
+    var numUpvoters = this.model.upvoters().length;
+    var content = this.template({review: this.model, product: this.model.product, numUpvoters: numUpvoters});
     this.$el.html(content);
     this.attachSubviews();
     return this;

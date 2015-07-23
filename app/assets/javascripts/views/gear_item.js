@@ -8,7 +8,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		var that = this;
-		this.listenTo(this.model,"sync change",this.render);
+		this.listenTo(this.model,"change",this.render);
 		this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
 		this.listenTo( this.model.upvoters(), "sync add remove", this.render );
 		this.addEditForm();

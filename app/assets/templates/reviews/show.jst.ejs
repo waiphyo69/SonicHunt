@@ -1,13 +1,28 @@
-<div class="review-show">
+<div class="review-top">
   <h1> <%= review.escape('title') %> </h1>
-  <h2> By <%= review.escape('owner_name') %> </h2>
-  <h2> Score: <%= review.escape('score')%> Out Of 10</h2>
-  <br>
-  <h2> Description: </h2>
+  <h1 style="font-weight: bold; color: black;"> Review of <a class="review-info" href=<%="#/products/"+ review.escape('product_id')%>><%= review.escape('product_name') %> </a> </h1>
+  <div class="review-owner-info group">
+  <h1 style="font-weight: bold; color: black; font-size: 16px;"> By <a class="review-info" href=<%="#/users/"+ review.escape('owner_id')%>> <%= review.escape('owner_name') %> </a></h1>
+  <img class="review-owner-thumb" src=<%= review.escape('owner_image_url') %>>
+</div>
+<% if ( review.upvote().isNew() ){ %>
+    <button class="upvote-button">
+     &#9650 <br> <%= numUpvoters %>
+    </button>
+<% }else {%>
+  <button class="upvote-button" style="color: red;">
+   &#9650 <br> <%= numUpvoters %>
+ </button>
+<% }%>
+</div>
+<div class="review-description">
+  <h2 class="mini-header"> Score: <%= review.escape('score')%> Out Of 10</h1>
+  <h2 class="mini-header"> Description: </h2>
   <p> <%= review.escape('description')%></p>
 </div>
-<h2> Comments </h2>
+<div class="review-comments">
+<h2 class="mini-header" style="padding-left: 20px;"> Comments </h2>
 <ul class="comments"></ul>
 <button class='new-comment-button'>New Comment</button>
 <div class="new-comment"></div>
-<button class="product-back"><a href=<%="#/products/" + review.escape('product_id') %>> Back To Product Page </a></button>
+</div>

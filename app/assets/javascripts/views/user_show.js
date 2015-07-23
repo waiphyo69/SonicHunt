@@ -4,7 +4,7 @@ Sonichunt.Views.UserShow = Backbone.CompositeView.extend({
   className: "user-show group",
 
   initialize: function(options){
-    
+
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.follow(), "sync change remove", this.render);
     this.listenTo(this.model.reviews(), "sync change remove", this.render);

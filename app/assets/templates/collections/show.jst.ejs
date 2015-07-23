@@ -1,14 +1,19 @@
-<div class="collection-show">
-  <h1> <%= collection.escape('title') %> </h1> Collected By: <%= collection.escape('owner_name') %>
+  <div class="collection-details group">
+    <h1 style="font-weight: bold; color: black;"> <%= collection.escape('title') %> </h1>
+  <div class="collection-owner-info group">
+    <h1 style="font-weight: bold; color: black; font-size: 16px;"> By <a class="collection-info" href=<%="#/users/"+ collection.escape('owner_id')%>> <%= collection.escape('owner_name') %> </a></h1>
+    <img class="collection-owner-thumb" src=<%= collection.escape('owner_image_url') %>>
+  </div>
   <% if ( parseInt(collection.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
-    <button class="delete">Delete Collection</button>
+      <a class="collection-delete"><i class="fa fa-trash-o fa-2x"></i></a>
     <% } %>
   <br>
-  <h2> Products In This Collection </h2>
+</div>
+  <div class="collection-items group">
+  <h2 class="mini-header" style="color: black;"> Products In This Collection </h2>
   <ul class="products">
   </ul>
-  <h2> Gears In This Collection </h2>
+  <h2 class="mini-header" style="color: black;"> Gears In This Collection </h2>
   <ul class="gears">
   </ul>
 </div>
-<a href="#">Back To Main</a>

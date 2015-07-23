@@ -24,8 +24,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
 
   cancel: function(){
     event.preventDefault();
-    $(".new-gear-button").css("display", "inline")
-    $(".edit-gear-button").css("display", "inline")
+    $(".new-gear-button").show()
+    $(".edit-gear-button").show()
     if ( this.model.isNew() ) {
       $(".new-gear").css("display","none");
     } else {
@@ -42,8 +42,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
     var attrs = this.$el.serializeJSON();
     var file = this.$("#input-gear-image")[0].files[0];
     if (this.model.isNew()) {
-      $(".new-gear-button").css("display", "inline")
-      $(".new-gear").css("display","none");
+      $(".new-gear-button").show();
+      $(".new-gear").hide();
       attrs["owner_id"] = Sonichunt.currentUser.id;
       var formData = new FormData();
       formData.append("gear[title]", attrs["title"]);
@@ -67,8 +67,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
       });
     }
     else {
-      $(".edit-gear-button").css("display", "inline")
-      $(".edit-gear-"+this.model.escape('id')).css("display","none");
+      $(".edit-gear-button").show();
+      $(".edit-gear-"+this.model.escape('id')).hide();
       this.model.set(attrs);
       this.model.save({}, {success: function(){
         alert("Successfully updated your impressions!");

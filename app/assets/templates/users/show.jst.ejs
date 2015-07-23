@@ -2,8 +2,10 @@
   <div class="user-top-container group">
   <div class="profile-pic-container">
   <img class="profile-pic" src=<%= user.escape('image_url') %>>
+    <% if ( Sonichunt.currentUser.id === parseInt(user.escape('id'))) {%>
   <a class="edit-pic">&#10000</a>
   <edit-image></edit-image>
+  <% } %>
 </div>
   <div class="profile-text group">
   <h4 class="username"> @<%= user.escape('username') %> </h4>

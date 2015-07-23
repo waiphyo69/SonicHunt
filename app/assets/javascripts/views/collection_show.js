@@ -1,30 +1,47 @@
 Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
   template: JST["collections/show"],
 
+
+  className: "collection-show group",
+
   initialize: function(){
     var that = this;
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync chane remove", this.render);
     this.listenTo(this.model.products(), "add", this.addProduct);
     this.listenTo(this.model.gears(), "add", this.addGear);
+    this.listenTo(this.model.products(), "remove", this.render);
+    this.listenTo(this.model.gears(), "remove", this.render);
+    this.listenTo(this.model.products(), "remove", this.removeProduct);
+    this.listenTo(this.model.gears(), "remove", this.removeGear);
     this.model.products().each(this.addProduct.bind(this));
     this.model.gears().each(this.addGear.bind(this));
+  },
+
+  removeProduct: function(product){
+    this.removeModelSubview(".products", product)
+  },
+
+  removeGear: function(gear){
+    debugger
+    this.removeModelSubview(".gears", gear)
   },
 
 
   events: {
     "click .remove-pro-from-col": "deleteProFromCol",
     "click .remove-gear-from-col": "deleteGearFromCol",
-    "click .delete": "destroyCol"
+    "click .collection-delete": "destroyCol"
   },
 
 
   destroyCol: function(){
     event.preventDefault();
     this.model.destroy();
-    Backbone.history.navigate("", { trigger: true })
+    Backbone.history.navigate("#/products", { trigger: true })
   },
 
   deleteProFromCol: function(event){
+    var that = this;
     var product_id = parseInt($(event.target).data("id"));
     var that = this;
     var producttocols = new Sonichunt.Collections.ProductToCols();
@@ -36,7 +53,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
         })
         producttocol[0].destroy({
           success: function(){
-            that.render;
+            that.model.products().remove(that.model.products().get(product_id));
           }
         });
       }
@@ -53,7 +70,11 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
           gear_id: gear_id,
           collection_id: that.model.id
         })
-        geartocol[0].destroy();
+        geartocol[0].destroy({
+          success: function(){
+            that.model.gears().remove(that.model.gears().get(gear_id));
+          }
+        });
       }
     })
   },
@@ -62,7 +83,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
     var productItemView = new Sonichunt.Views.ProductItem({model: product});
     this.addSubview(".products", productItemView);
     if ( Sonichunt.currentUser.id === parseInt( this.model.escape('owner_id') ) ) {
-      productItemView.$el.append( "<button class='remove-pro-from-col' data-id="+product.escape('id') + ">Remove</button>" );
+      productItemView.$el.append( "<button class='remove-pro-from-col' data-id="+product.escape('id') + ">Remove from collection</button>" );
     }
   },
 
@@ -73,7 +94,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
         var gearItemView = new Sonichunt.Views.GearItem({model: gear});
         that.addSubview(".gears", gearItemView);
         if ( Sonichunt.currentUser.id === parseInt( that.model.escape('owner_id') ) ) {
-          gearItemView.$el.append( "<button class='remove-gear-from-col' data-id="+gear.escape('id') + ">Remove</button>" );
+          gearItemView.$el.append( "<button class='remove-gear-from-col' data-id="+gear.escape('id') + ">Remove from collection</button>" );
         };
       }
     })

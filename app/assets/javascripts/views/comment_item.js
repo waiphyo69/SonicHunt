@@ -4,6 +4,8 @@ Sonichunt.Views.CommentItem = Backbone.CompositeView.extend({
 
   template: JST["comments/item"],
 
+  className: "comment-item",
+
   initialize: function(){
     this.listenTo(this.model,"sync add", this.render);
     this.addEditForm();
@@ -31,7 +33,6 @@ Sonichunt.Views.CommentItem = Backbone.CompositeView.extend({
   destroyComment: function(){
     event.preventDefault();
     this.model.destroy();
-    alert("Comment successfully deleted!")
   },
 
   displayEditForm: function(){

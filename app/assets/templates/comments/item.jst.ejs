@@ -1,8 +1,8 @@
-<strong> <%= comment.escape('author_name') %> </strong>
-<p> <%= comment.escape('content') %> </p>
-<% if ( comment.escape('author_id') === Sonichunt.currentUser.id ) { %>
-  <button class="comment-delete">Delete</button>
-  <button class="edit-comment-button">Edit your comment</button>
+<h1 style="font-weight: bold; margin-bottom: 20px;"> <%= comment.escape('author_name') %> </h1>
+<p style="margin-botttom: 20px;"> <%= comment.escape('content') %> </p>
+<% if ( parseInt(comment.escape('author_id')) === Sonichunt.currentUser.id ) { %>
+  <button class="comment-delete" style="display: inline;">Delete</button>
+  <button class="edit-comment-button" style="display: inline;">Edit comment</button>
 <% } %>
-<div class='<%= "edit-comment-"+ comment.escape('id') %>' style="margin: auto;height: 50px; color: #fff; display: none; border: solid black 1px; text-align: center">
+<div class='<%= "edit-comment-"+ comment.escape('id') %>' style="margin: auto; display: none;" >
 </div>

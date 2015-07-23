@@ -8,11 +8,11 @@
 
 
 users = User.create!([{
- username: "bob123", email: "bob123@gmail.com", password_digest: BCrypt::Password.create("bob123")
+ username: "bob123", email: "bob123@gmail.com", password_digest: BCrypt::Password.create("bob123"), image: File.open( Rails.root.join("app/assets/images/seed_images/lab1.jpg") )
 },{
- username: "waiphyo300", email: "waiphyo300@gmail.com", password_digest: BCrypt::Password.create("wpm123")
+ username: "waiphyo300", email: "waiphyo300@gmail.com", password_digest: BCrypt::Password.create("wpm123"), image: File.open( Rails.root.join("app/assets/images/seed_images/lab2.jpg") )
 },{
- username: "kate123", email: "kate123@gmail.com", password_digest: BCrypt::Password.create("kate123")
+ username: "kate123", email: "kate123@gmail.com", password_digest: BCrypt::Password.create("kate123"), image: File.open( Rails.root.join("app/assets/images/seed_images/husky.jpg") )
 }])
 
 products = Product.create!([{

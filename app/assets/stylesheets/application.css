@@ -16,7 +16,7 @@
 
 html, body, header, nav, a, ul, li, form,
 strong, main, section, img, div, p, fieldset, label, article, footer, small,
-h1, h2, h3 {
+h1, h2, h3{
   margin: 0;
   padding: 0;
   border: 0;
@@ -82,7 +82,7 @@ header{
   z-index: 100;
   position: relative;
   padding: 15px;
-  background: #bab4b2;
+  background: -webkit-linear-gradient(top, #f3e2c7 0%,#c19e67 50%,#e9d4b3 100%);
   display: block;
   border-bottom: 1px solid #E4E2E2;
 }
@@ -402,7 +402,7 @@ img.show{
   margin: auto 0px;
 }
 
-.product-top, .gear-top{
+.product-top, .gear-top, .review-top{
   display: block;
 }
 
@@ -413,6 +413,13 @@ img.show{
   margin-top: 20px;
 }
 
+.review-top {
+  position: relative;
+  padding: 20px;
+  background: #EDECEB;
+  border-bottom: solid 1px #BAB4B2;
+  border-radius: 5px;
+}
 
 .coll-thumb {
   display: block;
@@ -433,12 +440,13 @@ img.show{
   text-align: center;
 }
 
-.collection-item img:hover {
-  background: red;
+.collection-item h2:hover {
+  color: red;
 }
 
 .collection-item h2{
   color: gray;
+  font-size: 20px;
   margin: auto;
   position: relative;
   bottom: 150px;
@@ -460,6 +468,7 @@ img.show{
 }
 
 .edit-pic {
+  color: #534540;
   position: absolute;
   bottom: 80px;
   z-index: 100;
@@ -699,16 +708,26 @@ button.add-product, button.add-gear {
 }
 
 
-.gear-delete, .review-delete, .edit-gear-button, .edit-review-button{
+ .gear-delete, .review-delete, .edit-gear-button, .edit-review-button{
   color: #534540;
   height: 50px;
   width: 50px;
   float: right;
   position: relative;
   right: 60px;
+  z-index: 100;
 }
 
-.gear-delete:hover, .review-delete:hover, .edit-gear-button:hover, .edit-review-button:hover {
+.collection-delete{
+  color: #534540;
+  display: block;
+  margin: auto;
+  position: relative;
+  left: 300px;
+  bottom: 130px;
+}
+
+.collection-delete:hover, .gear-delete:hover, .review-delete:hover, .edit-gear-button:hover, .edit-review-button:hover {
   cursor: pointer;
   color: red;
 }
@@ -809,6 +828,16 @@ svg:hover {
   margin: auto;
 }
 
+.collection-owner-thumb {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #7F7F96;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+}
+
 .user-item-thumb{
   position: relative;
   display: block;
@@ -848,7 +877,7 @@ svg:hover {
   margin-bottom: 20px;
 }
 
-.product-back,button.submit, button.cancel, .new-review-button, .follow-button, .new-gear-button, .new-comment-button{
+ button.submit, button.cancel, .new-review-button, .follow-button, .new-gear-button, .new-comment-button{
   padding: 8px;
   display: block;
   color: white;
@@ -859,8 +888,20 @@ svg:hover {
   border-radius: 5px;
 }
 
+.comment-form button.submit, .comment-form button.cancel,.comment-delete, .edit-comment-button{
+  padding: 10px 6px;
+  color: black;
+  background: #DA552F;
+  margin: auto;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 .new-comment-button{
-  margin: 5px;
+  margin: 2px;
+  background: #DA552F;
+  color: black;
+  font-weight: bold;
 }
 
 .follow-button:hover {
@@ -901,7 +942,7 @@ div.review-section, div.gear-section{
   background: #eee;
   padding: 30px;
   font-size: 18px;
-  width: 360px;
+  width: 250px;
   background: white;
   border: 1px solid black;
   margin: auto;
@@ -913,17 +954,84 @@ div.review-section, div.gear-section{
   margin: 0 auto;
 }
 
-.product-description , .gear-description{
+.review-show {
+  width: 800px;
+  margin: 0 auto;
+  color: black;
+  min-height: 1000px;
+  border-left: solid 1px #BAB4B2;
+  border-right: solid 1px #BAB4B2;
+}
+
+
+
+.review-top h1{
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.review-top h1:first-child{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.review-top a.review-info:hover, a.collection-info:hover{
+    color: #BAB4B2;
+}
+
+a.collection-info,a.review-info{
+  color: #534540;
+}
+
+.product-description , .gear-description, .review-description{
   display: block;
   letter-spacing: 2px;
   word-spacing: 5px;
+}
+
+.review-description{
+  padding: 20px 20px 50px 20px;
+  line-height: 25px;
+  background: #FBFBFB;
+}
+
+.review-owner-info{
+  display: block;
+}
+
+.review-owner-thumb{
+  position: relative;
+  left: 30px;
+  bottom: 4px;
+  float: left;
+  display: block;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.review-comments{
+  display: block;
+  margin-left: 2px;
+}
+
+.review-owner-info  h1{
+  float: left;
+  font-size: 16px;
+}
+
+.review-owner-info a{
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .mini-header{
   font-weight: bold;
   font-size: 22px;
   display: block;
-  margin: 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .input-text, .input-textarea {
@@ -972,7 +1080,7 @@ div.review-section, div.gear-section{
   margin-top: 20px;
   display: block;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   font-size: 16px;
   width: 300px;
   height: 60px;
@@ -983,6 +1091,67 @@ div.review-section, div.gear-section{
   display: inline;
 }
 
-.product-back{
-  margin: 0px;
+.show-follow-button {
+  border-radius: 5px;
+  font: 30px;
+  margin: auto;
+  padding: 5px;
+}
+
+
+.review-top button.upvote-button{
+  position: absolute;
+  left: 750px;
+  bottom: 85px;
+  font-size: 24px;
+}
+
+.comment-item{
+  display: block;
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.collection-show{
+  margin: 0 auto;
+  width: 980px;
+  border-left: solid 1px #BAB4B2;
+  border-right: solid 1px #BAB4B2;
+  min-height: 1000px;
+}
+
+.collection-details{
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+
+.collection-owner-info {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.collection-details h1:first-child{
+  font-weight: bold;
+  font-size: 30px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.collection-items{
+  display: block;
+  padding: 0 20px;
+}
+
+.remove-pro-from-col, .remove-gear-from-col{
+  padding: 3px;
+  display: block;
+  color: white;
+  background: #534540;
+  border-radius: 5px;
+  position: relative;
+  top: 20px;
 }
