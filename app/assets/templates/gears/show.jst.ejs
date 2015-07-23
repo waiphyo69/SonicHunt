@@ -5,6 +5,15 @@
     <h1> <%= gear.escape('title') %> </h1>
     <h2> Owner: <%= gear.escape('owner_name') %> </h2>
   </div>
+  <% if ( gear.upvote().isNew() ){ %>
+      <button class="gear-show-upvote-button">
+       &#9650 <br> <%= numUpvoters %>
+      </button>
+  <% }else {%>
+    <button class="gear-show-upvote-button" style="color: red;">
+     &#9650 <br> <%= numUpvoters %>
+   </button>
+   <% } %>
   </div>
   <div class="gear-description">
     <h2 class="mini-header"> Impressions: </h2>

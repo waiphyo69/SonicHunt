@@ -4,12 +4,14 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
   className: "gears-container",
 
   initialize: function(){
+    
     var that = this;
     this.listenTo(this.collection, "sync change", this.render);
     this.listenTo(this.collection, "add", this.addGear);
     this.listenTo(this.collection, "remove", this.removeGear)
     this.collection.each(this.addGear.bind(this));
     this.addGearNewForm();
+
     $("#search").keyup(function(){
         that.renderSearch();
     });

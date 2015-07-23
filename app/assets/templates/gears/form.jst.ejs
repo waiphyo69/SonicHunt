@@ -1,7 +1,7 @@
 <% if (gear.isNew()) { %>
-  <h1>New Gear</h1>
+  <h1 class="gear-form-header">New Gear</h1>
 <% } else { %>
-  <h1>Update Impressions On Your Gear!</h1>
+  <h1 class="gear-form-header">Update Impressions On Your Gear!</h1>
 <% } %>
 
 <% if (gear.isNew()) { %>
@@ -29,14 +29,13 @@
   <% }) %>
 </select>
 <br>
-<label>Title:
-  <input type='text' name='title' value='<%=gear.escape('title')%>'>
-</label>
-
-<br>
 <label>
   Upload Image:
   <input type="file" name="image" id="input-gear-image">
+</label>
+<br>
+<label>Title:
+  <input type='text' name='title' value='<%=gear.escape('title')%>'>
 </label>
 <% } %>
 
@@ -50,5 +49,5 @@
 
 <br>
 
-<button class='submit'>Submit</button>
-<button class='cancel'>Cancel</button>
+<button class='submit' style="display: inline-block; margin: auto;">Submit</button>
+<button class='cancel' style="display: inline-block; margin: auto;">Cancel</button>

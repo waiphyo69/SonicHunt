@@ -8,6 +8,8 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.products(), "add", this.addProduct);
     this.model.products().each(this.addProduct.bind(this));
+    this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
+    this.listenTo( this.model.upvoters(), "sync add remove", this.render );
     this.listenTo(this.model.comments(), "add sync remove", this.render);
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.model.comments().each(this.addComment.bind(this));
@@ -18,6 +20,37 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
         Backbone.history.navigate("#/products", { trigger: true });
       }
     })
+  },
+
+
+
+  createUpvote: function () {
+    var that = this;
+    this.model.upvote().set({
+      subscriber_id: Sonichunt.currentUser.id,
+      gear_id: parseInt(this.model.escape('id'))
+    });
+    this.model.upvote().save();
+    this.model.upvoters().add(Sonichunt.currentUser);
+  },
+
+  destroyUpvote: function () {
+    var that = this;
+    this.model.upvote().destroy({
+      success: function(model){
+        that.model.upvoters().remove(Sonichunt.currentUser);
+        model.unset("id");
+      }
+    });
+  },
+
+  toggleUpvote: function (event) {
+    event.preventDefault();
+    if (this.model.upvote().isNew()) {
+      this.createUpvote();
+    } else {
+      this.destroyUpvote();
+    }
   },
 
 
@@ -37,7 +70,8 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click .new-comment-button": "displayNewCommentForm"
+    "click .new-comment-button": "displayNewCommentForm",
+    "click .gear-show-upvote-button": "toggleUpvote"
   },
 
   displayNewCommentForm: function(){
@@ -55,7 +89,8 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    var content = this.template({gear: this.model});
+    var numUpvoters = this.model.upvoters().length;
+    var content = this.template({gear: this.model, numUpvoters: numUpvoters});
     this.$el.html(content);
     this.attachSubviews();
     return this;

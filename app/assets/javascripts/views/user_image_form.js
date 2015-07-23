@@ -4,6 +4,8 @@ Sonichunt.Views.UserImageForm = Backbone.CompositeView.extend({
 
   tagName: "form",
 
+  className: "user-image-upload",
+  
   events: {
     "click .save": "submit",
     "change #input-user-image": "fileInputChange"

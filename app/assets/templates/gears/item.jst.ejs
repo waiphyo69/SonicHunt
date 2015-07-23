@@ -19,7 +19,6 @@
   </edit-gear>
 <% } %>
 <% if ( parseInt(gear.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
-  <a class="gear-delete"><i class="fa fa-trash-o"></i></a>
+  <a class="gear-delete"><i class="fa fa-trash-o fa-lg"></i></a>
 <% } %>
-</button>
 <div class='<%= "add-to-collection-gear-"+ gear.escape('id') %>' style="display: none;"></div>

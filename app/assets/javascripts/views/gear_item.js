@@ -22,7 +22,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 				$(target).attr("class") != "add-gear"){
 
 					$(".add-to-collection-gear-"+ that.model.id).hide();
-					$("button.add-gear").css("display","inline");
+					$("button.add-gear").show();
 
 				}
 		});
@@ -126,15 +126,13 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 			success: function(){
 			alert("Successfully saved to collection!")
 			$(".add-to-collection-gear-"+ that.model.id).hide();
-			$(".add-gear").css("display", "inline");
-			Backbone.history.navigate("", {trigger: true})
+			$(".add-gear").show();
 		},
 
 			error: function(){
 			alert("Already in the collection!")
 			$(".add-to-collection-gear-"+ that.model.id).hide();
-			$(".add-gear").css("display", "inline");
-			Backbone.history.navigate("", {trigger: true})
+			$(".add-gear").show();
 			}
 		})
 	},

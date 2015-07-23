@@ -16,8 +16,8 @@
 </a>
 
 <% if ( parseInt(review.escape('owner_id')) === Sonichunt.currentUser.id ) { %>
-  <a class="review-delete"><i class="fa fa-trash-o"></i></a>
+  <a class="review-delete"><i class="fa fa-trash-o fa-lg"></i></a>
   <a class="edit-review-button">&#10000</a>
 <% } %>
-<div class='<%= "edit-review-"+ review.escape('id') %>' style="display: none">
+<div class='<%= "edit-review-"+ review.escape('id') %>' style="display: none;">
 </div>
