@@ -1251,3 +1251,9 @@ form.new-collection button{
 header img.profile-pic-thumb:hover .user-dropdown{
   display: block;
 }
+
+.facebook-login{
+  display: block;
+  margin-top: 20px;
+  margin-left: 175px;
+}
