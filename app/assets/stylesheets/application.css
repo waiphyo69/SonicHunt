@@ -16,7 +16,7 @@
 
 html, body, header, nav, a, ul, li, form,
 strong, main, section, img, div, p, fieldset, label, article, footer, small,
-h1, h2, h3{
+h1, h2, h3, input, textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -31,9 +31,18 @@ h1, h2, h3{
   box-sizing: inherit;
 }
 
+
+input {
+    background: white;
+}
+
+textarea {
+    border: solid 1px #ccc;
+}
+
 body{
   box-sizing: content-box;
-  font-family: 'Helvetica Neue';
+  font-family: 'Didot';
   font-size: 16px;
   color: #838383;
 }
@@ -1000,6 +1009,7 @@ a.collection-info,a.review-info{
   font-weight: bold;
   font-size: 22px;
   display: block;
+  padding-top: 20px;
   margin: 0 0 20px 0;
 }
 
@@ -1018,6 +1028,7 @@ a.collection-info,a.review-info{
   width: 50px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  background: white;
 }
 
 .input-text {
