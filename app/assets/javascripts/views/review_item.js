@@ -7,7 +7,7 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   template: JST["reviews/item"],
 
   initialize: function(){
-    this.listenTo( this.model, "sync change", this.render);
+    this.listenTo( this.model, "sync", this.render);
     this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
     this.listenTo( this.model.upvoters(), "sync add remove", this.render );
     this.addEditForm();
@@ -50,13 +50,19 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
   },
 
   destroyReview: function(){
-    var that = this;
     event.preventDefault();
+    var that = this;
+    var product = Sonichunt.products.getorFetch( parseInt( that.model.escape('product_id')) );
+    var deletedScore = parseInt(that.model.escape('score'));
+    var newTotalScore = (parseInt(product.escape('avg_score')) * product.reviews().length) - deletedScore;
+    var newNumReviews = product.reviews().length - 1;
     this.model.destroy({
       success: function(){
-        that.remove();
-      }
-    });
+          that.remove();
+          product.set({"avg_score": ( newTotalScore / newNumReviews )});
+          product.save();
+        }
+      })
   },
 
   displayEditForm: function(){

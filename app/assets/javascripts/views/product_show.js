@@ -5,7 +5,7 @@ Sonichunt.Views.ProductShow = Backbone.CompositeView.extend({
   className: "product-show group",
 
   initialize: function(){
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.reviews(), "add sync remove", this.render);
     this.listenTo(this.model.reviews(), "add", this.addReview);
     this.listenTo(this.model.reviews(), "remove", this.removeReview);
