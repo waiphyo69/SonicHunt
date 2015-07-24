@@ -141,7 +141,6 @@ nav.user-info{
   padding: 20px 20px 0 20px;
   margin: 0 auto;
   background: #534540;
-  color: white;
 }
 
 
@@ -166,7 +165,6 @@ nav.user-info{
   display: block;
   float: left;
   font-weight: bold;
-  color: white;
   cursor: pointer;
   padding: 11px 48px;
   text-align: center;
@@ -288,11 +286,10 @@ li.product-item  a{
   width: 200px;
   margin: auto;
   height: 300px;
-  left: 180px;
+  left: 600px;
   display: block;
   color: #fff;
   border-radius: 5px;
-  background-color: black;
 }
 
 .review-item div{
@@ -384,6 +381,7 @@ div.user-header-container{
   text-align: center;
   color: #534540;
   font-size: 16px;
+  display: block;
 }
 
 img.show{
@@ -408,8 +406,9 @@ img.show{
   font-weight: bold;
   float: left;
   margin-left: 40px;
-  margin-top: 20px;
+  width: 160px;
 }
+
 
 .review-top {
   position: relative;
@@ -442,7 +441,7 @@ img.show{
 }
 
 .collection-item h2{
-  color: white;
+  color: #534540;
   font-size: 24px;
   margin: auto;
   position: relative;
@@ -492,7 +491,7 @@ h4.user-email {
   position: relative;
   bottom: 20px;
   font-weight: 300;
-  color: #838383;
+  color: white;
 }
 
 .user-show {
@@ -659,7 +658,7 @@ div.user-top-container{
 }
 
 
-ul.products, ul.gears, ul.collections {
+ul.products, ul.collections {
   display: block;
   width: 900px;
   margin: 0 auto;
@@ -667,6 +666,16 @@ ul.products, ul.gears, ul.collections {
   min-height: 1200px;
   padding: 20px;
 }
+
+div.gears-index-div{
+  display: block;
+  width: 900px;
+  margin: 0 auto;
+  background: white;
+  min-height: 1200px;
+  padding: 20px;
+}
+
 
 ul.user-reviews, ul.user-gears, ul.user-collections, ul.user-followers, ul.user-followees{
   display: block;
@@ -698,6 +707,7 @@ item-title{
 item-description{
   position: relative;
   top: 18px;
+  color: black;
 }
 
 user-item-email{
@@ -861,7 +871,7 @@ svg:hover {
 .follow-or-you h4{
   position: relative;
   font-weight: 300;
-  color: #838383;
+  color: white;
   margin-top: 50px;
   right: 40px;
 }
@@ -931,19 +941,24 @@ svg:hover {
  button.submit, button.cancel, .new-review-button, .follow-button, .new-gear-button, .new-comment-button{
   padding: 8px;
   display: block;
-  color: white;
-  background: #534540;
+  color: #534540;
+  background: #DCC29A;
   margin-top: 16px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
+  font-family: "Didot";
+  font-weight: bold;
+  font-size: 13px;
 }
 
 .comment-form button.submit, .comment-form button.cancel,.comment-delete, .edit-comment-button,.new-comment-button{
   margin-left: 20px;
-  background: #534540;
-  color: white;
+  background: #DCC29A;
+  color: #534540;
+  font-family: "Didot";
   font-weight: bold;
+  font-size: 13px;
 }
 
 .follow-button:hover {
@@ -982,7 +997,13 @@ div.review-section, div.gear-section{
   overflow: hidden;
 }
 
+div.gear-section{
+  min-height: 1523px;
+}
 
+.gear-show li.product-item{
+  padding: 0;
+}
 
 .review-form{
   display: block;
@@ -993,7 +1014,12 @@ div.review-section, div.gear-section{
   border: 1px solid black;
   margin: auto;
   border-radius: 5px;
+  z-index: 100px;
+  position: relative;
+  right: 20px;
 }
+
+
 
 .product-show, .gear-show {
   width: 1000px;
@@ -1295,12 +1321,13 @@ form.new-collection button{
   text-align: center;
   display: block;
   position: absolute;
-  left: 400px;
-  top: 40px;
+  left: 350px;
+  top: 160px;
   font-size: 28px;
   border: none;
   background: none;
 }
+
 
 .user-image-upload{
   position: absolute;
@@ -1331,7 +1358,14 @@ header img.profile-pic-thumb:hover .user-dropdown{
 }
 
 body{
-  background: -webkit-linear-gradient(top, #f3e2c7 0%,#c19e67 50%,#e9d4b3 100%);
+background: #f3e2c7; /* Old browsers */
+background: -moz-linear-gradient(top, #f3e2c7 0%, #b68d4c 40%, #b68d4c 40%, #c19e67 50%, #e9d4b3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3e2c7), color-stop(40%,#b68d4c), color-stop(40%,#b68d4c), color-stop(50%,#c19e67), color-stop(100%,#e9d4b3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #f3e2c7 0%,#b68d4c 40%,#b68d4c 40%,#c19e67 50%,#e9d4b3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #f3e2c7 0%,#b68d4c 40%,#b68d4c 40%,#c19e67 50%,#e9d4b3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #f3e2c7 0%,#b68d4c 40%,#b68d4c 40%,#c19e67 50%,#e9d4b3 100%); /* IE10+ */
+background: linear-gradient(to bottom, #f3e2c7 0%,#b68d4c 40%,#b68d4c 40%,#c19e67 50%,#e9d4b3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3e2c7', endColorstr='#e9d4b3',GradientType=0 ); /* IE6-9 */
   z-index: -5;
 }
 

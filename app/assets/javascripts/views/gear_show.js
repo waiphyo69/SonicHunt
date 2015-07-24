@@ -55,7 +55,13 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
 
 
   removeComment: function (comment) {
-    this.removeModelSubview(".comments", comment)
+    var that = this;
+    this.removeModelSubview(".comments", comment);
+    this.model.save({},{
+      success: function(){
+        Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true})
+      }
+    })
   },
 
   addCommentNewForm: function(){
@@ -75,6 +81,14 @@ Sonichunt.Views.GearShow = Backbone.CompositeView.extend({
   },
 
   displayNewCommentForm: function(){
+    var comment = new Sonichunt.Models.Comment();
+    var commentNewView = new Sonichunt.Views.CommentForm({
+      collection: this.model.comments(),
+      model: comment,
+      parentID: this.model.id,
+      parentType: "Gear"
+    });
+    $(".new-comment").html(commentNewView.render().$el);
     $(".new-comment").show();
   },
 

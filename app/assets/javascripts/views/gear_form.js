@@ -55,12 +55,19 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
           var headphone = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: headphone_id });
           var dac = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: dac_id });
           var amplifier = new Sonichunt.Models.GearToPro({ gear_id: parseInt(that.model.escape('id')), product_id: amplifier_id });
-          that.collection.add(that.model, {merge: true});
+
           headphone.save();
           dac.save();
           amplifier.save();
-          alert("Successfully created your gear bro!");
-          Backbone.history.navigate("#/gears/"+that.model.escape('id'), {trigger: true});
+          that.collection.add(that.model, {merge: true});
+          alert("Successfully created your gear!");
+
+          that.collection.fetch({
+            success: function(){
+              Backbone.history.navigate("#/gears", {trigger: true});
+            }
+          })
+
         }, error: function(){
           alert("Input is invalid! Try again!");
         }

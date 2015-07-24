@@ -7,7 +7,7 @@ Sonichunt.Views.CommentItem = Backbone.CompositeView.extend({
   className: "comment-item",
 
   initialize: function(){
-    this.listenTo(this.model,"sync add", this.render);
+    this.listenTo(this.model,"sync change", this.render);
     this.addEditForm();
   },
 
@@ -18,11 +18,11 @@ Sonichunt.Views.CommentItem = Backbone.CompositeView.extend({
   },
 
   addEditForm: function(){
-    var comment = new Sonichunt.Collections.Comments().getorFetch(this.model.id);
+    var that = this;
     var editView = new Sonichunt.Views.CommentForm({
-      model: comment
+      model: that.model
     });
-    this.addSubview(".edit-comment-"+this.model.id, editView);
+    that.addSubview(".edit-comment-"+that.model.id, editView);
   },
 
   events: {

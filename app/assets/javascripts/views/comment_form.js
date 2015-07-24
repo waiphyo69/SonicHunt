@@ -28,6 +28,7 @@ Sonichunt.Views.CommentForm = Backbone.CompositeView.extend({
   },
 
   submit: function(){
+    event.preventDefault();
     var that = this;
     var attrs = this.$el.serializeJSON();
     if ( this.model.isNew() ) {
@@ -37,24 +38,31 @@ Sonichunt.Views.CommentForm = Backbone.CompositeView.extend({
       attrs["parent_type"] = that.parentType;
       this.model.set(attrs);
       this.model.save({},{
-        success: function(){
-          that.collection.add(that.model, {merge: true});
-          },
-        error: function(){
+          success: function(){
+            that.model.fetch({
+              success: function(){
+                that.collection.add(that.model);
+              }
+            })
+          }
+      },
+        {error: function(){
           alert("Can't be blank. Please try again!");
           }
         })
     } else {
         $(".edit-comment-"+this.model.escape('id')).hide();
-        this.model.set(attrs);
-        this.model.save({},{
-          success: function(){
-            var product = Sonichunt.products.getorFetch(that.model.escape('product_id'));
+          this.model.set(attrs);
+          var that = that;
+          this.model.save({}, {
+            success: function(){
+
             },
-          error: function(){
-            alert("Can't be blank. Please try again!");
-            }
-        });
+            error: function(){
+              alert("Can't be blank. Please try again!");
+              }
+            })
+
       }
   },
 

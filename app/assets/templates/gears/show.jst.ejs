@@ -7,11 +7,13 @@
   </div>
   <% if ( gear.upvote().isNew() ){ %>
       <button class="gear-show-upvote-button">
-       &#9650 <br> <%= numUpvoters %>
+        <a style="display: block;">&#9650</a>
+        <a style="display: block;"> <%= numUpvoters %> </a>
       </button>
   <% }else {%>
     <button class="gear-show-upvote-button" style="color: red;">
-     &#9650 <br> <%= numUpvoters %>
+      <a style="display: block;">&#9650</a>
+      <a style="display: block;"> <%= numUpvoters %> </a>
    </button>
    <% } %>
   </div>

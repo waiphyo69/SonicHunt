@@ -17,3 +17,5 @@ Sonichunt.Collections.Comments = Backbone.Collection.extend({
     return comment;
   }
 })
+
+Sonichunt.comments = new Sonichunt.Collections.Comments();

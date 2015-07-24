@@ -1,10 +1,12 @@
 <% if ( gear.upvote().isNew() ){ %>
     <button class="upvote-button">
-     &#9650 <br> <%= numUpvoters %>
+      <a style="display: block;">&#9650</a>
+      <a style="display: block; position: relative; left: 0.8px;"> <%= numUpvoters %> </a>
     </button>
 <% }else {%>
   <button class="upvote-button" style="color: red;">
-   &#9650 <br> <%= numUpvoters %>
+    <a style="display: block;">&#9650</a>
+    <a style="display: block; position: relative; left: 0.8px;"> <%= numUpvoters %> </a>
  </button>
 <% }%>
 <a href=<%="#/gears/"+gear.escape('id')%>>

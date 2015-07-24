@@ -9,10 +9,9 @@ Sonichunt.Views.ReviewShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo( this.model.upvote(), "sync change reset remove", this.render );
     this.listenTo( this.model.upvoters(), "sync add remove", this.render );
-    this.listenTo(this.model.comments(), "add sync remove", this.render);
+    this.listenTo(this.model.comments(), "sync", this.render);
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.model.comments().each(this.addComment.bind(this));
-    this.addCommentNewForm();
     this.listenTo(this.model.comments(), "remove", this.removeComment);
     $(document).on("click","#search", function(){
       if (Sonichunt.router._currentView.className === "review-show group") {
@@ -58,11 +57,26 @@ Sonichunt.Views.ReviewShow = Backbone.CompositeView.extend({
   },
 
   removeComment: function (comment) {
-    this.removeModelSubview(".comments", comment)
+    var that = this;
+    this.removeModelSubview(".comments", comment);
+    this.model.save({},{
+      success: function(){
+        Backbone.history.navigate("#/reviews/"+that.model.escape('id'), {trigger: true})
+      }
+    })
   },
 
 
+
   displayNewCommentForm: function(){
+    var comment = new Sonichunt.Models.Comment();
+    var commentNewView = new Sonichunt.Views.CommentForm({
+      collection: this.model.comments(),
+      model: comment,
+      parentID: this.model.id,
+      parentType: "Review"
+    });
+    $(".new-comment").html(commentNewView.render().$el);
     $(".new-comment").show();
   },
 
