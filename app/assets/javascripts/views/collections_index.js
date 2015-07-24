@@ -46,8 +46,16 @@ Sonichunt.Views.CollectionsIndex = Backbone.CompositeView.extend({
     var input = $("#search").val();
     newCollections = new Sonichunt.Collections.Collections();
     Sonichunt.collections.each(function (collection){
-      if ( collection.get('title').toLowerCase().includes(input) ){
+      if ( collection.get('title').toLowerCase().includes(input) ||
+
+      collection.get('product_names').split('$$').some(function (elem)
+      { return elem.toLowerCase().includes(input) }) ||
+
+      collection.get('gear_names').split('$$').some(function (elem)
+      { return elem.toLowerCase().includes(input) })){
+
         newCollections.add(collection);
+        
       }
     });
 

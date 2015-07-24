@@ -25,4 +25,17 @@ class Collection < ActiveRecord::Base
   class_name: "User",
   inverse_of: :collections
 
+  def product_names_string
+    str = ""
+    self.products.each{|product| str+= product.name + "$$"}
+    self.gears.each{|gear| str+= gear.product_names_string}
+    return str
+  end
+
+  def gear_names_string
+    str = ""
+    self.gears.each{|gear| str+= gear.title + "$$"}
+    return str
+  end
+
 end

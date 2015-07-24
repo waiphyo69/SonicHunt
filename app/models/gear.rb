@@ -47,4 +47,5 @@ class Gear < ActiveRecord::Base
       self.products.each{|product| str+= product.name + "$$"}
       return str
     end
+
 end
