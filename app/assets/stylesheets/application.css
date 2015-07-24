@@ -280,15 +280,6 @@ li.product-item  a{
   position: relative;
 }
 
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url(Rails.root.join("app/assets/images/css_images/ajax-loader.gif")) 50% 50% no-repeat rgb(249,249,249);
-}
 
 .user-show .review-item div{
   position: absolute;
