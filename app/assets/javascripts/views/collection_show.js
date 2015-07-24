@@ -104,7 +104,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
     var content = this.template({collection: this.model});
     this.$el.html(content);
     this.attachSubviews();
-    this.$el.find(".add-gear").remove()
+    this.$el.find(".add-gear").remove();
     return this;
   }
 })

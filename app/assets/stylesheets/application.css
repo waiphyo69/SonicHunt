@@ -89,11 +89,11 @@ button:hover {
 
 header{
   z-index: 100;
+  color: white;
   position: relative;
   padding: 15px;
   background: -webkit-linear-gradient(top, #f3e2c7 0%,#c19e67 50%,#e9d4b3 100%);
   display: block;
-  border-bottom: 1px solid #E4E2E2;
 }
 
 .group:after{
@@ -131,7 +131,6 @@ div.welcome h1{
   background-color: #F7F7FA;
   border-bottom: 1px solid #E4E2E2;
   padding: 0 20px;
-  margin-bottom: 40px;
   display: block;
 }
 
@@ -143,7 +142,6 @@ nav.user-info{
   margin: 0 auto;
   background: #534540;
   color: white;
-  margin-bottom: 40px;
 }
 
 
@@ -211,10 +209,41 @@ a.collection-add {
 
 
 li.product-item, li.gear-item{
+  border-top: 0px;
+  padding-left: 20px;
   position: relative;
   display: block;
-  width: 100%;
   height: 100px;
+}
+
+li.product-item:first-child, li.gear-item:first-child{
+  padding-top: 30px;
+  position: relative;
+}
+
+li.gear-item:first-child .add-gear{
+  position: absolute;
+  top: 80px;
+}
+
+li.gear-item:first-child .gear-delete{
+  position: absolute;
+  top: 85px;
+}
+
+li.gear-item .gear-delete{
+  position: absolute;
+  top: 55px;
+}
+
+li.gear-item .edit-gear-button{
+  position: absolute;
+  top: 55px;
+}
+
+li.gear-item .add-gear {
+  position: absolute;
+  top: 55px;
 }
 
 li.review-item{
@@ -224,7 +253,7 @@ li.review-item{
 }
 
 li.gear-item{
-  border: 1px solid #BAB4B2;
+  background: white;
   border-radius: 2px;
 }
 
@@ -328,7 +357,6 @@ div.user-header-container{
   margin: 0 auto;
   background: #827774;
   border-radius: 5px;
-  height: 60px;
   position: relative;
   overflow: hidden;
 }
@@ -362,8 +390,8 @@ img.show{
   float: left;
   border-radius: 5px;
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   margin: auto 0px;
 }
 
@@ -387,8 +415,7 @@ img.show{
   position: relative;
   padding: 20px;
   background: #EDECEB;
-  border-bottom: solid 1px #BAB4B2;
-  border-radius: 5px;
+  text-align: center;
 }
 
 .coll-thumb {
@@ -415,8 +442,8 @@ img.show{
 }
 
 .collection-item h2{
-  color: gray;
-  font-size: 20px;
+  color: white;
+  font-size: 24px;
   margin: auto;
   position: relative;
   bottom: 150px;
@@ -471,6 +498,7 @@ h4.user-email {
 .user-show {
   display: block;
   position: relative;
+  color: white;
 }
 
 edit-image {
@@ -631,17 +659,29 @@ div.user-top-container{
 }
 
 
-ul.products, ul.gears, ul.collections, ul.user-reviews, ul.user-gears, ul.user-collections, ul.user-followers, ul.user-followees {
+ul.products, ul.gears, ul.collections {
   display: block;
   width: 900px;
   margin: 0 auto;
+  background: white;
+  min-height: 1200px;
+  padding: 20px;
 }
 
+ul.user-reviews, ul.user-gears, ul.user-collections, ul.user-followers, ul.user-followees{
+  display: block;
+  width: 900px;
+  margin: 0 auto;
+  background: white;
+  min-height: 1200px;
+  padding: 20px;
+}
 
 ul.products li, ul.gears li, ul.user-reviews li, ul.user-gears li, ul.user-followers li, ul.user-followees li{
   margin-bottom: 23px;
   display: block;
 }
+
 
 
 
@@ -679,14 +719,52 @@ button.add-product, button.add-gear {
 }
 
 
-  .gear-delete, .review-delete, .edit-gear-button, .edit-review-button{
+  .gear-delete{
   color: #534540;
-  height: 50px;
-  width: 50px;
-  float: right;
-  position: relative;
-  right: 65px;
+  position: absolute;
+  right: 140px;
   z-index: 50;
+  top: 80px;
+}
+
+li.gear-item:first-child .edit-gear-button {
+  top: 80px;
+  color: #534540;
+  position: absolute;
+  right: 90px;
+  z-index: 50;
+}
+
+.edit-gear-button {
+  top: 60px;
+  color: #534540;
+  position: absolute;
+  right: 90px;
+  z-index: 50;
+}
+
+.edit-review-button{
+  color: #534540;
+  position: absolute;
+  right: 160px;
+  top: 20px;
+}
+
+.review-delete{
+  color: #534540;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+div.review-section .review-delete{
+  position: absolute;
+  right: 40px;
+}
+
+div.review-section .edit-review-button{
+  position: absolute;
+  right: 90px;
 }
 
 
@@ -768,6 +846,7 @@ svg:hover {
 
 
 .drop-down-container {
+  color: #534540;
   position: absolute;
   float: right;
   left: 915px;
@@ -860,19 +939,10 @@ svg:hover {
   border-radius: 5px;
 }
 
-.comment-form button.submit, .comment-form button.cancel,.comment-delete, .edit-comment-button{
-  padding: 10px 6px;
-  color: black;
-  background: #DA552F;
-  margin: auto;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.new-comment-button{
-  margin: 2px;
-  background: #DA552F;
-  color: black;
+.comment-form button.submit, .comment-form button.cancel,.comment-delete, .edit-comment-button,.new-comment-button{
+  margin-left: 20px;
+  background: #534540;
+  color: white;
   font-weight: bold;
 }
 
@@ -888,11 +958,11 @@ div.product-info, div.gear-info{
   color: black;
   display: block;
   float: left;
-  width: 450px;
-  padding: 40px;
+  width: 500px;
+  padding: 20px;
   line-height: 1.5em;
   background: #edeceb;
-  min-height: 800px;
+  min-height: 1000px;
 }
 
 div.gear-info{
@@ -904,10 +974,10 @@ div.gear-info{
 div.review-section, div.gear-section{
   padding-left: 20px;
   padding-top: 30px;
-  width: 450px;
+  width: 400px;
   color: black;
   float: left;
-  min-height: 850px;
+  min-height: 1000px;
   background-color: #fbfbfb;
   overflow: hidden;
 }
@@ -969,6 +1039,8 @@ a.collection-info,a.review-info{
   padding: 20px;
 }
 
+
+
 .review-description{
   padding: 20px 20px 50px 20px;
   line-height: 25px;
@@ -977,6 +1049,9 @@ a.collection-info,a.review-info{
 
 .review-owner-info{
   display: block;
+  margin: auto;
+  position: relative;
+  left: 320px;
 }
 
 .review-owner-thumb{
@@ -992,10 +1067,6 @@ a.collection-info,a.review-info{
   margin: auto;
 }
 
-.review-comments{
-  display: block;
-  margin-left: 2px;
-}
 
 .review-owner-info  h1{
   float: left;
@@ -1082,9 +1153,9 @@ a.collection-info,a.review-info{
 
 
 .review-top button.upvote-button{
-  position: absolute;
-  left: 750px;
-  bottom: 85px;
+  position: relative;
+  left: 650px;
+  bottom: 120px;
   font-size: 24px;
 }
 
@@ -1095,6 +1166,7 @@ a.collection-info,a.review-info{
 }
 
 .collection-show{
+  background: white;
   margin: 0 auto;
   width: 980px;
   border-left: solid 1px #BAB4B2;
@@ -1105,8 +1177,8 @@ a.collection-info,a.review-info{
 .collection-details{
   margin: 0 auto;
   padding-top: 20px;
-  padding-bottom: 20px;
   text-align: center;
+  border-bottom: solid 1px #E6D0AE;
 }
 
 
@@ -1256,4 +1328,20 @@ header img.profile-pic-thumb:hover .user-dropdown{
   display: block;
   margin-top: 20px;
   margin-left: 175px;
+}
+
+body{
+  background: -webkit-linear-gradient(top, #f3e2c7 0%,#c19e67 50%,#e9d4b3 100%);
+  z-index: -5;
+}
+
+.collection-show ul.products, .collection-show ul.gears{
+  min-height: 0px;
+}
+
+.review-comments,.comments-section{
+  display: block;
+  padding: 20px;
+  background: white;
+  min-height: 1000px;
 }
