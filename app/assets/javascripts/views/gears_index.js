@@ -73,11 +73,11 @@ Sonichunt.Views.GearsIndex = Backbone.CompositeView.extend({
     var input = $("#search").val();
     newGears = new Sonichunt.Collections.Gears();
     Sonichunt.gears.each(function (gear){
-      if ( gear.get('title').toLowerCase().includes(input) ){
+      if ( gear.get('title').toLowerCase().includes(input) || gear.get('product_names').split('$$').some(function (elem) { return elem.toLowerCase().includes(input) }))
+        {
         newGears.add(gear);
-      }
+        }
     });
-
 
     var searchView = new Sonichunt.Views.GearsIndex({
       collection: newGears

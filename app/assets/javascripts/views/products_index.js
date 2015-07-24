@@ -41,7 +41,7 @@ Sonichunt.Views.ProductsIndex = Backbone.CompositeView.extend({
     var input = $("#search").val();
     newProducts = new Sonichunt.Collections.Products();
     Sonichunt.products.each(function (product){
-      if ( product.get('name').toLowerCase().includes(input) ){
+      if ( product.get('name').toLowerCase().includes(input) || product.get('category').toLowerCase().includes(input)){
         newProducts.add(product);
       }
     });

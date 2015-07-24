@@ -25,6 +25,7 @@ class Gear < ActiveRecord::Base
     through: :product_ids,
     source: :product
 
+
     has_many :subscribeds,
     foreign_key: :gear_id,
     class_name: "Geartouser",
@@ -40,4 +41,10 @@ class Gear < ActiveRecord::Base
     inverse_of: :gears
 
     has_many :comments, as: :parent
+
+    def product_names_string
+      str = ""
+      self.products.each{|product| str+= product.name + "$$"}
+      return str
+    end
 end
