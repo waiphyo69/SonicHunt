@@ -141,4 +141,24 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom::urlsafe_base64
     self.save!
   end
+
+   def self.find_or_create_by_auth_hash(auth_hash)
+     user = User.find_by(
+              provider: auth_hash[:provider],
+              uid: auth_hash[:uid])
+
+      unless user
+
+        user = User.create!(
+              provider: auth_hash[:provider],
+              uid: auth_hash[:uid],
+              username: auth_hash[:info][:name].split(' ').first,
+              email: auth_hash[:info][:name].split(' ').first + '@gmail.com',
+              # email: auth_hash[:info][:name].split(' ').first+'@gmail.com',
+              password: SecureRandom::urlsafe_base64)
+            end
+
+      user
+
+    end
 end

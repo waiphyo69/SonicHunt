@@ -56,11 +56,17 @@ Sonichunt.Views.ReviewItem = Backbone.CompositeView.extend({
     var deletedScore = parseInt(that.model.escape('score'));
     var newTotalScore = (parseInt(product.escape('avg_score')) * product.reviews().length) - deletedScore;
     var newNumReviews = product.reviews().length - 1;
+    debugger
     this.model.destroy({
       success: function(){
           that.remove();
+          if ( newNumReviews === 0) {
+            product.set({"avg_score": 0 });
+            product.save();
+          } else {
           product.set({"avg_score": ( newTotalScore / newNumReviews )});
           product.save();
+          }
         }
       })
   },

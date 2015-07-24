@@ -40,8 +40,8 @@ Sonichunt.Views.GearForm = Backbone.CompositeView.extend({
     var amplifier_id = $("#amplifiers option:selected").data("id");
     var that = this;
     var attrs = this.$el.serializeJSON();
-    var file = this.$("#input-gear-image")[0].files[0];
     if (this.model.isNew()) {
+      var file = that.$("#input-gear-image")[0].files[0];
       $(".new-gear-button").show();
       $(".new-gear").hide();
       attrs["owner_id"] = Sonichunt.currentUser.id;

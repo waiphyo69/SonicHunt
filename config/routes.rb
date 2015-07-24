@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'static_pages#root'
 
+  get "/auth/:provider/callback", to: "api/sessions#omniauth"
+
   namespace :api, defaults: { format: :json } do
     resources :products, only: [:index, :show, :update]
     resources :gears, only: [:index, :show, :create, :update, :destroy]
