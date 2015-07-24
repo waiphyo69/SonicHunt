@@ -37,7 +37,7 @@ Sonichunt.Views.CollectionShow = Backbone.CompositeView.extend({
   destroyCol: function(){
     event.preventDefault();
     this.model.destroy();
-    Backbone.history.navigate("#/products", { trigger: true })
+    Backbone.history.navigate("#/collections", { trigger: true })
   },
 
   deleteProFromCol: function(event){
