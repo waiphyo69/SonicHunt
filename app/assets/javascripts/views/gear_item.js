@@ -147,7 +147,7 @@ Sonichunt.Views.GearItem = Backbone.CompositeView.extend({
 	displayCollectionForm: function(){
 
   	$(".add-to-collection-gear-"+ this.model.id).show();
-		$(".collectionpopup").show();
+		$(".collectionpopup").animate({ display: block }, 5000);
 		$(".add-gear").hide()
 
 	},

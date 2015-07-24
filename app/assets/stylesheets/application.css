@@ -543,6 +543,7 @@ div.user-top-container{
 }
 
 .input  input {
+  color: black;
   display: block;
   background: #fff;
   border: 1px solid #ccc;
