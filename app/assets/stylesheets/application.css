@@ -618,7 +618,8 @@ div.user-top-container{
 .SignIn,.SignUp {
   display: block;
   position: absolute;
-  background: url("http://drive.google.com/uc?export=view&id=0B8bCp1aDfhNTYk5OQnhYQzM1OVE");
+  background: url("https://4.bp.blogspot.com/-RnvdiiE3urU/VQPqzyync3I/AAAAAAABewU/cBGQ5LMiVyo/s0/Girl_listen_music_headphones_uhd.jpg");
+  background-size: cover;
   width: 1920px;
   height: 1080px;
 }
@@ -628,23 +629,17 @@ div.user-top-container{
   margin-top: 50px;
   display: block;
   margin-left: 100px;
-  color: #ff0000;
   font-weight: bold;
   font-size: 36px;
-  font-family: cursive;
 }
 
 .intro h1{
   margin-bottom: 50px;
-  background: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: black;
 }
 
 .submit > a{
-  background: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: black;
 }
 
 .submit > a:hover{
